@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { v4 as uuidv4 } from 'uuid'
+// Cloudflare Pages requires Edge Runtime
+export const runtime = 'edge'
 
 // GET handler pour tester l'API
 export async function GET(request) {
@@ -39,9 +40,9 @@ export async function POST(request, { params }) {
         )
       }
       
-      // Créer le lead avec un UUID
+      // Créer le lead avec un UUID (crypto.randomUUID() est disponible dans Edge Runtime)
       const lead = {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         secteur,
         region,
         telephone,
