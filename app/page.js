@@ -1,45 +1,57 @@
 'use client'
 
-import { useEffect } from "react";
+import { Header, Footer } from '@/components/layout'
+import { Hero, TrustBar, Problem, Solution } from '@/components/sections'
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await fetch('/api/');
-      const data = await response.json();
-      console.log(data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+export default function Home() {
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" alt="Emergent" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+    <main className="min-h-screen">
+      {/* Navigation */}
+      <Header />
+      
+      {/* Hero Section */}
+      <Hero />
+      
+      {/* Trust Bar */}
+      <TrustBar />
+      
+      {/* Problem Section */}
+      <Problem />
+      
+      {/* Solution Section */}
+      <Solution />
+      
+      {/* Placeholder sections for Phase 2+ */}
+      <section id="forfaits" className="py-24 bg-concrete-50 scroll-mt-header">
+        <div className="section-container text-center">
+          <h2 className="text-navy mb-4">Forfaits et Prix</h2>
+          <p className="text-concrete-500">[Section à développer en Phase 2]</p>
+        </div>
+      </section>
+      
+      <section id="processus" className="py-24 scroll-mt-header">
+        <div className="section-container text-center">
+          <h2 className="text-navy mb-4">Comment ça fonctionne</h2>
+          <p className="text-concrete-500">[Section à développer en Phase 2]</p>
+        </div>
+      </section>
+      
+      <section id="conformite" className="py-24 bg-concrete-50 scroll-mt-header">
+        <div className="section-container text-center">
+          <h2 className="text-navy mb-4">Conformité</h2>
+          <p className="text-concrete-500">[Section à développer en Phase 2]</p>
+        </div>
+      </section>
+      
+      <section id="contact" className="py-24 scroll-mt-header">
+        <div className="section-container text-center">
+          <h2 className="text-navy mb-4">Formulaire de contact</h2>
+          <p className="text-concrete-500">[Section à développer en Phase 2]</p>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <Footer />
+    </main>
+  )
 }
-
-export default App;
