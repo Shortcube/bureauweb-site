@@ -101,3 +101,173 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: |
+  Site web B2B SaaS pour BureauWeb.ca - infrastructure web pour entrepreneurs québécois en travaux manuels.
+  Site one-page en français québécois avec sections hero, tarifs, formulaire de capture, conformité Loi 25.
+  Palette: Navy Blue (#0f172a), Concrete Grey (#64748b), Safety Orange (#f97316)
+  Framework: Next.js 14 + Tailwind CSS + shadcn/ui
+
+backend:
+  - task: "API Lead Capture - POST /api/lead"
+    implemented: true
+    working: true
+    file: "/app/app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "API fonctionnelle, validation secteur/region/telephone, retourne JSON avec leadId"
+
+frontend:
+  - task: "Navigation smooth scroll"
+    implemented: true
+    working: "NA"
+    file: "/app/components/layout/Header.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Navigation avec liens anchor vers #forfaits, #processus, #conformite, #contact"
+
+  - task: "Sticky header avec téléphone"
+    implemented: true
+    working: "NA"
+    file: "/app/components/layout/Header.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Header fixed avec backdrop-blur, téléphone 514-XXX-XXXX cliquable, bouton Démarrer mon projet"
+
+  - task: "Formulaire de capture Lead"
+    implemented: true
+    working: "NA"
+    file: "/app/components/forms/LeadForm.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Formulaire avec dropdowns secteur/région, validation téléphone, champs optionnels courriel/site web"
+
+  - task: "Responsive design mobile"
+    implemented: true
+    working: "NA"
+    file: "/app/app/page.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Mobile-first avec Tailwind, breakpoints sm/md/lg, menu hamburger sur mobile"
+
+  - task: "Hero section"
+    implemented: true
+    working: "NA"
+    file: "/app/components/sections/Hero.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Hero avec image plans de construction, CTAs, cartes flottantes 21 jours et Tout inclus"
+
+  - task: "Section Forfaits/Prix"
+    implemented: true
+    working: "NA"
+    file: "/app/components/sections/Pricing.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "2 cartes forfaits (Essentiel 399$/mois, Croissance 599$/mois), modalités, disclaimer"
+
+  - task: "Section Processus timeline"
+    implemented: true
+    working: "NA"
+    file: "/app/components/sections/Process.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "4 étapes avec timeline, split Vous/Nous, warnings pour délais"
+
+  - task: "Footer avec informations légales"
+    implemented: true
+    working: "NA"
+    file: "/app/components/layout/Footer.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "4 colonnes: Brand, Contact, Légal, Partenaires + mentions NEQ/TPS-TVQ"
+
+  - task: "Langue française 100%"
+    implemented: true
+    working: "NA"
+    file: "/app/app/layout.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "html lang=fr-CA, meta tags français, alt texts français, messages erreur français"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus:
+    - "Navigation smooth scroll"
+    - "Formulaire de capture Lead"
+    - "Responsive design mobile"
+    - "Sticky header avec téléphone"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: |
+      Site BureauWeb.ca complet implémenté en 5 phases.
+      
+      FICHIERS PRINCIPAUX:
+      - /app/app/page.js - Page principale avec toutes les sections
+      - /app/app/layout.js - Layout avec meta tags français
+      - /app/app/api/[[...path]]/route.js - API lead capture
+      - /app/components/layout/Header.js - Sticky header
+      - /app/components/layout/Footer.js - Footer 4 colonnes
+      - /app/components/sections/*.js - Toutes les sections
+      - /app/components/forms/LeadForm.js - Formulaire de capture
+      
+      PRIORITÉS DE TEST:
+      1. Navigation smooth scroll vers toutes les sections (#forfaits, #processus, #conformite, #contact)
+      2. Formulaire de capture avec validation (téléphone requis, format validation)
+      3. Responsive mobile (60%+ trafic attendu) - CRITIQUE
+      4. Sticky header avec téléphone cliquable
+      5. CTAs fonctionnels
+      
+      API ENDPOINT DÉJÀ TESTÉ:
+      - POST /api/lead - fonctionne avec validation
+      
+      NOTE: Site vitrine, pas de backend complexe. Focus sur UX/UI et responsive.
