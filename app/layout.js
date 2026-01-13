@@ -1,4 +1,13 @@
+import { Inter } from 'next/font/google'
 import './globals.css'
+
+// Optimisation des fonts avec next/font
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700', '800']
+})
 
 export const metadata = {
   title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
@@ -55,6 +64,11 @@ export const metadata = {
   verification: {
     google: 'verification-token-a-ajouter',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export const viewport = {
@@ -65,13 +79,47 @@ export const viewport = {
 }
 
 export default function RootLayout({ children }) {
+  // Structured Data pour le SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "BureauWeb",
+    "description": "Infrastructure web complète pour entrepreneurs québécois",
+    "url": "https://bureauweb.ca",
+    "telephone": "+1-514-XXX-XXXX",
+    "email": "info@bureauweb.ca",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Longueuil",
+      "addressRegion": "QC",
+      "addressCountry": "CA"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Montréal" },
+      { "@type": "City", "name": "Longueuil" },
+      { "@type": "City", "name": "Laval" },
+      { "@type": "City", "name": "Rive-Sud" },
+      { "@type": "City", "name": "Rive-Nord" }
+    ],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "12"
+    }
+  }
+
   return (
-    <html lang="fr-CA">
+    <html lang="fr-CA" className={inter.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* FIX CRITIQUE : Encodage UTF-8 */}
+        <meta charSet="utf-8" />
+        
+        {/* Structured Data pour Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body className="min-h-screen bg-background antialiased">
         {children}
