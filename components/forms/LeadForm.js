@@ -18,6 +18,7 @@ const LeadForm = () => {
 
   const secteurs = [
     { value: '', label: 'Sélectionnez votre secteur' },
+    { value: 'déneigement', label: 'Déneigement' },
     { value: 'plomberie', label: 'Plomberie' },
     { value: 'toiture', label: 'Toiture' },
     { value: 'renovation', label: 'Rénovation' },
@@ -311,16 +312,16 @@ const LeadForm = () => {
                     <div className="relative">
                       <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
                       <input
-                        type="url"
+                        type="text"
                         id="siteWeb"
                         name="siteWeb"
                         value={formData.siteWeb}
                         onChange={handleChange}
-                        placeholder="https://votresite.ca"
+                        placeholder="ex : entrepriseabc.ca"
                         className="w-full pl-10 pr-4 py-3 border border-concrete-200 rounded-lg text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent"
                       />
                     </div>
-                  </div>
+                  </div>  
                   
                   {/* Submit Button */}
                   <Button 

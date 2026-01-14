@@ -18,7 +18,7 @@ const leadSchema = z.object({
       message: "Format de téléphone invalide (ex: 514-555-5555)"
     }),
   courriel: z.string().email("Adresse courriel invalide").optional().or(z.literal('')),
-  siteWeb: z.string().url("URL invalide").optional().or(z.literal(''))
+  siteWeb: z.string().trim().max(200).optional().or(z.literal(''))
 })
 
 // GET handler
@@ -42,6 +42,19 @@ export async function POST(request, { params }) {
       
       // Validation avec Zod
       const validatedData = leadSchema.parse(body)
+
+      let siteWeb = validatedData.siteWeb?.trim() || null;
+
+      if (siteWeb) {
+        // Si ça ressemble à un domaine (contient un point ou commence par www)
+        const looksLikeDomain = siteWeb.includes('.') || siteWeb.toLowerCase().startsWith('www.');
+
+        if (looksLikeDomain && !/^https?:\/\//i.test(siteWeb)) {
+          siteWeb = `https://${siteWeb}`;
+        }
+      }
+
+
       
       // Créer le lead avec UUID
       const lead = {
@@ -50,7 +63,7 @@ export async function POST(request, { params }) {
         region: validatedData.region,
         telephone: validatedData.telephone,
         courriel: validatedData.courriel || null,
-        siteWeb: validatedData.siteWeb || null,
+        siteWeb,
         createdAt: new Date().toISOString(),
         status: 'nouveau'
       }
@@ -118,12 +131,20 @@ export async function POST(request, { params }) {
                         <span class="value"><a href="mailto:${lead.courriel}" style="color:#f97316;">${lead.courriel}</a></span>
                       </div>
                       ` : ''}
-                      ${lead.siteWeb ? `
-                      <div class="info-row">
-                        <span class="label">Site web actuel:</span>
-                        <span class="value"><a href="${lead.siteWeb}" target="_blank" style="color:#f97316;">${lead.siteWeb}</a></span>
-                      </div>
-                      ` : ''}
+                      ${lead.siteWeb ? (() => {
+                        const isLink = /^https?:\/\//i.test(lead.siteWeb);
+                        return `
+                        <div class="info-row">
+                          <span class="label">Site web actuel:</span>
+                          <span class="value">
+                            ${isLink
+                              ? `<a href="${lead.siteWeb}" target="_blank" style="color:#f97316;">${lead.siteWeb}</a>`
+                              : lead.siteWeb
+                            }
+                          </span>
+                        </div>
+                        `;
+                      })() : ''}
                       <div class="info-row">
                         <span class="label">Date de soumission:</span>
                         <span class="value">${new Date(lead.createdAt).toLocaleString('fr-CA', { 
