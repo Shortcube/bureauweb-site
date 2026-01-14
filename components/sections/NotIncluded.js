@@ -35,7 +35,7 @@ const NotIncluded = () => {
               <span className="text-sm font-medium">Gestion des attentes</span>
             </div>
             <h2 className="text-navy mb-6">
-              Ce qui N'est PAS inclus dans nos forfaits
+              Ce qui n'est PAS inclus dans nos forfaits
             </h2>
           </div>
 
