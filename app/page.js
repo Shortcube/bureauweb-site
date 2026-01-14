@@ -1,57 +1,43 @@
-// SUPPRIMÉ 'use client' - Cette page est maintenant un Server Component
-// Seuls les composants avec interactivité ont 'use client'
-
+// Page principale - Optimisée avec lazy loading
+import dynamic from 'next/dynamic'
 import { Header, Footer } from '@/components/layout'
-import { 
-  Hero, 
-  TrustBar, 
-  Problem, 
-  Solution, 
-  NotIncluded, 
-  Process,
-  Pricing,
-  Reviews,
-  Compliance
-} from '@/components/sections'
+import { Hero, TrustBar } from '@/components/sections'
 import { LeadForm } from '@/components/forms'
+
+// Lazy load des sections sous le fold pour améliorer le First Contentful Paint
+const Problem = dynamic(() => import('@/components/sections/Problem'))
+const Solution = dynamic(() => import('@/components/sections/Solution'))
+const NotIncluded = dynamic(() => import('@/components/sections/NotIncluded'))
+const Process = dynamic(() => import('@/components/sections/Process'))
+const Pricing = dynamic(() => import('@/components/sections/Pricing'))
+const Reviews = dynamic(() => import('@/components/sections/Reviews'))
+const Compliance = dynamic(() => import('@/components/sections/Compliance'))
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Navigation - 'use client' dans Header.js */}
+      {/* Navigation - Above the fold */}
       <Header />
       
-      {/* Hero Section - 'use client' dans Hero.js */}
+      {/* Hero Section - Above the fold */}
       <Hero />
       
-      {/* Trust Bar - Server Component */}
+      {/* Trust Bar - Above the fold */}
       <TrustBar />
       
-      {/* Problem Section - Server Component */}
+      {/* Sections chargées dynamiquement - Below the fold */}
       <Problem />
-      
-      {/* Solution Section - Server Component */}
       <Solution />
-      
-      {/* What's NOT Included - Server Component */}
       <NotIncluded />
-      
-      {/* Process / How it Works - Server Component */}
       <Process />
-      
-      {/* Pricing - 'use client' dans Pricing.js */}
       <Pricing />
-      
-      {/* Google Reviews System - Server Component */}
       <Reviews />
-      
-      {/* Compliance / Loi 25 - Server Component */}
       <Compliance />
       
-      {/* Lead Capture Form - 'use client' dans LeadForm.js */}
+      {/* Lead Capture Form */}
       <LeadForm />
       
-      {/* Footer - Server Component */}
+      {/* Footer */}
       <Footer />
     </main>
   )
