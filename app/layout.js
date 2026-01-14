@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import CookieBanner from '@/components/privacy/CookieBanner'
+import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 
 // Optimisation des fonts avec next/font
 const inter = Inter({ 
@@ -11,7 +13,7 @@ const inter = Inter({
 
 export const metadata = {
   title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-  description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
+  description: "Site + fiche Google gérés au complet pour entrepreneurs québécois. Simple, rapide, sans niaisage technique. Forfait mensuel fixe dès 399$/mois.",
   keywords: 'site web entrepreneur, infrastructure web québec, google business profile, site plombier, site couvreur, site paysagiste, site entrepreneur construction, rive-sud, montréal',
   authors: [{ name: 'BureauWeb' }],
   creator: 'BureauWeb',
@@ -30,7 +32,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-    description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
+    description: "Ton site + ta fiche Google gérés au complet. Simple, rapide, sans niaisage technique. Forfait mensuel fixe dès 399$/mois.",
     url: 'https://bureauweb.ca',
     siteName: 'BureauWeb.ca',
     locale: 'fr_CA',
@@ -47,7 +49,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-    description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
+    description: "Ton site + ta fiche Google gérés au complet. Simple, rapide, sans niaisage technique. Forfait mensuel fixe dès 399$/mois.",
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -61,9 +63,7 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'verification-token-a-ajouter',
-  },
+  // Ajoute ton token Search Console seulement quand tu l'as (sinon, on n'affiche rien)
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -80,34 +80,32 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   // Structured Data pour le SEO
-  // 📌 RAPPEL: Mettre à jour telephone et email avec vraies données quand disponibles
+  const phoneDigits = siteConfig.phoneDigits
+  const phoneDisplay = formatPhoneDisplay(phoneDigits)
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "BureauWeb",
-    "description": "Infrastructure web complète pour entrepreneurs québécois",
-    "url": "https://bureauweb.ca",
-    "telephone": "+1-514-XXX-XXXX", // 📌 TODO: Remplacer par vrai numéro
-    "email": "info@bureauweb.ca", // 📌 TODO: Confirmer email
+    "description": "Site + fiche Google gérés au complet pour entrepreneurs québécois.",
+    "url": siteConfig.url,
+    "email": siteConfig.email,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Longueuil",
       "addressRegion": "QC",
       "addressCountry": "CA"
     },
-    "areaServed": [
-      { "@type": "City", "name": "Montréal" },
-      { "@type": "City", "name": "Longueuil" },
-      { "@type": "City", "name": "Laval" },
-      { "@type": "City", "name": "Rive-Sud" },
-      { "@type": "City", "name": "Rive-Nord" }
-    ],
-    "priceRange": "$$",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "12"
-    }
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Québec"
+    },
+    "priceRange": "$$"
+  }
+
+  // On n'ajoute le téléphone QUE si tu l'as vraiment.
+  if (phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10) {
+    structuredData.telephone = `+1-${phoneDisplay}`
   }
 
   return (
@@ -124,6 +122,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen bg-background antialiased">
         {children}
+        <CookieBanner />
       </body>
     </html>
   )

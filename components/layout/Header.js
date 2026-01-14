@@ -3,10 +3,14 @@
 import { useState, useEffect } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const phoneDigits = siteConfig.phoneDigits
+  const phoneDisplay = formatPhoneDisplay(phoneDigits)
+  const hasPhone = phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,19 +78,21 @@ const Header = () => {
           {/* Phone + CTA */}
           <div className="flex items-center space-x-4">
             {/* Téléphone toujours visible */}
-            <a 
-              href="tel:514-XXX-XXXX" 
-              className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
-              aria-label="Appelez-nous au 514-XXX-XXXX"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">514-XXX-XXXX</span>
-            </a>
+            {hasPhone && (
+              <a 
+                href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
+                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
+                aria-label={`Appelez-nous au ${phoneDisplay}`}
+              >
+                <Phone className="w-4 h-4" />
+                <span className="hidden sm:inline">{phoneDisplay}</span>
+              </a>
+            )}
             <Button 
               className="hidden md:inline-flex btn-cta"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
-              Démarrer mon projet
+              Obtenir mon plan gratuit
             </Button>
             
             {/* Mobile Menu Button */}
@@ -120,7 +126,7 @@ const Header = () => {
                   className="w-full btn-cta"
                   onClick={(e) => handleNavClick(e, '#contact')}
                 >
-                  Démarrer mon projet
+                  Obtenir mon plan gratuit
                 </Button>
               </div>
             </nav>

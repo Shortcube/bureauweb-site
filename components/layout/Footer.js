@@ -1,7 +1,11 @@
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Briefcase } from 'lucide-react'
+import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const phoneDigits = siteConfig.phoneDigits
+  const phoneDisplay = formatPhoneDisplay(phoneDigits)
+  const hasPhone = phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10
   
   return (
     <footer className="bg-navy-950 text-white">
@@ -21,28 +25,30 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">Contact</h4>
             <ul className="space-y-3">
+              {hasPhone && (
+                <li>
+                  <a 
+                    href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
+                    className="flex items-center space-x-3 text-concrete-300 hover:text-safety transition-colors group"
+                    aria-label={`Appelez-nous au ${phoneDisplay}`}
+                  >
+                    <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-safety/20 transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <span>{phoneDisplay}</span>
+                  </a>
+                </li>
+              )}
               <li>
                 <a 
-                  href="tel:514-XXX-XXXX" 
+                  href={`mailto:${siteConfig.email}`}
                   className="flex items-center space-x-3 text-concrete-300 hover:text-safety transition-colors group"
-                  aria-label="Appelez-nous au 514-XXX-XXXX"
-                >
-                  <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-safety/20 transition-colors">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <span>514-XXX-XXXX</span>
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="mailto:info@bureauweb.ca" 
-                  className="flex items-center space-x-3 text-concrete-300 hover:text-safety transition-colors group"
-                  aria-label="Envoyez-nous un courriel à info@bureauweb.ca"
+                  aria-label={`Envoyez-nous un courriel à ${siteConfig.email}`}
                 >
                   <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-safety/20 transition-colors">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>info@bureauweb.ca</span>
+                  <span>{siteConfig.email}</span>
                 </a>
               </li>
               <li>
@@ -50,7 +56,7 @@ const Footer = () => {
                   <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center">
                     <MapPin className="w-4 h-4" />
                   </div>
-                  <span>Longueuil, QC</span>
+                  <span>{siteConfig.city}</span>
                 </div>
               </li>
             </ul>
@@ -79,23 +85,19 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Partenaires */}
+          {/* Secteurs servis (sans claim de partenariat) */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">Partenaires</h4>
-            <p className="text-concrete-400 text-sm">
-              Nous comprenons votre industrie.
-            </p>
+            <h4 className="font-semibold text-lg">Secteurs servis</h4>
+            <p className="text-concrete-400 text-sm">On travaille avec des entrepreneurs de services au Québec.</p>
             <div className="flex flex-wrap gap-2">
-              {/* Placeholders pour logos partenaires */}
-              <span className="bg-white/5 text-concrete-400 text-xs px-3 py-2 rounded-lg border border-white/10">
-                APCHQ
-              </span>
-              <span className="bg-white/5 text-concrete-400 text-xs px-3 py-2 rounded-lg border border-white/10">
-                CMMTQ
-              </span>
-              <span className="bg-white/5 text-concrete-400 text-xs px-3 py-2 rounded-lg border border-white/10">
-                RBQ
-              </span>
+              {siteConfig.sectors.map((sector) => (
+                <span
+                  key={sector}
+                  className="bg-white/5 text-concrete-400 text-xs px-3 py-2 rounded-lg border border-white/10"
+                >
+                  {sector}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -104,11 +106,12 @@ const Footer = () => {
         <div className="border-t border-white/10 mt-10 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <div className="text-concrete-500 text-sm text-center lg:text-left">
-              <p>
-                BureauWeb est une division de [Nom d'Entreprise], immatriculée au Registre des Entreprises du Québec (NEQ : [à compléter]).
+              <p className="flex items-center justify-center lg:justify-start gap-2">
+                <Briefcase className="w-4 h-4" aria-hidden="true" />
+                <span>Entreprise enregistrée au Québec. Support principalement par écrit (courriel).</span>
               </p>
               <p className="mt-1">
-                TPS/TVQ : [à compléter]
+                Facturation, taxes et numéros d’enregistrement : indiqués sur vos factures au besoin.
               </p>
             </div>
             <p className="text-concrete-500 text-sm">
@@ -116,7 +119,7 @@ const Footer = () => {
             </p>
           </div>
           <p className="text-concrete-600 text-xs mt-6 text-center">
-            Nous utilisons des outils d'analyse respectueux de la vie privée. 
+            Pas de tracking publicitaire. 
             Hébergement avec préférence pour les régions canadiennes lorsque disponible.
           </p>
         </div>

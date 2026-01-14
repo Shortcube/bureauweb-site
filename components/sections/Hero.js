@@ -27,11 +27,11 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-navy leading-tight">
-                L'infrastructure web complète pour entrepreneurs québécois.
+                Votre site + votre fiche Google, gérés au complet.
               </h1>
               <p className="text-xl md:text-2xl text-concrete-600 leading-relaxed max-w-xl">
-                Site performant + Optimisation Google + Système d'avis. 
-                Un forfait mensuel fixe, sans surprises.
+                Vous gérez vos chantiers. Nous, on gère votre présence en ligne :
+                site rapide, fiche Google solide, demandes de soumission qui entrent.
               </p>
             </div>
             
@@ -39,9 +39,9 @@ const Hero = () => {
               <Button 
                 className="btn-cta text-lg px-8 py-6 h-auto"
                 onClick={scrollToContact}
-                aria-label="Démarrer votre projet avec BureauWeb"
+                aria-label="Obtenir votre plan gratuit avec BureauWeb"
               >
-                Démarrer mon projet
+                Obtenir mon plan gratuit
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
               <button 
@@ -56,7 +56,7 @@ const Hero = () => {
             {/* Social proof hint */}
             <div className="pt-6 border-t border-concrete-200">
               <p className="text-concrete-500 text-sm">
-                Partenaire technique de confiance pour les entrepreneurs de la Rive-Sud et Montréal
+                Basé au Québec • Support surtout par écrit • Livraison typique : 21 jours ouvrables
               </p>
             </div>
           </div>

@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Send, CheckCircle2, Phone, Mail, Globe, Building2, MapPin, Loader2 } from 'lucide-react'
+import { Send, CheckCircle2, Phone, Mail, Globe, MapPin, Loader2 } from 'lucide-react'
+import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 
 const LeadForm = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,12 @@ const LeadForm = () => {
     telephone: '',
     courriel: '',
     siteWeb: '',
+    // anti-spam (champ invisible)
+    hp: '',
   })
+  const phoneDigits = siteConfig.phoneDigits
+  const phoneDisplay = formatPhoneDisplay(phoneDigits)
+  const hasPhone = phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
@@ -117,6 +123,7 @@ const LeadForm = () => {
           telephone: '',
           courriel: '',
           siteWeb: '',
+          hp: '',
         })
       } else {
         throw new Error('Erreur lors de l\'envoi')
@@ -143,7 +150,7 @@ const LeadForm = () => {
                 Parfait
               </h2>
               <p className="text-lg text-concrete-600 leading-relaxed">
-                On vous contacte d'ici 24h ouvrables pour une qualification rapide (15 min).
+                On vous revient d’ici 24h ouvrables. Objectif : clarifier 2-3 infos et vous donner une estimation + la prochaine étape.
               </p>
               <Button 
                 className="mt-8 btn-secondary"
@@ -166,40 +173,43 @@ const LeadForm = () => {
             {/* Left Content */}
             <div className="lg:col-span-2 text-white">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Obtenez votre estimation personnalisée
+                Obtenez votre plan (gratuit)
               </h2>
               <p className="text-concrete-300 text-lg mb-8 leading-relaxed">
-                Remplissez ce formulaire et nous vous contacterons sous 24h ouvrables 
-                pour une qualification rapide de 15 minutes.
+                Remplissez ça (2 minutes) et on vous revient sous 24h ouvrables avec :
+                <br />• une estimation claire
+                <br />• un mini plan d'action (quoi prioriser pour ranker sur Google)
               </p>
               
               {/* Contact Info */}
               <div className="space-y-4">
+                {hasPhone && (
+                  <a 
+                    href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
+                    className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
+                    aria-label={`Appelez-nous au ${phoneDisplay}`}
+                  >
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                      <Phone className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <span className="font-medium">{phoneDisplay}</span>
+                  </a>
+                )}
                 <a 
-                  href="tel:514-XXX-XXXX" 
+                  href={`mailto:${siteConfig.email}`}
                   className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
-                  aria-label="Appelez-nous au 514-XXX-XXXX"
-                >
-                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                    <Phone className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <span className="font-medium">514-XXX-XXXX</span>
-                </a>
-                <a 
-                  href="mailto:info@bureauweb.ca" 
-                  className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
-                  aria-label="Envoyez-nous un courriel à info@bureauweb.ca"
+                  aria-label={`Envoyez-nous un courriel à ${siteConfig.email}`}
                 >
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <span className="font-medium">info@bureauweb.ca</span>
+                  <span className="font-medium">{siteConfig.email}</span>
                 </a>
                 <div className="flex items-center space-x-3 text-concrete-300">
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
                     <MapPin className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <span>Longueuil, QC</span>
+                  <span>{siteConfig.city}</span>
                 </div>
               </div>
             </div>
@@ -207,6 +217,17 @@ const LeadForm = () => {
             {/* Form */}
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
+                {/* Honeypot anti-spam (doit rester vide) */}
+                <input
+                  type="text"
+                  name="hp"
+                  value={formData.hp}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 <div className="space-y-5">
                   {/* Secteur d'activité */}
                   <div>
@@ -340,7 +361,7 @@ const LeadForm = () => {
                       </>
                     ) : (
                       <>
-                        Recevoir mon estimation
+                        Recevoir mon plan
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}
@@ -348,7 +369,7 @@ const LeadForm = () => {
                   
                   <p className="text-xs text-concrete-500 text-center mt-4">
                     En soumettant ce formulaire, vous acceptez d'être contacté par BureauWeb 
-                    concernant votre demande. Vos données sont traitées conformément à notre 
+                    concernant votre demande (1 suivi, pas de spam). Vos données sont traitées conformément à notre 
                     <a href="/confidentialite" className="text-safety hover:underline"> Politique de Confidentialité</a>.
                   </p>
                 </div>

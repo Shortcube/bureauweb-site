@@ -1,7 +1,7 @@
 {
   "name": "BureauWeb - Infrastructure Web pour Entrepreneurs Québécois",
   "short_name": "BureauWeb",
-  "description": "Infrastructure web complète pour entrepreneurs québécois. Site performant + Optimisation Google + Système d'avis.",
+  "description": "Votre site + votre fiche Google, gérés au complet. Simple, rapide, sans niaisage technique.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

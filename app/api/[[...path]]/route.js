@@ -20,7 +20,9 @@ const leadSchema = z.object({
       { message: "Le numéro doit contenir au moins 10 chiffres" }
     ),
   courriel: z.string().email("Adresse courriel invalide").optional().or(z.literal('')),
-  siteWeb: z.string().trim().max(200).optional().or(z.literal(''))
+  siteWeb: z.string().trim().max(200).optional().or(z.literal('')),
+  // Honeypot anti-spam: doit rester vide
+  hp: z.string().optional().or(z.literal(''))
 })
 
 // GET handler
@@ -45,6 +47,16 @@ if (path === '/lead') {
     // Nettoyer le téléphone AVANT validation (enlever tous les non-chiffres)
     if (body?.telephone) {
       body.telephone = String(body.telephone).replace(/\D/g, '')
+    }
+
+    // Anti-spam (honeypot) : si rempli, on répond OK mais on ne traite pas.
+    const hpValue = String(body?.hp || '').trim()
+    if (hpValue) {
+      logger.warn('Lead rejeté (honeypot rempli).')
+      return NextResponse.json({
+        success: true,
+        message: 'Votre demande a été reçue. Nous vous contacterons sous 24h ouvrables.'
+      }, { status: 201 })
     }
 
     logger.debug("Lead submission - Body après nettoyage:", body)
