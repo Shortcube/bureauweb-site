@@ -67,19 +67,27 @@ const Footer = () => {
             <h4 className="font-semibold text-lg">Légal</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="/conditions" 
+                <a
+                  href="/confidentialite"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Conditions de Service
+                  Politique de confidentialité
                 </a>
               </li>
               <li>
-                <a 
-                  href="/confidentialite" 
+                <a
+                  href="/conditions"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Politique de Confidentialité
+                  Conditions d’utilisation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/gestion-renseignements"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Gestion des renseignements personnels
                 </a>
               </li>
             </ul>
