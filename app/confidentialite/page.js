@@ -53,30 +53,19 @@ export default function ConfidentialitePage() {
 
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <strong>Entreprise :</strong> [Nom légal de l’entreprise] (NEQ :
-                [NEQ, si applicable])
+                <strong>Entreprise :</strong> BureauWeb (NEQ :
+                2281685182)
               </li>
               <li>
-                <strong>Responsable :</strong> [Prénom Nom]
+                <strong>Responsable :</strong> Patrick Lanoue
               </li>
               <li>
                 <strong>Courriel :</strong>{" "}
-                <a className="underline" href="mailto:[courriel]">
-                  [courriel]
+                <a className="underline" href="mailto:info@bureauweb.ca">
+                  info@bureauweb.ca
                 </a>
               </li>
-              <li>
-                <strong>Téléphone :</strong> [téléphone — optionnel]
-              </li>
-              <li>
-                <strong>Adresse :</strong> [adresse]
-              </li>
             </ul>
-
-            <p className="text-sm text-slate-600">
-              Astuce : si tu veux être ultra clair, crée un courriel dédié du
-              genre « confidentialite@bureauweb.ca ».
-            </p>
           </div>
         </div>
 
@@ -130,9 +119,6 @@ export default function ConfidentialitePage() {
                 fonctionnement et à la protection du site.
               </li>
             </ul>
-            <p className="text-sm text-slate-600">
-              On se limite au strict nécessaire selon l’objectif.
-            </p>
           </div>
         </div>
 
@@ -216,7 +202,7 @@ export default function ConfidentialitePage() {
                 contre l’abus (peut impliquer des journaux techniques).
               </li>
               <li>
-                <strong>Resend</strong> : envoi de courriels (ex. réponses ou
+                <strong>Resend</strong> : envoi de courriels (ex. : réponses ou
                 suivis liés à une demande).
               </li>
               <li>
@@ -231,7 +217,7 @@ export default function ConfidentialitePage() {
 
             <p className="text-sm text-slate-600">
               Selon les services utilisés, certains traitements peuvent se faire
-              à l’extérieur du Québec (ex. infrastructure infonuagique).
+              à l’extérieur du Québec (ex. : infrastructure infonuagique).
             </p>
           </div>
         </div>
