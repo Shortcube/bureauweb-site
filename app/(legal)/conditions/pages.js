@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ConditionsPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-12">
+    <>
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight">
           Conditions d’utilisation
@@ -162,6 +162,6 @@ export default function ConditionsPage() {
           </p>
         </div>
       </section>
-    </main>
+    <>
   )
 }
