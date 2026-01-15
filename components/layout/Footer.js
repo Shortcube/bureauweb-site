@@ -64,7 +64,7 @@ const Footer = () => {
 
           {/* Légal */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg">Légal</h4>
+            <h4 className="font-semibold text-lg">Infos légales</h4>
             <ul className="space-y-3">
               <li>
                 <a
