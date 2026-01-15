@@ -64,7 +64,7 @@ export default function ConditionsPage() {
               exemple accéder à des zones non autorisées) ;
             </li>
             <li>
-              perturber le service (ex. surcharge, automatisation abusive,
+              perturber le service (ex. : surcharge, automatisation abusive,
               tentative d’attaque) ;
             </li>
             <li>
