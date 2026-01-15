@@ -1,26 +1,31 @@
-export default function sitemap() {
-  const baseUrl = 'https://bureauweb.ca'
+// app/sitemap.js
 
-  // Mise à jour manuelle pour les pages légales
-  const legalLastModified = new Date('2026-01-14')
+export default function sitemap() {
+  const baseUrl = "https://bureauweb.ca"
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
+      changeFrequency: "monthly",
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/confidentialite`,
-      lastModified: legalLastModified,
-      changeFrequency: 'yearly',
+      lastModified: new Date(),
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/conditions`,
-      lastModified: legalLastModified,
-      changeFrequency: 'yearly',
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/gestion-renseignements`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
       priority: 0.3,
     },
   ]
