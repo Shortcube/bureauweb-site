@@ -5,6 +5,13 @@ import { logger } from '@/lib/logger'
 // Edge Runtime pour Cloudflare Pages
 export const runtime = 'edge'
 
+const escapeHtml = (value = '') => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;')
+
 // Schema de validation Zod - VALIDATION SIMPLIFIÉE
 const leadSchema = z.object({
   entreprise: z.string().trim().min(2, "Nom d’entreprise requis").max(120, "Nom d’entreprise trop long"),
@@ -108,6 +115,19 @@ if (path === '/lead' || path === '/leads') {
     // Envoi email via Resend (si configuré)
     if (process.env.RESEND_API_KEY) {
       try {
+        const escapedLead = {
+          entreprise: escapeHtml(lead.entreprise),
+          secteur: escapeHtml(lead.secteur),
+          region: escapeHtml(lead.region),
+          telephone: escapeHtml(lead.telephone),
+          courriel: lead.courriel ? escapeHtml(lead.courriel) : null,
+          siteWeb: lead.siteWeb ? escapeHtml(lead.siteWeb) : null,
+          ficheGoogle: lead.ficheGoogle ? escapeHtml(lead.ficheGoogle) : null,
+          objectif: lead.objectif ? escapeHtml(lead.objectif) : null,
+          definitionSucces: lead.definitionSucces
+            ? escapeHtml(lead.definitionSucces).replace(/\n/g, '<br/>')
+            : null
+        }
         const emailResponse = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
@@ -143,60 +163,60 @@ if (path === '/lead' || path === '/leads') {
         <div class="content">
           <div class="info-row">
             <span class="label">Entreprise</span>
-            <span class="value">${lead.entreprise}</span>
+            <span class="value">${escapedLead.entreprise}</span>
           </div>
 
           <div class="info-row">
             <span class="label">Secteur d'activité</span>
-            <span class="value" style="text-transform: capitalize;">${lead.secteur}</span>
+            <span class="value" style="text-transform: capitalize;">${escapedLead.secteur}</span>
           </div>
 
           <div class="info-row">
             <span class="label">Région</span>
-            <span class="value" style="text-transform: capitalize;">${lead.region}</span>
+            <span class="value" style="text-transform: capitalize;">${escapedLead.region}</span>
           </div>
 
           <div class="info-row">
             <span class="label">Téléphone</span>
             <span class="value">
-              <a href="tel:${lead.telephone}" style="color: #0f172a; text-decoration: none;">${lead.telephone}</a>
+              <a href="tel:${escapedLead.telephone}" style="color: #0f172a; text-decoration: none;">${escapedLead.telephone}</a>
             </span>
           </div>
 
-          ${lead.courriel ? `
+          ${escapedLead.courriel ? `
           <div class="info-row">
             <span class="label">Courriel</span>
             <span class="value">
-              <a href="mailto:${lead.courriel}" style="color: #0f172a; text-decoration: none;">${lead.courriel}</a>
+              <a href="mailto:${escapedLead.courriel}" style="color: #0f172a; text-decoration: none;">${escapedLead.courriel}</a>
             </span>
           </div>` : ''}
 
-          ${lead.siteWeb ? `
+          ${escapedLead.siteWeb ? `
           <div class="info-row">
             <span class="label">Site Web actuel</span>
             <span class="value">
-              <a href="${lead.siteWeb}" target="_blank" style="color: #f97316;">${lead.siteWeb}</a>
+              <a href="${escapedLead.siteWeb}" target="_blank" style="color: #f97316;">${escapedLead.siteWeb}</a>
             </span>
           </div>` : ''}
 
-          ${lead.ficheGoogle ? `
+          ${escapedLead.ficheGoogle ? `
           <div class="info-row">
             <span class="label">Fiche Google</span>
             <span class="value">
-              <a href="${lead.ficheGoogle}" target="_blank" style="color: #f97316;">Ouvrir la fiche</a>
+              <a href="${escapedLead.ficheGoogle}" target="_blank" style="color: #f97316;">Ouvrir la fiche</a>
             </span>
           </div>` : ''}
 
-          ${lead.objectif ? `
+          ${escapedLead.objectif ? `
           <div class="info-row">
             <span class="label">Objectif</span>
-            <span class="value">${lead.objectif}</span>
+            <span class="value">${escapedLead.objectif}</span>
           </div>` : ''}
 
-          ${lead.definitionSucces ? `
+          ${escapedLead.definitionSucces ? `
           <div class="info-row">
             <span class="label">Définition de succès</span>
-            <span class="value">${lead.definitionSucces.replace(/\n/g, '<br/>')}</span>
+            <span class="value">${escapedLead.definitionSucces}</span>
           </div>` : ''}
 
         </div>
