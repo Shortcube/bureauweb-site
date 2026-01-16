@@ -86,7 +86,7 @@ const Header = () => {
                 }}
               >
                 <SelectTrigger
-                  className="h-10 bg-white w-[260px] lg:w-[280px] whitespace-nowrap"
+                  className="bg-white w-[260px] lg:w-[280px] whitespace-normal h-auto py-2 text-left items-start"
                   aria-label="Choisir un corps de métier"
                 >
                   <SelectValue
@@ -163,7 +163,10 @@ const Header = () => {
                     router.push(`/metiers/${value}`)
                   }}
                 >
-                  <SelectTrigger className="h-11" aria-label="Choisir un corps de métier">
+                  <SelectTrigger
+                    className="whitespace-normal h-auto py-2 text-left items-start"
+                    aria-label="Choisir un corps de métier"
+                  >
                     <SelectValue placeholder="Mon corps de métier est..." />
                   </SelectTrigger>
                   <SelectContent>
