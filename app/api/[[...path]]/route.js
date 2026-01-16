@@ -263,8 +263,5 @@ if (path === '/lead' || path === '/leads') {
 }
 
   // Route par défaut
-  return NextResponse.json({ 
-    message: 'BureauWeb API',
-    path: path
-  })
+  return NextResponse.json({ error: 'Not found' }, { status: 404 })
 }
