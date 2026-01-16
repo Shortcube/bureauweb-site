@@ -110,7 +110,7 @@ const Header = () => {
           </nav>
 
           {/* Phone + CTA */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center flex-nowrap gap-4">
             {/* Téléphone toujours visible */}
             {hasPhone && (
               <a 
@@ -123,7 +123,7 @@ const Header = () => {
               </a>
             )}
             <Button 
-              className="hidden md:inline-flex btn-cta"
+              className="hidden md:inline-flex btn-cta whitespace-nowrap shrink-0"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
               Recevoir mon plan gratuit 24 h
