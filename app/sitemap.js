@@ -1,32 +1,76 @@
 // app/sitemap.js
 
-export default function sitemap() {
-  const baseUrl = "https://bureauweb.ca"
+import { BLOG_POSTS, REGION_PAGES, TRADE_PAGES } from '@/lib/content'
 
-  return [
+export default function sitemap() {
+  const baseUrl = 'https://bureauweb.ca'
+  const now = new Date()
+
+  const staticUrls = [
     {
       url: `${baseUrl}/`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: now,
+      changeFrequency: 'monthly',
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/metiers`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/regions`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/confidentialite`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      lastModified: now,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/conditions`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      lastModified: now,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/gestion-renseignements`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
+      lastModified: now,
+      changeFrequency: 'yearly',
       priority: 0.3,
     },
   ]
+
+  const dynamicUrls = [
+    ...TRADE_PAGES.map((t) => ({
+      url: `${baseUrl}/metiers/${t.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })),
+    ...REGION_PAGES.map((r) => ({
+      url: `${baseUrl}/regions/${r.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })),
+    ...BLOG_POSTS.map((p) => ({
+      url: `${baseUrl}/blog/${p.slug}`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    })),
+  ]
+
+  return [...staticUrls, ...dynamicUrls]
 }

@@ -10,11 +10,15 @@ import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 
 const LeadForm = () => {
   const [formData, setFormData] = useState({
+    entreprise: '',
     secteur: '',
     region: '',
     telephone: '',
     courriel: '',
     siteWeb: '',
+    ficheGoogle: '',
+    objectif: '',
+    definitionSucces: '',
     hp: '',
   })
   const phoneDigits = siteConfig.phoneDigits
@@ -74,6 +78,10 @@ const LeadForm = () => {
     e.preventDefault()
     
     const newErrors = {}
+
+    if (!formData.entreprise || !formData.entreprise.trim()) {
+      newErrors.entreprise = 'Entrez le nom de votre entreprise'
+    }
     
     if (!formData.secteur) {
       newErrors.secteur = 'Choisissez votre secteur d\'activité'
@@ -87,6 +95,15 @@ const LeadForm = () => {
       newErrors.telephone = 'Entrez votre numéro de téléphone'
     } else if (!validatePhone(formData.telephone)) {
       newErrors.telephone = 'Le numéro doit avoir au moins 10 chiffres'
+    }
+
+    // Champs optionnels: on valide seulement si rempli
+    if (formData.siteWeb && String(formData.siteWeb).length > 200) {
+      newErrors.siteWeb = 'URL trop longue'
+    }
+
+    if (formData.ficheGoogle && String(formData.ficheGoogle).length > 200) {
+      newErrors.ficheGoogle = 'URL trop longue'
     }
     
     if (formData.courriel && !validateEmail(formData.courriel)) {
@@ -112,11 +129,15 @@ const LeadForm = () => {
       if (response.ok) {
         setIsSubmitted(true)
         setFormData({
+          entreprise: '',
           secteur: '',
           region: '',
           telephone: '',
           courriel: '',
           siteWeb: '',
+          ficheGoogle: '',
+          objectif: '',
+          definitionSucces: '',
           hp: '',
         })
       } else {
@@ -172,8 +193,9 @@ const LeadForm = () => {
                 Remplissez ça (2 minutes max) et on vous revient en 24 heures ouvrables avec :
               </p>
               <ul className="text-concrete-300 text-lg mb-8 space-y-2">
-                <li>• Une estimation claire</li>
-                <li>• Un mini plan pour améliorer votre visibilité Google</li>
+                <li>• Un plan gratuit 24 h (1 page) basé sur du vérifiable</li>
+                <li>• 2 à 3 problèmes observables + 2 à 3 quick wins</li>
+                <li>• Une recommandation claire: avancer, attendre, ou pas un fit</li>
               </ul>
               
               {/* Coordonnées */}
@@ -224,6 +246,29 @@ const LeadForm = () => {
                   aria-hidden="true"
                 />
                 <div className="space-y-5">
+                  {/* Entreprise */}
+                  <div>
+                    <Label htmlFor="entreprise" className="block text-sm font-medium text-navy mb-2">
+                      Nom de l’entreprise <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="entreprise"
+                      name="entreprise"
+                      type="text"
+                      value={formData.entreprise}
+                      onChange={handleChange}
+                      placeholder="Ex: Plomberie Roy"
+                      className={errors.entreprise ? 'border-red-500' : ''}
+                      aria-invalid={Boolean(errors.entreprise)}
+                      aria-describedby={errors.entreprise ? 'entreprise-error' : undefined}
+                    />
+                    {errors.entreprise && (
+                      <p id="entreprise-error" className="mt-1 text-sm text-red-500" role="alert">
+                        {errors.entreprise}
+                      </p>
+                    )}
+                  </div>
+
                   {/* Secteur */}
                   <div>
                     <Label htmlFor="secteur" className="block text-sm font-medium text-navy mb-2">
@@ -342,6 +387,55 @@ const LeadForm = () => {
                       />
                     </div>
                   </div>  
+
+                  {/* Fiche Google */}
+                  <div>
+                    <Label htmlFor="ficheGoogle" className="block text-sm font-medium text-navy mb-2">
+                      Lien de votre fiche Google <span className="text-concrete-400 text-xs">(optionnel)</span>
+                    </Label>
+                    <div className="relative">
+                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
+                      <Input
+                        type="text"
+                        id="ficheGoogle"
+                        name="ficheGoogle"
+                        value={formData.ficheGoogle}
+                        onChange={handleChange}
+                        placeholder="Collez l’URL si vous l’avez"
+                        className="pl-10"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Objectif */}
+                  <div>
+                    <Label htmlFor="objectif" className="block text-sm font-medium text-navy mb-2">
+                      Objectif <span className="text-concrete-400 text-xs">(optionnel)</span>
+                    </Label>
+                    <Input
+                      type="text"
+                      id="objectif"
+                      name="objectif"
+                      value={formData.objectif}
+                      onChange={handleChange}
+                      placeholder="Ex: plus d’appels, plus de soumissions, meilleur tri des demandes"
+                    />
+                  </div>
+
+                  {/* Définition de succès */}
+                  <div>
+                    <Label htmlFor="definitionSucces" className="block text-sm font-medium text-navy mb-2">
+                      Comment on sait que ça a bien marché ? <span className="text-concrete-400 text-xs">(optionnel)</span>
+                    </Label>
+                    <textarea
+                      id="definitionSucces"
+                      name="definitionSucces"
+                      value={formData.definitionSucces}
+                      onChange={handleChange}
+                      placeholder="Ex: 3 demandes de soumission par semaine, ou des appels de clients plus qualifiés"
+                      className="w-full rounded-md border border-concrete-200 px-3 py-2 text-sm text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety/40 focus:border-safety min-h-[96px]"
+                    />
+                  </div>
                   
                   {/* Bouton */}
                   <Button 

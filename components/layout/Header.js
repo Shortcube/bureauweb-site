@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
+import { TRADE_PAGES } from '@/lib/content'
+import { useRouter } from 'next/navigation'
 
 const Header = () => {
+  const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const phoneDigits = siteConfig.phoneDigits
@@ -21,6 +25,7 @@ const Header = () => {
   }, [])
 
   const navLinks = [
+    { href: '#plan24h', label: 'Plan gratuit 24 h' },
     { href: '#forfaits', label: 'Forfaits' },
     { href: '#processus', label: 'Comment ça fonctionne' },
     { href: '#conformite', label: 'Conformité' },
@@ -73,6 +78,25 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
+
+            <div className="min-w-[220px]">
+              <Select
+                onValueChange={(value) => {
+                  router.push(`/metiers/${value}`)
+                }}
+              >
+                <SelectTrigger className="h-10 bg-white" aria-label="Choisir un corps de métier">
+                  <SelectValue placeholder="Mon corps de métier est..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {TRADE_PAGES.map((t) => (
+                    <SelectItem key={t.slug} value={t.slug}>
+                      {t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </nav>
 
           {/* Phone + CTA */}
@@ -92,7 +116,7 @@ const Header = () => {
               className="hidden md:inline-flex btn-cta"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
-              Obtenir mon plan gratuit
+              Recevoir mon plan gratuit 24 h
             </Button>
             
             {/* Mobile Menu Button */}
@@ -121,12 +145,32 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
+
+              <div className="px-4 pt-3">
+                <Select
+                  onValueChange={(value) => {
+                    setIsMobileMenuOpen(false)
+                    router.push(`/metiers/${value}`)
+                  }}
+                >
+                  <SelectTrigger className="h-11" aria-label="Choisir un corps de métier">
+                    <SelectValue placeholder="Mon corps de métier est..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {TRADE_PAGES.map((t) => (
+                      <SelectItem key={t.slug} value={t.slug}>
+                        {t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="px-4 pt-4 border-t border-concrete-100 mt-2">
                 <Button 
                   className="w-full btn-cta"
                   onClick={(e) => handleNavClick(e, '#contact')}
                 >
-                  Obtenir mon plan gratuit
+                  Recevoir mon plan gratuit 24 h
                 </Button>
               </div>
             </nav>

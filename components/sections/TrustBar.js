@@ -8,7 +8,7 @@ const TrustBar = () => {
     },
     {
       icon: MapPin,
-      label: 'Fiche Google optimisée',
+      label: 'Fiche Google structurée',
     },
     {
       icon: Database,

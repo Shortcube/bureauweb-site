@@ -101,7 +101,7 @@ export default function GestionRenseignementsPage() {
               renseignements selon les services utilisés.
             </p>
             <ul className="list-disc space-y-2 pl-6">
-              <li><strong>Namecheap</strong> (nom de domaine)</li>
+              <li><strong>WHC.ca (Web Hosting Canada)</strong> (nom de domaine et hébergement)</li>
               <li><strong>Cloudflare</strong> (sécurité et performance)</li>
               <li><strong>Resend</strong> (envoi de courriels)</li>
               <li><strong>GitHub</strong> (hébergement du code)</li>

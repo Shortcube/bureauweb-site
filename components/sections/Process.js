@@ -6,7 +6,7 @@ const Process = () => {
       number: '01',
       icon: Phone,
       title: 'On jase ensemble',
-      duration: '15 minutes par téléphone ou vidéo',
+      duration: '15 min environ (téléphone ou vidéo)',
       color: 'bg-blue-500',
       content: [
         {
@@ -23,7 +23,7 @@ const Process = () => {
       number: '02',
       icon: FileCheck,
       title: 'Vous envoyez, on construit',
-      duration: 'Délai : 21 jours ouvrables',
+      duration: 'Cible : 21 jours ouvrables',
       color: 'bg-safety',
       content: [
         {
@@ -45,7 +45,7 @@ const Process = () => {
       number: '03',
       icon: Rocket,
       title: 'Lancement et formation',
-      duration: '1 heure en vidéo',
+      duration: '1 h environ (vidéo)',
       color: 'bg-green-500',
       content: [
         {

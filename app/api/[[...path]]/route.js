@@ -7,6 +7,7 @@ export const runtime = 'edge'
 
 // Schema de validation Zod - VALIDATION SIMPLIFIÉE
 const leadSchema = z.object({
+  entreprise: z.string().trim().min(2, "Nom d’entreprise requis").max(120, "Nom d’entreprise trop long"),
   secteur: z.enum(['plomberie', 'toiture', 'renovation', 'paysagement', 'electricite', 'cvac', 'deneigement','autre'], {
     errorMap: () => ({ message: "Secteur d'activité invalide" })
   }),
@@ -21,6 +22,9 @@ const leadSchema = z.object({
     ),
   courriel: z.string().email("Adresse courriel invalide").optional().or(z.literal('')),
   siteWeb: z.string().trim().max(200).optional().or(z.literal('')),
+  ficheGoogle: z.string().trim().max(500).optional().or(z.literal('')),
+  objectif: z.string().trim().max(200).optional().or(z.literal('')),
+  definitionSucces: z.string().trim().max(800).optional().or(z.literal('')),
   // Honeypot anti-spam: doit rester vide
   hp: z.string().optional().or(z.literal(''))
 })
@@ -40,7 +44,7 @@ export async function POST(request, { params }) {
   const path = '/' + pathSegments.join('/')
   
   // Route pour les leads
-if (path === '/lead') {
+if (path === '/lead' || path === '/leads') {
   try {
     const body = await request.json()
     
@@ -73,14 +77,26 @@ if (path === '/lead') {
       }
     }
 
+    // Traiter la fiche Google (URL)
+    let ficheGoogle = validatedData.ficheGoogle?.trim() || null
+    if (ficheGoogle) {
+      if (!/^https?:\/\//i.test(ficheGoogle)) {
+        ficheGoogle = `https://${ficheGoogle}`
+      }
+    }
+
     // Créer le lead avec UUID
     const lead = {
       id: crypto.randomUUID(),
+      entreprise: validatedData.entreprise,
       secteur: validatedData.secteur,
       region: validatedData.region,
       telephone: validatedData.telephone,
       courriel: validatedData.courriel || null,
       siteWeb,
+      ficheGoogle,
+      objectif: (validatedData.objectif || '').trim() || null,
+      definitionSucces: (validatedData.definitionSucces || '').trim() || null,
       createdAt: new Date().toISOString(),
       status: 'nouveau'
     }
@@ -126,6 +142,11 @@ if (path === '/lead') {
         
         <div class="content">
           <div class="info-row">
+            <span class="label">Entreprise</span>
+            <span class="value">${lead.entreprise}</span>
+          </div>
+
+          <div class="info-row">
             <span class="label">Secteur d'activité</span>
             <span class="value" style="text-transform: capitalize;">${lead.secteur}</span>
           </div>
@@ -156,6 +177,26 @@ if (path === '/lead') {
             <span class="value">
               <a href="${lead.siteWeb}" target="_blank" style="color: #f97316;">${lead.siteWeb}</a>
             </span>
+          </div>` : ''}
+
+          ${lead.ficheGoogle ? `
+          <div class="info-row">
+            <span class="label">Fiche Google</span>
+            <span class="value">
+              <a href="${lead.ficheGoogle}" target="_blank" style="color: #f97316;">Ouvrir la fiche</a>
+            </span>
+          </div>` : ''}
+
+          ${lead.objectif ? `
+          <div class="info-row">
+            <span class="label">Objectif</span>
+            <span class="value">${lead.objectif}</span>
+          </div>` : ''}
+
+          ${lead.definitionSucces ? `
+          <div class="info-row">
+            <span class="label">Définition de succès</span>
+            <span class="value">${lead.definitionSucces.replace(/\n/g, '<br/>')}</span>
           </div>` : ''}
 
         </div>

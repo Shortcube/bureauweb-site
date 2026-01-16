@@ -8,7 +8,7 @@ const Solution = () => {
     },
     {
       icon: BarChart3,
-      text: 'Votre fiche Google optimisée pour être trouvé localement',
+      text: 'Votre fiche Google structurée pour le local (infos, catégories, CTA)',
     },
     {
       icon: RefreshCw,
@@ -78,27 +78,27 @@ const Solution = () => {
                     </div>
                   </div>
                   
-                  {/* Stats */}
+                  {/* Stats (exemple, sans chiffres réels) */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Visiteurs ce mois</p>
-                      <p className="text-white text-2xl font-bold">247</p>
-                      <p className="text-green-400 text-xs">+12% vs mois dernier</p>
+                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-concrete-300 text-xs">À configurer</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Demandes reçues</p>
-                      <p className="text-white text-2xl font-bold">8</p>
-                      <p className="text-concrete-300 text-xs">Via le formulaire</p>
+                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-concrete-300 text-xs">Formulaire + appels</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Nouveaux avis</p>
-                      <p className="text-white text-2xl font-bold">3</p>
-                      <p className="text-yellow-400 text-xs">★ 4.8 moyenne</p>
+                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-concrete-300 text-xs">Suivi mensuel</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Temps de chargement</p>
-                      <p className="text-white text-2xl font-bold">1.4s</p>
-                      <p className="text-green-400 text-xs">Excellent</p>
+                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-concrete-300 text-xs">Mesure après mise en ligne</p>
                     </div>
                   </div>
                   
@@ -106,7 +106,7 @@ const Solution = () => {
                   <div className="flex-1 bg-white/5 rounded-lg p-4">
                     <p className="text-concrete-300 text-xs mb-3">Visiteurs (30 derniers jours)</p>
                     <div className="flex items-end justify-between h-20 space-x-1">
-                      {[40, 55, 45, 60, 75, 65, 80, 70, 85, 90, 78, 95].map((height, i) => (
+                      {[30, 45, 35, 50, 55, 45, 60, 50, 65, 70, 55, 75].map((height, i) => (
                         <div 
                           key={i} 
                           className="flex-1 bg-safety/60 rounded-t"

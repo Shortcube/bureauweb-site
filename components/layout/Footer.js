@@ -68,6 +68,30 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
+                  href="/metiers"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Corps de métier
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/regions"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Régions
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Blogue
+                </a>
+              </li>
+              <li>
+                <a
                   href="/confidentialite"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
