@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata = {
   title: 'BureauWeb.ca | Sites web pour entrepreneurs québécois',
-  description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 399$/mois. Service local au Québec.',
+  description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 199$/mois. Service local au Québec.',
   keywords: 'site web entrepreneur, site web plombier, site web couvreur, site web paysagiste, site web construction québec, google business profile, rive-sud, montréal',
   authors: [{ name: 'BureauWeb' }],
   creator: 'BureauWeb',
@@ -31,7 +31,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'BureauWeb.ca | Sites web pour entrepreneurs québécois',
-    description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 399$/mois.',
+    description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 199$/mois.',
     url: 'https://bureauweb.ca',
     siteName: 'BureauWeb.ca',
     locale: 'fr_CA',
@@ -48,7 +48,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BureauWeb.ca | Sites web pour entrepreneurs québécois',
-    description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 399$/mois.',
+    description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 199$/mois.',
     images: ['/og-image.jpg'],
   },
   robots: {

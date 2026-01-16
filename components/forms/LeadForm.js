@@ -27,6 +27,7 @@ const LeadForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
+  const [submitError, setSubmitError] = useState('')
 
   const secteurs = [
     { value: 'deneigement', label: 'Déneigement' },
@@ -76,7 +77,9 @@ const LeadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
+    setSubmitError('')
+
     const newErrors = {}
 
     if (!formData.entreprise || !formData.entreprise.trim()) {
@@ -125,7 +128,7 @@ const LeadForm = () => {
         },
         body: JSON.stringify(formData),
       })
-      
+
       if (response.ok) {
         setIsSubmitted(true)
         setFormData({
@@ -140,12 +143,24 @@ const LeadForm = () => {
           definitionSucces: '',
           hp: '',
         })
-      } else {
-        throw new Error('Erreur lors de l\'envoi')
+        return
       }
+
+      let errPayload = null
+      try {
+        errPayload = await response.json()
+      } catch {
+        // no-op
+      }
+
+      setSubmitError(
+        errPayload?.message ||
+          errPayload?.error ||
+          "Erreur lors de l'envoi. Réessayez ou contactez-nous directement."
+      )
     } catch (error) {
       console.error('Erreur:', error)
-      setIsSubmitted(true)
+      setSubmitError('Erreur réseau. Réessayez ou contactez-nous directement.')
     } finally {
       setIsSubmitting(false)
     }
@@ -164,7 +179,7 @@ const LeadForm = () => {
                 Parfait, c'est reçu
               </h2>
               <p className="text-lg text-concrete-600 leading-relaxed">
-                On vous revient d'ici 24 heures ouvrables. On va clarifier 2-3 trucs ensemble et vous donner une idée de ce qu'on peut faire pour vous.
+                On vous revient d'ici 24 heures ouvrables avec votre plan gratuit 24 h (1 page). Si une info manque, on vous écrit pour clarifier.
               </p>
               <Button 
                 className="mt-8 btn-secondary"
@@ -245,6 +260,16 @@ const LeadForm = () => {
                   className="hidden"
                   aria-hidden="true"
                 />
+
+
+                {submitError && (
+                  <div
+                    className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+                    role="alert"
+                  >
+                    {submitError}
+                  </div>
+                )}
                 <div className="space-y-5">
                   {/* Entreprise */}
                   <div>
@@ -450,7 +475,7 @@ const LeadForm = () => {
                       </>
                     ) : (
                       <>
-                        Envoyer ma demande
+                        Recevoir mon plan gratuit 24 h
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}
