@@ -73,7 +73,9 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-concrete-700 hover:text-navy font-medium transition-colors"
+                className={`text-concrete-700 hover:text-navy font-medium transition-colors ${
+                  link.label === 'Plan gratuit 24 h' ? 'whitespace-nowrap' : ''
+                }`}
               >
                 {link.label}
               </a>
@@ -150,7 +152,9 @@ const Header = () => {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors"
+                  className={`text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors ${
+                    link.label === 'Plan gratuit 24 h' ? 'whitespace-nowrap' : ''
+                  }`}
                 >
                   {link.label}
                 </a>

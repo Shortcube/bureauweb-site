@@ -15,7 +15,7 @@ const PlanGratuit24h = () => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-2 bg-navy/5 text-navy px-4 py-2 rounded-full mb-6">
               <FileText className="w-4 h-4" aria-hidden="true" />
-              <span className="text-sm font-medium">Plan gratuit 24 h</span>
+              <span className="text-sm font-medium whitespace-nowrap">Plan gratuit 24 h</span>
             </div>
             <h2 className="text-navy mb-4">Un diagnostic écrit, 1 page max</h2>
             <p className="text-xl text-concrete-600">

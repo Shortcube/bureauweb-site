@@ -78,7 +78,7 @@ const Hero = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-navy font-bold text-lg">Plan gratuit 24 h</p>
+                  <p className="text-navy font-bold text-lg whitespace-nowrap">Plan gratuit 24 h</p>
                   <p className="text-concrete-500 text-sm">1 page, zéro BS</p>
                 </div>
               </div>
