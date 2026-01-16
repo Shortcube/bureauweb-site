@@ -7,6 +7,7 @@ import { LeadForm } from '@/components/forms'
 // Lazy load des sections sous le fold pour améliorer le First Contentful Paint
 const Problem = dynamic(() => import('@/components/sections/Problem'))
 const Solution = dynamic(() => import('@/components/sections/Solution'))
+const WhyNotWix = dynamic(() => import('@/components/sections/WhyNotWix'))
 const PlanGratuit24h = dynamic(() => import('@/components/sections/PlanGratuit24h'))
 const NotIncluded = dynamic(() => import('@/components/sections/NotIncluded'))
 const Process = dynamic(() => import('@/components/sections/Process'))
@@ -29,6 +30,7 @@ export default function Home() {
       {/* Sections chargées dynamiquement - Below the fold */}
       <Problem />
       <Solution />
+      <WhyNotWix />
       <PlanGratuit24h />
       <NotIncluded />
       <Process />

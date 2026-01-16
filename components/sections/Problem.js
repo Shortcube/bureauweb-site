@@ -1,28 +1,33 @@
-import { AlertCircle, DollarSign, Clock, UserX } from 'lucide-react'
+import { AlertCircle, MapPin, Smartphone, Star, Clock } from 'lucide-react'
 
 const Problem = () => {
   const problems = [
     {
-      icon: DollarSign,
-      title: 'Les agences coûtent cher',
-      description: '3 000$ et plus pour un site, puis ils disparaissent après le lancement. Bonne chance pour avoir du support.',
+      icon: MapPin,
+      title: 'Invisible sur Google Maps',
+      description: 'Vos concurrents apparaissent en premier quand quelqu\'un cherche votre service dans votre coin. Vous, vous êtes en bas de page ou carrément absent.',
     },
     {
-      icon: UserX,
-      title: 'Les freelances sont instables',
-      description: 'Ils répondent plus après 6 mois. Votre site devient obsolète et personne pour vous aider.',
+      icon: Smartphone,
+      title: 'Clients perdus sur mobile',
+      description: 'Plus de 70% des gens visitent sur leur téléphone. Si votre numéro n\'est pas cliquable ou que le site charge lentement, ils appellent votre concurrent.',
+    },
+    {
+      icon: Star,
+      title: 'Pas assez d\'avis',
+      description: 'Vous avez 3 avis Google, votre concurrent en a 47. Devinez qui va être appelé en premier, même si vous faites du meilleur travail.',
     },
     {
       icon: Clock,
-      title: 'Personne pour faire le suivi',
-      description: 'Les mises à jour s\'accumulent, la sécurité est négligée, les problèmes traînent.',
+      title: 'Site qui vieillit mal',
+      description: 'Votre site a 3 ans, il manque des infos, des photos sont floues, les formulaires marchent plus. Personne pour s\'en occuper.',
     },
   ]
 
   return (
     <section className="py-20 md:py-28 bg-concrete-50">
       <div className="section-container">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2 rounded-full mb-6">
@@ -30,17 +35,15 @@ const Problem = () => {
               <span className="text-sm font-medium">Le problème</span>
             </div>
             <h2 className="text-navy mb-6">
-              Vous méritez mieux que ça
+              Ces problèmes vous coûtent des clients chaque semaine
             </h2>
             <p className="text-xl text-concrete-600 leading-relaxed max-w-2xl mx-auto">
-              Les agences chargent une fortune puis disparaissent. 
-              Les freelances répondent plus après quelques mois. 
-              Vous méritez un partenaire stable.
+              C'est pas de votre faute. Vous êtes occupé à faire votre métier. Mais pendant ce temps, des clients potentiels vous cherchent et ne vous trouvent pas.
             </p>
           </div>
 
           {/* Cartes des problèmes */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {problems.map((problem, index) => (
               <div 
                 key={index}

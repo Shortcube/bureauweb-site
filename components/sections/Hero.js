@@ -78,8 +78,8 @@ const Hero = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-navy font-bold text-lg">24 h</p>
-                  <p className="text-concrete-500 text-sm">Plan gratuit (1 page)</p>
+                  <p className="text-navy font-bold text-lg">Plan gratuit 24 h</p>
+                  <p className="text-concrete-500 text-sm">1 page, zéro BS</p>
                 </div>
               </div>
             </div>
@@ -88,12 +88,12 @@ const Hero = () => {
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold">Clé en main</p>
-                  <p className="text-concrete-300 text-xs">Site + fiche Google + suivi</p>
+                  <p className="font-semibold">Support humain FR</p>
+                  <p className="text-concrete-300 text-xs">Pas de chatbot</p>
                 </div>
               </div>
             </div>
