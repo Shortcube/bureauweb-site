@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BLOG_POSTS } from '@/lib/content'
 
+// Edge Runtime pour Cloudflare Pages
+export const runtime = 'edge'
+
 export function generateMetadata({ params }) {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug)
   if (!post) return { title: 'Blogue | BureauWeb' }

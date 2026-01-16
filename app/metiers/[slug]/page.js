@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation'
 import { TRADE_PAGES } from '@/lib/content'
 import { Check, AlertCircle } from 'lucide-react'
 
+// Edge Runtime pour Cloudflare Pages
+export const runtime = 'edge'
+
 export function generateMetadata({ params }) {
   const trade = TRADE_PAGES.find((t) => t.slug === params.slug)
   if (!trade) return { title: 'Corps de métier | BureauWeb' }

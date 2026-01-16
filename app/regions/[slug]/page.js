@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { REGION_PAGES } from '@/lib/content'
 
+// Edge Runtime pour Cloudflare Pages
+export const runtime = 'edge'
+
 export function generateMetadata({ params }) {
   const region = REGION_PAGES.find((r) => r.slug === params.slug)
   if (!region) return { title: 'Régions | BureauWeb' }
