@@ -16,8 +16,6 @@ const Header = () => {
   const phoneDigits = siteConfig.phoneDigits
   const phoneDisplay = formatPhoneDisplay(phoneDigits)
   const hasPhone = phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10
-  const hideHeaderPhone = siteConfig.hideHeaderPhone
-  const shouldShowPhone = hasPhone && !hideHeaderPhone
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,14 +111,14 @@ const Header = () => {
           {/* Phone + CTA */}
           <div className="flex items-center flex-nowrap gap-4">
             {/* Téléphone toujours visible */}
-            {shouldShowPhone && (
+            {hasPhone && (
               <a 
                 href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
-                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap"
+                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap lg:hidden"
                 aria-label={`Appelez-nous au ${phoneDisplay}`}
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span className="hidden sm:inline whitespace-nowrap">{phoneDisplay}</span>
+                <span className="whitespace-nowrap">{phoneDisplay}</span>
               </a>
             )}
             <Button 
