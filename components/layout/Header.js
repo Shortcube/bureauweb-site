@@ -114,11 +114,11 @@ const Header = () => {
             {hasPhone && (
               <a 
                 href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
-                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap"
+                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap lg:hidden"
                 aria-label={`Appelez-nous au ${phoneDisplay}`}
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                <span className="hidden sm:inline whitespace-nowrap">{phoneDisplay}</span>
+                <span className="whitespace-nowrap">{phoneDisplay}</span>
               </a>
             )}
             <Button 
