@@ -6,3 +6,4 @@ pages_build_output_dir = ".vercel/output/static"
 # Variables d'environnement
 [vars]
 NEXT_PUBLIC_CONTACT_PHONE = "5145340837"
+NEXT_PUBLIC_HIDE_HEADER_PHONE = true
