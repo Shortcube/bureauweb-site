@@ -9,8 +9,8 @@ export function generateMetadata({ params }) {
   const sector = SECTOR_PAGES.find((s) => s.slug === params.slug)
   if (!sector) return { title: 'Secteurs d’activité | BureauWeb' }
   return {
-    title: sector.metaTitle ?? `${sector.title} | BureauWeb`,
-    description: sector.metaDescription ?? sector.intro,
+    title: `${sector.title} | BureauWeb`,
+    description: `Infrastructure web pour entreprises du secteur ${sector.title} avec diagnostic gratuit.`,
   }
 }
 
@@ -36,9 +36,28 @@ export default function SecteurSlugPage({ params }) {
       </header>
 
       <section className="mt-10">
-        <h2 className="text-xl font-semibold text-navy">Métiers typiques</h2>
+        <h2 className="text-xl font-semibold text-navy">Métiers courants dans ce secteur</h2>
+        <p className="mt-4 text-concrete-600">{sector.tradesIntro}</p>
+        <p className="mt-2 text-concrete-600">{sector.tradesList.join(', ')}.</p>
+        {relatedTrades.length > 0 && (
+          <div className="mt-4 text-sm text-concrete-600">
+            <span className="font-medium text-navy">Pages métiers disponibles :</span>{' '}
+            {relatedTrades.map((trade, index) => (
+              <span key={trade.slug}>
+                <Link href={`/metiers/${trade.slug}`} className="text-safety hover:underline">
+                  {trade.title}
+                </Link>
+                {index < relatedTrades.length - 1 ? ', ' : '.'}
+              </span>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold text-navy">Ce que nous mettons en place</h2>
         <ul className="mt-4 space-y-2 text-concrete-600">
-          {sector.typicalTrades.map((item) => (
+          {sector.infrastructure.map((item) => (
             <li key={item} className="flex gap-2">
               <span className="text-concrete-400">•</span>
               <span>{item}</span>
@@ -47,36 +66,14 @@ export default function SecteurSlugPage({ params }) {
         </ul>
       </section>
 
-      {relatedTrades.length > 0 && (
-        <section className="mt-10 rounded-xl border border-concrete-200 bg-concrete-50 p-6">
-          <h2 className="text-xl font-semibold text-navy">Métiers connexes</h2>
-          <p className="mt-2 text-concrete-600">
-            Pages métiers déjà disponibles pour approfondir l’approche par spécialité.
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
-            {relatedTrades.map((trade) => (
-              <Link
-                key={trade.slug}
-                href={`/metiers/${trade.slug}`}
-                className="rounded-lg border border-concrete-200 bg-white p-4 text-navy hover:border-concrete-300 hover:shadow-sm transition"
-              >
-                <p className="font-semibold">{trade.title}</p>
-                <p className="mt-2 text-sm text-concrete-600">{trade.hero}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold text-navy">Diagnostic gratuit</h2>
+        <p className="mt-4 text-concrete-600">{sector.diagnostic}</p>
+      </section>
 
       <div className="mt-12 flex flex-col sm:flex-row gap-3">
         <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">
           Diagnostic gratuit
-        </Link>
-        <Link
-          href="/#forfaits"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-concrete-200 text-navy hover:bg-concrete-50"
-        >
-          Voir les forfaits
         </Link>
       </div>
     </main>
