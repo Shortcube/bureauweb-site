@@ -18,7 +18,7 @@ const inter = localFont({
 
 export const metadata = {
   title: 'BureauWeb.ca | Sites web pour entrepreneurs québécois',
-  description: 'Votre site web et votre fiche Google, gérés par quelqu\'un qui comprend votre métier. Forfait mensuel fixe dès 199$/mois. Service local au Québec.',
+  description: 'Diagnostic gratuit de votre présence web (site + fiche Google), livré sous 24 h ouvrables. Infrastructure web pour entrepreneurs au Québec, dès 199$/mois.',
   keywords: 'site web entrepreneur, site web plombier, site web couvreur, site web paysagiste, site web construction québec, google business profile, rive-sud, montréal',
   authors: [{ name: 'BureauWeb' }],
   creator: 'BureauWeb',

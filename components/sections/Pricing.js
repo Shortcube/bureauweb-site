@@ -87,7 +87,7 @@ const Pricing = () => {
                   className={`w-full py-6 text-lg font-semibold ${plan.popular ? 'btn-cta' : 'bg-navy hover:bg-navy-800 text-white'}`}
                   onClick={scrollToContact}
                 >
-                  Recevoir mon plan gratuit 24 h
+                  Recevoir mon diagnostic gratuit
                 </Button>
               </div>
             </div>
@@ -140,7 +140,7 @@ const Pricing = () => {
                   On installe et on opère l’infrastructure (site, fiche Google, conversion). Le volume de demandes dépend aussi du marché, de la concurrence et de votre capacité à répondre.
                 </p>
                 <p className="mt-3 text-amber-800 leading-relaxed">
-                  Le plan gratuit 24 h existe justement pour montrer quoi faire, sans rien inventer, avant de s’engager.
+                  Le diagnostic gratuit existe justement pour montrer quoi faire, sans rien inventer, avant de s’engager.
                 </p>
               </div>
             </div>

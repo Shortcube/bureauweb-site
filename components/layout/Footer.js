@@ -1,5 +1,7 @@
+import Link from 'next/link'
 import { Phone, Mail, MapPin, Briefcase } from 'lucide-react'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
+import Logo from '@/components/ui/Logo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -12,11 +14,14 @@ const Footer = () => {
       <div className="section-container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Marque */}
-          <div className="space-y-4">
-            <span className="text-2xl font-bold">
-              Bureau<span className="text-safety">Web</span>
-            </span>
-            <p className="text-concrete-400 text-sm leading-relaxed">
+          <div className="space-y-3">
+            <div className="max-w-[240px]">
+              <Logo
+                className="w-full h-auto"
+                primaryColor="#FFFFFF"
+              />
+            </div>
+            <p className="text-concrete-400 text-sm leading-relaxed -mt-1">
               Votre département web externe. On s'occupe de votre site et de votre fiche Google pour que vous puissiez vous concentrer sur vos chantiers.
             </p>
           </div>
@@ -67,28 +72,28 @@ const Footer = () => {
             <h4 className="font-semibold text-lg">Infos légales</h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="/metiers"
-                  className="text-concrete-300 hover:text-safety transition-colors"
-                >
-                  Corps de métier
-                </a>
+              <Link
+                href="/metiers"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Corps de métier
+              </Link>
               </li>
               <li>
-                <a
-                  href="/regions"
-                  className="text-concrete-300 hover:text-safety transition-colors"
-                >
-                  Régions
-                </a>
+              <Link
+                href="/regions"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Régions
+              </Link>
               </li>
               <li>
-                <a
-                  href="/blog"
-                  className="text-concrete-300 hover:text-safety transition-colors"
-                >
-                  Blogue
-                </a>
+              <Link
+                href="/blog"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Blogue
+              </Link>
               </li>
               <li>
                 <a

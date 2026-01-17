@@ -9,13 +9,13 @@ const PlanGratuit24h = () => {
   }
 
   return (
-    <section id="plan24h" className="py-20 md:py-28 bg-white scroll-mt-header">
+    <section id="diagnostic" className="py-20 md:py-28 bg-white scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-2 bg-navy/5 text-navy px-4 py-2 rounded-full mb-6">
               <FileText className="w-4 h-4" aria-hidden="true" />
-              <span className="text-sm font-medium whitespace-nowrap">Plan gratuit 24 h</span>
+              <span className="text-sm font-medium whitespace-nowrap">Diagnostic gratuit</span>
             </div>
             <h2 className="text-navy mb-4">Un diagnostic écrit, 1 page max</h2>
             <p className="text-xl text-concrete-600">
@@ -38,8 +38,8 @@ const PlanGratuit24h = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-concrete-200 shadow-sm p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-navy mb-6">Structure du plan</h3>
+            <div className="bg-white rounded-2xl border border-concrete-200 shadow-sm p-6 md:p-8">
+            <h3 className="text-xl font-semibold text-navy mb-6">Structure du diagnostic</h3>
 
             <ol className="space-y-5">
               <li className="flex gap-3">
@@ -65,8 +65,8 @@ const PlanGratuit24h = () => {
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">4</div>
-                <div>
-                  <p className="font-semibold text-navy">Plan 21 jours (vue d’ensemble)</p>
+                  <div>
+                    <p className="font-semibold text-navy">Plan 21 jours (vue d’ensemble)</p>
                   <p className="text-concrete-600">Semaine 1: fondations. Semaine 2: conversion + SEO local. Semaine 3: QA + lancement.</p>
                 </div>
               </li>
@@ -103,7 +103,7 @@ const PlanGratuit24h = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Button className="btn-cta px-8 py-6 h-auto text-lg" onClick={scrollToContact}>
-                Recevoir mon plan gratuit 24 h
+                Recevoir mon diagnostic gratuit
               </Button>
               <Button variant="outline" className="px-8 py-6 h-auto text-lg" onClick={() => document.getElementById('forfaits')?.scrollIntoView({ behavior: 'smooth' })}>
                 Voir les forfaits

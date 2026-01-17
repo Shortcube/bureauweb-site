@@ -16,6 +16,20 @@ export default function MetiersPage() {
         </p>
       </header>
 
+      <section className="mb-10 rounded-2xl border border-safety/30 bg-safety/10 p-6">
+        <h2 className="text-2xl font-semibold text-safety">Vous ne trouvez pas votre métier ?</h2>
+        <p className="mt-2 text-concrete-700 leading-relaxed">
+          Même si on ne l’a pas listé, on pourrait peut-être tout de même vous aider. Décrivez rapidement
+          votre activité et vos objectifs, on vous propose un plan concret sous 24 heures ouvrables.
+        </p>
+        <Link
+          href="/#contact"
+          className="mt-4 inline-flex items-center text-sm font-semibold text-safety hover:underline"
+        >
+          Contacter l’équipe
+        </Link>
+      </section>
+
       <div className="grid md:grid-cols-2 gap-4">
         {TRADE_PAGES.map((t) => (
           <Link

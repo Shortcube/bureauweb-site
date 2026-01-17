@@ -6,7 +6,7 @@ export default function LegalLayout({ children }) {
       <div className="mb-6">
         <Link
           href="/"
-          className="inline-flex items-center text-sm text-slate-600 hover:text-slate-900"
+          className="inline-flex items-center gap-2 text-sm text-safety hover:text-safety/90"
         >
           ← Retour à l’accueil
         </Link>

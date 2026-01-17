@@ -45,10 +45,10 @@ export default function BlogPostPage({ params }) {
         <div className="mt-12 rounded-xl border border-concrete-200 bg-concrete-50 p-6">
           <p className="text-navy font-semibold">Prochaine étape</p>
           <p className="mt-2 text-concrete-600">
-            Si vous voulez une version adaptée à votre entreprise, utilisez le plan gratuit 24 h. On part de votre site, de votre mobile, et de votre fiche Google, sans rien inventer.
+            Si vous voulez une version adaptée à votre entreprise, utilisez le diagnostic gratuit. On part de votre site, de votre mobile, et de votre fiche Google, sans rien inventer.
           </p>
           <div className="mt-4">
-            <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">Recevoir mon plan gratuit 24 h</Link>
+        <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">Recevoir mon diagnostic gratuit</Link>
           </div>
         </div>
       </article>

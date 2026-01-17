@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 import { TRADE_PAGES } from '@/lib/content'
 import { useRouter } from 'next/navigation'
+import Logo from '@/components/ui/Logo'
 
 const Header = () => {
   const router = useRouter()
@@ -25,7 +26,7 @@ const Header = () => {
   }, [])
 
   const navLinks = [
-    { href: '#plan24h', label: 'Plan gratuit 24 h' },
+    { href: '#diagnostic', label: 'Diagnostic gratuit' },
     { href: '#forfaits', label: 'Forfaits' },
     { href: '#processus', label: 'Comment ça fonctionne' },
     { href: '#conformite', label: 'Conformité' },
@@ -54,58 +55,54 @@ const Header = () => {
           {/* Logo */}
           <a 
             href="#" 
-            className="flex items-center space-x-2"
+            className="flex items-center"
             onClick={(e) => {
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}
             aria-label="Retour à l'accueil BureauWeb"
           >
-            <span className="text-xl md:text-2xl font-bold text-navy">
-              Bureau<span className="text-safety">Web</span>
-            </span>
+            <Logo className="h-[4.05rem] w-auto md:h-[4.6rem]" aria-hidden="true" />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8" aria-label="Navigation principale">
+          <nav className="hidden lg:flex items-center space-x-6" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-concrete-700 hover:text-navy font-medium transition-colors ${
-                  link.label === 'Plan gratuit 24 h' ? 'whitespace-nowrap' : ''
-                }`}
+                className="text-concrete-700 hover:text-navy font-medium transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
 
-            <div className="min-w-[220px]">
+            <div className="min-w-[180px]">
               <Select
                 onValueChange={(value) => {
+                  if (value === 'contact') {
+                    router.push('/#contact')
+                    return
+                  }
                   router.push(`/metiers/${value}`)
                 }}
               >
                 <SelectTrigger
-                  className="bg-white w-[260px] lg:w-[280px] whitespace-normal h-auto py-2 text-left items-start"
+                  className="bg-white w-[200px] lg:w-[220px] whitespace-normal h-auto py-2 text-left items-start text-sm"
                   aria-label="Choisir un corps de métier"
                 >
-                  <SelectValue
-                    placeholder={
-                      <>
-                        <span className="lg:hidden">Métier...</span>
-                        <span className="hidden lg:inline">Mon corps de métier est...</span>
-                      </>
-                    }
-                  />
+                  <SelectValue placeholder="Mon métier est..." />
                 </SelectTrigger>
                 <SelectContent>
                   {TRADE_PAGES.map((t) => (
                     <SelectItem key={t.slug} value={t.slug}>
-                      {t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                      {t.dropdownLabel ?? t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
                     </SelectItem>
                   ))}
+                  <SelectItem key="contact" value="contact">
+                    Autre - contactez-nous
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -117,18 +114,19 @@ const Header = () => {
             {hasPhone && (
               <a 
                 href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
-                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
+                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap"
                 aria-label={`Appelez-nous au ${phoneDisplay}`}
               >
-                <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">{phoneDisplay}</span>
+                <Phone className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline whitespace-nowrap">{phoneDisplay}</span>
               </a>
             )}
             <Button 
               className="hidden md:inline-flex btn-cta whitespace-nowrap shrink-0"
               onClick={(e) => handleNavClick(e, '#contact')}
+              aria-label="Diagnostic gratuit"
             >
-              Recevoir mon plan gratuit 24 h
+              Diagnostic gratuit
             </Button>
             
             {/* Mobile Menu Button */}
@@ -153,7 +151,7 @@ const Header = () => {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors ${
-                    link.label === 'Plan gratuit 24 h' ? 'whitespace-nowrap' : ''
+                    link.label === 'Diagnostic gratuit' ? 'whitespace-nowrap' : ''
                   }`}
                 >
                   {link.label}
@@ -161,33 +159,41 @@ const Header = () => {
               ))}
 
               <div className="px-4 pt-3">
-                <Select
-                  onValueChange={(value) => {
-                    setIsMobileMenuOpen(false)
-                    router.push(`/metiers/${value}`)
-                  }}
-                >
+              <Select
+                onValueChange={(value) => {
+                  setIsMobileMenuOpen(false)
+                  if (value === 'contact') {
+                    router.push('/#contact')
+                    return
+                  }
+                  router.push(`/metiers/${value}`)
+                }}
+              >
                   <SelectTrigger
                     className="whitespace-normal h-auto py-2 text-left items-start"
                     aria-label="Choisir un corps de métier"
                   >
-                    <SelectValue placeholder="Mon corps de métier est..." />
+                  <SelectValue placeholder="Mon métier est..." />
                   </SelectTrigger>
                   <SelectContent>
                     {TRADE_PAGES.map((t) => (
                       <SelectItem key={t.slug} value={t.slug}>
-                        {t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                        {t.dropdownLabel ?? t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
                       </SelectItem>
                     ))}
+                    <SelectItem key="contact" value="contact">
+                      Autre - contactez-nous
+                    </SelectItem>
                   </SelectContent>
-                </Select>
+              </Select>
               </div>
               <div className="px-4 pt-4 border-t border-concrete-100 mt-2">
                 <Button 
                   className="w-full btn-cta"
                   onClick={(e) => handleNavClick(e, '#contact')}
+                  aria-label="Diagnostic gratuit"
                 >
-                  Recevoir mon plan gratuit 24 h
+                  Diagnostic gratuit
                 </Button>
               </div>
             </nav>

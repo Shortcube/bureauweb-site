@@ -179,7 +179,7 @@ const LeadForm = () => {
                 Parfait, c'est reçu
               </h2>
               <p className="text-lg text-concrete-600 leading-relaxed">
-                On vous revient d'ici 24 heures ouvrables avec votre plan gratuit 24 h (1 page). Si une info manque, on vous écrit pour clarifier.
+                C’est reçu. On te renvoie ton diagnostic (1 page) sous 24 h ouvrables.
               </p>
               <Button 
                 className="mt-8 btn-secondary"
@@ -208,7 +208,7 @@ const LeadForm = () => {
                 Remplissez ça (2 minutes max) et on vous revient en 24 heures ouvrables avec :
               </p>
               <ul className="text-concrete-300 text-lg mb-8 space-y-2">
-                <li>• Un plan gratuit 24 h (1 page) basé sur du vérifiable</li>
+                <li>• Un diagnostic gratuit (1 page) basé sur du vérifiable</li>
                 <li>• 2 à 3 problèmes observables + 2 à 3 quick wins</li>
                 <li>• Une recommandation claire: avancer, attendre, ou pas un fit</li>
               </ul>
@@ -475,7 +475,7 @@ const LeadForm = () => {
                       </>
                     ) : (
                       <>
-                        Recevoir mon plan gratuit 24 h
+                        Recevoir mon diagnostic gratuit
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}

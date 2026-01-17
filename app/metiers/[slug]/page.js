@@ -145,6 +145,206 @@ export default function MetierSlugPage({ params }) {
         },
       ],
     },
+    deneigement: {
+      problems: [
+        'Les clients cherchent “déneigement urgent” et tombent sur les services municipaux plutôt que sur votre entreprise.',
+        'Votre site ne clarifie pas vos forfaits (résidentiel, commercial, licence sous contrat) ni vos délais.',
+        'Impossible de savoir si vous intervenez 24/7, et le CTA “Demander une soumission” est caché.',
+        'Vous recevez trop de demandes hors zone parce que vos villes desservies ne sont pas affichées clairement.',
+      ],
+      implementation: [
+        {
+          title: 'CTA “Urgence 24/7” visible partout',
+          description: 'Bouton fixe ou bandeau sur mobile, formulaire ultra court (type de contrat + type de propriété + code postal).',
+        },
+        {
+          title: 'Pages forfaits et contrats',
+          description: 'Page séparée pour résidentiel/entretiens saisonniers, page pour les contrats commerciaux + services d’application.',
+        },
+        {
+          title: 'Zones desservies avec filtres',
+          description: 'Liste ou carte qui montre la couverture par secteur (Montréal, Rive-Sud, couronne nord) et les délais par zone.',
+        },
+        {
+          title: 'Processus de confirmation',
+          description: 'Section “Comment ça marche” pour rassurer : confirmation par SMS, photos de camions, suivi météo.',
+        },
+      ],
+      faq: [
+        {
+          q: 'Comment vous gérez les demandes urgentes la nuit ?',
+          a: 'On affiche clairement vos heures de couverture 24/7 et on met en place un formulaire qui vous alerte immédiatement par SMS et email.',
+        },
+        {
+          q: 'J’ai plusieurs contrats, est-ce que je peux montrer ça ?',
+          a: 'Oui, on crée une section “Partenaires et contrats” avec logos, témoignages, et un exemple de calendrier d’intervention.',
+        },
+        {
+          q: 'Est-ce que je peux limiter les demandes hors zone ?',
+          a: 'Oui, on affiche les villes desservies + un filtre (ex : “Mon adresse est sur la Rive-Sud”) pour orienter les visiteurs.',
+        },
+      ],
+    },
+    renovation: {
+      problems: [
+        'Les propriétaires ne comprennent pas votre spécialité : cuisine, salle de bain, sous-sol ?',
+        'Vos projets manquent de preuves sociales (avant/après, témoignages).',
+        'Le formulaire demande trop de détails et les visiteurs abandonnent.',
+        'Vous ne montrez pas votre processus ni vos garanties, ce qui freine la confiance.',
+      ],
+      implementation: [
+        {
+          title: 'Pages projet par type de chantier',
+          description: 'Cuisine, salle de bain, sous-sol, ajout de structure : chaque page présente enjeux, photos et délais.',
+        },
+        {
+          title: 'Sections preuve sociale',
+          description: 'Témoignages, études de cas avec budgets et résultats (ex : “Rénovation cuisine 36 000$ en 6 semaines”).',
+        },
+        {
+          title: 'Formulaire filtre (type + budget)',
+          description: 'Sélecteurs pour préciser le type de rénovation, l’état des lieux, et la marge de budget pour éviter les demandes non qualifiées.',
+        },
+        {
+          title: 'Processus clair',
+          description: 'Timeline étape par étape : visite, planification, exécution, suivi. On montre aussi les partenaires (électricien, ébéniste).',
+        },
+      ],
+      faq: [
+        {
+          q: 'Vous travaillez avec des designers ou architectes ?',
+          a: 'On peut intégrer vos partenaires dans la page “Équipe” ou “Processus”, avec des liens vers leurs portfolios.',
+        },
+        {
+          q: 'Comment on montre mes certifications ?',
+          a: 'Badge, logos de licences RBQ ou assurances affichés sur chaque page de service.',
+        },
+        {
+          q: 'Peut-on ajouter des contenus au fil des chantiers ?',
+          a: 'Oui, on peut publier un petit “journal de chantier” et mettre à jour les photos ou statuts chaque mois.',
+        },
+      ],
+    },
+    electricite: {
+      problems: [
+        'Votre site mélange les services résidentiels et commerciaux et les clients sont confus.',
+        'Il n’y a aucune preuve de vos certifications, ce qui rend les projets plus risqués aux yeux des prospects.',
+        'Vous recevez des appels pour des services que vous ne faites pas parce que tout est sur la même page.',
+        'Le formulaire capture peu d’informations (type d’intervention, urgence, code postal).',
+      ],
+      implementation: [
+        {
+          title: 'Pages séparées par type de service',
+          description: 'Résidentiel, commercial, industries, inspection, urgences : chaque page précise vos équipes, plans et photos.',
+        },
+        {
+          title: 'Certifications visibles',
+          description: 'RBQ, assurances, formation continue : on met ça dans la section “Pourquoi nous” avec icônes.',
+        },
+        {
+          title: 'Formulaire intelligent',
+          description: 'Question “Nature de l’interventions” + “Équipement concerné” + “Urgence” pour orienter le triage.',
+        },
+        {
+          title: 'Aide à la conversion',
+          description: 'CTA “Planifier une inspection” ou “Obtenir une soumission rapide”, avec preuve sociale en dessous.',
+        },
+      ],
+      faq: [
+        {
+          q: 'Comment vous montrez que je suis certifié RBQ ?',
+          a: 'On affiche votre numéro RBQ, vos assurances, et un court texte sur vos pratiques de sécurité.',
+        },
+        {
+          q: 'Vous pouvez publier mes fiches techniques ?',
+          a: 'Oui, on peut intégrer des téléchargements ou sections FAQ pour chaque service (ex : borne de recharge, panneaux électriques).',
+        },
+        {
+          q: 'Est-ce que le site vous aide à trier les urgences ?',
+          a: 'Oui, on met en place un formulaire qui vous alerte avec les infos essentielles pour prioriser (code postal, type, urgence).',
+        },
+      ],
+    },
+    cvac: {
+      problems: [
+        'Vous proposez chauffage, ventilation et climatisation, mais le site ne distingue pas ces expertises.',
+        'Les clients ne voient pas vos services d’entretien ou vos forfaits saisonniers.',
+        'Il n’y a aucun CTA adapté aux contrats (entretien annuel, optimisation d’efficacité).',
+        'Vous souffrez d’un manque de témoignages d’entreprises ou hôtellerie qui demandent la stabilité.',
+      ],
+      implementation: [
+        {
+          title: 'Pages Chauffage / Ventilation / Climatisation',
+          description: 'Chaque système reçoit sa propre page avec photos, problèmes résolus, et pièces couvertes.',
+        },
+        {
+          title: 'Contrats d’entretien mis de l’avant',
+          description: 'Section “Maintenance” avec tarifs indicatifs et FAQs sur la fréquence des visites.',
+        },
+        {
+          title: 'Formulaire “Type d’équipement”',
+          description: 'Choix entre thermopompe, fournaise, VMC, besoin en urgence ou projet de remplacement.',
+        },
+        {
+          title: 'Témoignages industriels ou commerciaux',
+          description: 'Études de cas avec logos de clients, résultats (ex : “Réduction des pannes de 30%”).',
+        },
+      ],
+      faq: [
+        {
+          q: 'Vous faites des contrats annuels ?',
+          a: 'Oui, on affiche clairement les forfaits d’entretien et on peut afficher un formulaire de contrat en ligne.',
+        },
+        {
+          q: 'Est-ce que le site explique les garanties ?',
+          a: 'Oui, on crée une section “Garanties & certifications” avec vos manufacturiers préférés.',
+        },
+        {
+          q: 'Peut-on ajouter des alertes de température ?',
+          a: 'Oui, on peut intégrer un système pour les clients qui ont besoin d’envoyer des relevés ou photos de leur équipement.',
+        },
+      ],
+    },
+    autre: {
+      problems: [
+        'Le site ne reflète pas votre métier spécifique, donc les prospects ont du mal à comprendre votre valeur.',
+        'Il n’y a aucune preuve que vous desservez certains secteurs ou villes.',
+        'Vous n’avez pas de CTA clair pour générer des demandes qualifiées.',
+        'Vous ne pouvez pas montrer vos résultats sans un format flexible.',
+      ],
+      implementation: [
+        {
+          title: 'Page “À propos de votre métier” personnalisée',
+          description: 'On écrit un texte clair, on organise vos services par catégorie, et on montre vos valeurs.',
+        },
+        {
+          title: 'CTA adaptée',
+          description: 'Choix entre “Demander un plan 24h”, “Vérifier la disponibilité” ou “Recevoir notre fiche technique”.',
+        },
+        {
+          title: 'Zones locales et témoignages',
+          description: 'On affiche les villes desservies et des témoignages de clients pour chaque type de projet.',
+        },
+        {
+          title: 'Flexibilité dans le contenu',
+          description: 'On peut intégrer des vidéos, PDF, ou autres médias selon votre métier (ex : carrelage, menuiserie, etc.).',
+        },
+      ],
+      faq: [
+        {
+          q: 'Je ne rentre pas dans une catégorie évidente, et si je ne trouve pas ce dont j’ai besoin ?',
+          a: 'Lors de l’onboarding, on discute de votre métier, on définit des services clairs et on crée une arborescence sur mesure.',
+        },
+        {
+          q: 'Est-ce que vous pouvez écrire le contenu à ma place ?',
+          a: 'Oui, on rédige un contenu simple, clair et réaliste qui met en valeur vos chantiers et votre expertise.',
+        },
+        {
+          q: 'Je travaille sur plusieurs services, ça va être confus ?',
+          a: 'On organise les services par sections (Ex : “Services principaux”, “Services complémentaires”) et on guide le visiteur avec des CTA ciblés.',
+        },
+      ],
+    },
   }
 
   const content = contentBySlug[trade.slug] || {}
@@ -152,9 +352,12 @@ export default function MetierSlugPage({ params }) {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12 md:py-20">
       <nav className="text-sm text-concrete-600 mb-8">
-        <Link href="/" className="text-safety hover:underline">Accueil</Link>
-        <span className="mx-2">/</span>
-        <span className="text-navy">{trade.slug}</span>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-safety hover:underline"
+        >
+          ← Retour à l’accueil
+        </Link>
       </nav>
 
       <header className="mb-12">
@@ -226,7 +429,7 @@ export default function MetierSlugPage({ params }) {
 
       <div className="mt-12 flex flex-col sm:flex-row gap-4 pt-8 border-t border-concrete-200">
         <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-white font-semibold">
-          Recevoir mon plan gratuit 24 h
+          Recevoir mon diagnostic gratuit
         </Link>
         <Link href="/#forfaits" className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-concrete-300 text-navy hover:bg-concrete-50 font-semibold">
           Voir les forfaits et prix

@@ -93,7 +93,7 @@ const WhyNotWix = () => {
               BureauWeb si vous voulez vous concentrer sur vos chantiers et avoir quelqu'un qui s'occupe de votre présence en ligne de A à Z.
             </p>
             <Button className="btn-cta" onClick={scrollToContact}>
-              Recevoir mon plan gratuit 24 h
+              Recevoir mon diagnostic gratuit
             </Button>
           </div>
         </div>
