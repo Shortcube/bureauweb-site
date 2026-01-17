@@ -67,26 +67,36 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8" aria-label="Navigation principale">
+          <nav className="hidden lg:flex items-center space-x-6" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-concrete-700 hover:text-navy font-medium transition-colors"
+                className="text-concrete-700 hover:text-navy font-medium transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
 
-            <div className="min-w-[200px]">
+            <div className="min-w-[180px]">
               <Select
                 onValueChange={(value) => {
                   router.push(`/metiers/${value}`)
                 }}
               >
-                <SelectTrigger className="h-10 bg-white" aria-label="Choisir un corps de métier">
-                  <SelectValue placeholder="Votre métier" />
+                <SelectTrigger
+                  className="bg-white w-[200px] lg:w-[220px] whitespace-normal h-auto py-2 text-left items-start text-sm"
+                  aria-label="Choisir un corps de métier"
+                >
+                  <SelectValue
+                    placeholder={
+                      <>
+                        <span className="lg:hidden">Métier...</span>
+                        <span className="hidden lg:inline">Votre métier</span>
+                      </>
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   {TRADE_PAGES.map((t) => (
@@ -100,20 +110,20 @@ const Header = () => {
           </nav>
 
           {/* Phone + CTA */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center flex-nowrap gap-4">
             {/* Téléphone toujours visible */}
             {hasPhone && (
               <a 
                 href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
-                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
+                className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors whitespace-nowrap"
                 aria-label={`Appelez-nous au ${phoneDisplay}`}
               >
-                <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">{phoneDisplay}</span>
+                <Phone className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline whitespace-nowrap">{phoneDisplay}</span>
               </a>
             )}
             <Button 
-              className="hidden md:inline-flex btn-cta"
+              className="hidden md:inline-flex btn-cta whitespace-nowrap shrink-0"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
               Recevoir mon plan gratuit 24 h
@@ -140,7 +150,9 @@ const Header = () => {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors"
+                  className={`text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors ${
+                    link.label === 'Plan gratuit 24 h' ? 'whitespace-nowrap' : ''
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -153,8 +165,11 @@ const Header = () => {
                     router.push(`/metiers/${value}`)
                   }}
                 >
-                  <SelectTrigger className="h-11" aria-label="Choisir un corps de métier">
-                    <SelectValue placeholder="Votre métier" />
+                  <SelectTrigger
+                    className="whitespace-normal h-auto py-2 text-left items-start"
+                    aria-label="Choisir un corps de métier"
+                  >
+                    <SelectValue placeholder="Mon corps de métier est..." />
                   </SelectTrigger>
                   <SelectContent>
                     {TRADE_PAGES.map((t) => (
