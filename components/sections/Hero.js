@@ -14,7 +14,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-br from-white via-concrete-50 to-white pt-6 md:pt-8 mt-8 pb-10">
+    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-b from-white via-concrete-50/80 to-concrete-50 pt-6 md:pt-8 mt-8 pb-10">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-72 h-72 bg-safety/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-navy/5 rounded-full blur-3xl" />
