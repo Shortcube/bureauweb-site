@@ -6,12 +6,12 @@ const Process = () => {
       number: '01',
       icon: FileCheck,
       title: 'Diagnostic',
-      duration: 'Étape 1',
       color: 'bg-blue-500',
       content: [
         {
           type: 'text',
-          value: 'On analyse votre site, votre fiche Google et les infos que vous fournissez. Diagnostic écrit, 1 page.',
+          value:
+            'On observe votre site, votre fiche Google et le parcours de contact que vous avez déjà. Diagnostic écrit basé sur ce qui est visible.',
         },
         {
           type: 'highlight',
@@ -23,12 +23,11 @@ const Process = () => {
       number: '02',
       icon: CheckCircle2,
       title: 'Décision',
-      duration: 'Étape 2',
       color: 'bg-safety',
       content: [
         {
           type: 'text',
-          value: 'GO/NO-GO clair et offre (2 options max) si c’est pertinent.',
+          value: 'GO/NO-GO clair, avec au maximum deux options simples si on avance.',
         },
         {
           type: 'highlight',
@@ -40,7 +39,6 @@ const Process = () => {
       number: '03',
       icon: CreditCard,
       title: 'Paiement',
-      duration: 'Étape 3',
       color: 'bg-green-500',
       content: [
         {
@@ -49,7 +47,7 @@ const Process = () => {
         },
         {
           type: 'text',
-          value: 'Une fois le paiement reçu, l’abonnement est actif et la production démarre.',
+          value: 'Aucun travail ne commence sans un abonnement actif confirmé par Stripe.',
         },
       ],
     },
@@ -57,7 +55,6 @@ const Process = () => {
       number: '04',
       icon: Hammer,
       title: 'Production',
-      duration: 'Étape 4',
       color: 'bg-navy',
       content: [
         {
@@ -74,7 +71,6 @@ const Process = () => {
       number: '05',
       icon: Rocket,
       title: 'Livraison',
-      duration: 'Étape 5',
       color: 'bg-slate-700',
       content: [
         {
@@ -87,73 +83,58 @@ const Process = () => {
       number: '06',
       icon: ShieldCheck,
       title: 'Exploitation mensuelle',
-      duration: 'Étape 6',
       color: 'bg-slate-900',
       content: [
         {
           type: 'text',
-          value: 'Rapport 1 page, 1 micro-amélioration, QA mensuelle.',
+          value: 'Rapport mensuel concis (1 page) avec synthèse, 1 micro-amélioration, QA mensuelle.',
         },
       ],
     },
   ]
 
   return (
-    <section id="processus" className="py-20 md:py-28 bg-white scroll-mt-header">
+    <section id="processus" className="py-14 md:py-16 bg-white scroll-mt-header">
       <div className="section-container">
         {/* En-tête */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
-            <Clock className="w-4 h-4" />
-            <span className="text-sm font-medium">Processus clair</span>
-          </div>
-          <h2 className="text-navy mb-6">
-            Comment ça se passe
-          </h2>
-          <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Un processus clair, sans téléphone obligatoire et sans promesse inventée.
-          </p>
-        </div>
+              <div className="text-center mb-10 md:mb-12">
+                <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
+                  <Clock className="w-4 h-4" />
+                  <span className="text-sm font-medium">Processus clair</span>
+                </div>
+                <h2 className="text-navy mb-6">
+                  Comment ça se passe
+                </h2>
+                <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
+                  Un processus clair, sans téléphone obligatoire et sans promesse inventée.
+                </p>
+              </div>
 
         {/* Timeline */}
         <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Ligne verticale pour desktop */}
-            <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-concrete-200" />
+            <div className="relative">
+              {/* Ligne verticale pour desktop */}
+              <div className="hidden md:block absolute left-7 top-0 bottom-0 w-px bg-concrete-200" />
             
             {/* Étapes */}
-            <div className="space-y-8 md:space-y-12">
+            <div className="space-y-5 md:space-y-7">
               {steps.map((step, index) => (
                 <div key={index} className="relative">
                   {/* Carte de l'étape */}
-                  <div className="md:ml-20 bg-white rounded-xl border border-concrete-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div className="md:ml-14 bg-white rounded-xl border border-concrete-200 overflow-hidden shadow-sm transition-shadow hover:shadow-md">
                     {/* Header */}
-                    <div className="flex flex-col md:flex-row md:items-center gap-4 p-6 border-b border-concrete-100">
-                      {/* Badge numéro - Mobile */}
-                      <div className="md:hidden flex items-center gap-4">
-                        <div className={`w-12 h-12 ${step.color} rounded-xl flex items-center justify-center`}>
-                          <step.icon className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-concrete-400">ÉTAPE {step.number}</span>
-                          <h3 className="text-lg font-semibold text-navy">{step.title}</h3>
-                        </div>
+                    <div className="flex items-center gap-3 p-4 border-b border-concrete-100">
+                      <div className={`w-10 h-10 ${step.color} rounded-xl flex items-center justify-center`}>
+                        <step.icon className="w-5 h-5 text-white" />
                       </div>
-                      
-                      {/* Titre desktop */}
-                      <div className="hidden md:block flex-1">
+                      <div>
                         <span className="text-xs font-bold text-concrete-400">ÉTAPE {step.number}</span>
-                        <h3 className="text-xl font-semibold text-navy">{step.title}</h3>
-                      </div>
-                      
-                      {/* Badge durée */}
-                      <div className="bg-concrete-100 text-concrete-700 px-4 py-2 rounded-lg text-sm font-medium">
-                        {step.duration}
+                        <h3 className="text-lg font-semibold text-navy">{step.title}</h3>
                       </div>
                     </div>
                     
                     {/* Contenu */}
-                    <div className="p-6 space-y-4">
+                    <div className="p-4 space-y-2.5">
                       {step.content.map((item, itemIndex) => {
                         if (item.type === 'text') {
                           return (
@@ -165,10 +146,13 @@ const Process = () => {
                         
                         if (item.type === 'highlight') {
                           return (
-                            <div key={itemIndex} className="flex items-start gap-3 bg-safety/5 border border-safety/20 rounded-lg p-4">
-                              <CheckCircle2 className="w-5 h-5 text-safety flex-shrink-0 mt-0.5" />
-                              <p className="text-concrete-700">{item.value}</p>
-                            </div>
+                            <p
+                              key={itemIndex}
+                              className="flex items-center gap-2 text-sm text-concrete-500"
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-safety flex-shrink-0" />
+                              {item.value}
+                            </p>
                           )
                         }
                         
@@ -202,9 +186,9 @@ const Process = () => {
                   </div>
                   
                   {/* Point timeline - Desktop */}
-                  <div className="hidden md:flex absolute left-0 top-6 items-center justify-center">
-                    <div className={`w-16 h-16 ${step.color} rounded-xl flex items-center justify-center shadow-lg`}>
-                      <step.icon className="w-8 h-8 text-white" />
+                  <div className="hidden md:flex absolute left-0 top-3 items-center justify-center">
+                    <div className={`w-10 h-10 ${step.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                      <step.icon className="w-5 h-5 text-white" />
                     </div>
                   </div>
                 </div>
