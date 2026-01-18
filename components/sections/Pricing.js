@@ -121,19 +121,19 @@ const Pricing = () => {
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">Mensuel</p>
                 <p className="text-concrete-600 text-sm mt-1">Ensuite</p>
-                <p className="text-concrete-500 text-xs mt-2">Modalités: unknown / à déterminer.</p>
+                <p className="text-concrete-500 text-xs mt-2">Modalités: facturé au mois, renouvellement automatique.</p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">Préavis</p>
                 <p className="text-concrete-600 text-sm mt-1">Condition</p>
-                <p className="text-concrete-500 text-xs mt-2">unknown / à déterminer.</p>
+                <p className="text-concrete-500 text-xs mt-2">Fin de la période mensuelle payée.</p>
               </div>
             </div>
 
             <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
               <p className="font-medium text-navy mb-1">Paiement</p>
               <p>
-                Paiement envoyé après diagnostic (lien Stripe). Si le lien n’est pas disponible, on indique unknown / à déterminer.
+                Paiement envoyé après diagnostic (lien Stripe). Aucune production ni mise en ligne sans paiement actif.
               </p>
             </div>
           </div>

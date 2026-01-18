@@ -49,7 +49,7 @@ export default function MetierSlugPage({ params }) {
       faq: [
         {
           q: 'Combien de temps avant d\'être visible sur Google ?',
-          a: 'La visibilité dépend de la concurrence locale et de votre profil actuel. On ne promet pas de délai; si ce n’est pas déterminé, on l’indique comme unknown / à déterminer.'
+          a: 'La visibilité dépend de la concurrence locale et de votre profil actuel. On ne promet pas de délai.'
         },
         {
           q: 'Qu\'est-ce qui est inclus dans le suivi mensuel ?',
@@ -57,7 +57,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           q: 'Est-ce que je peux annuler si ça marche pas ?',
-          a: 'Les modalités d’engagement et de sortie sont précisées après le diagnostic. Si elles ne sont pas déterminées, on les indique comme unknown / à déterminer.'
+          a: 'Oui. Le service est mensuel, sans engagement de durée. La résiliation prend effet à la fin de la période payée.'
         },
         {
           q: 'Vous garantissez un nombre de demandes par mois ?',
@@ -173,7 +173,7 @@ export default function MetierSlugPage({ params }) {
       faq: [
         {
           q: 'Comment vous gérez les demandes urgentes la nuit ?',
-          a: 'On affiche vos heures de couverture si elles sont définies. Sinon, on indique unknown / à déterminer.',
+          a: 'On affiche vos heures de couverture telles que vous les confirmez à l’onboarding.',
         },
         {
           q: 'J’ai plusieurs contrats, est-ce que je peux montrer ça ?',

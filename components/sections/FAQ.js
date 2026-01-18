@@ -27,7 +27,7 @@ const FAQ = () => {
     {
       question: 'Est-ce qu’il y a des engagements ou des délais garantis ?',
       answer:
-        'Non. Les engagements et délais sont validés après le diagnostic, selon votre contexte. Si ce n’est pas déterminé, on l’indique comme unknown / à déterminer.',
+        'Non. Aucun engagement de durée, et aucun délai garanti. Le diagnostic précise ensuite le périmètre et le calendrier réaliste.',
     },
   ]
 

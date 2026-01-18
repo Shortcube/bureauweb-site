@@ -26,7 +26,7 @@ export default function PayerPage({ searchParams }) {
     <main className="mx-auto w-full max-w-2xl px-4 py-16">
       <h1 className="text-3xl font-semibold text-navy">Paiement</h1>
       <p className="mt-4 text-concrete-600">
-        Lien de paiement: <strong>unknown / à déterminer</strong>.
+        Lien de paiement: <strong>envoyé par courriel après le diagnostic (Stripe)</strong>.
       </p>
       <p className="mt-4 text-concrete-600">
         Si vous avez reçu ce lien par courriel, contactez-nous pour obtenir le bon lien Stripe.

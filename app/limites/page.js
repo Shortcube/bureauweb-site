@@ -9,7 +9,7 @@ export default function LimitesPage() {
       <header className="mb-10">
         <h1 className="text-3xl md:text-4xl font-semibold text-navy">Limites mensuelles</h1>
         <p className="mt-4 text-concrete-600">
-          Cette page décrit le cadre public pour éviter le scope creep. Si un élément n’est pas déterminé, il est indiqué comme unknown / à déterminer.
+          Cette page décrit le cadre public pour éviter le scope creep. Tout besoin hors cadre est traité sur devis.
         </p>
       </header>
 
@@ -28,14 +28,14 @@ export default function LimitesPage() {
           <li className="flex gap-2"><span className="text-concrete-400">•</span><span>Refonte complète ou changement de template sans cadrage préalable</span></li>
           <li className="flex gap-2"><span className="text-concrete-400">•</span><span>Campagnes publicitaires payantes (Google Ads, Meta Ads)</span></li>
           <li className="flex gap-2"><span className="text-concrete-400">•</span><span>Création de marque ou de logo</span></li>
-          <li className="flex gap-2"><span className="text-concrete-400">•</span><span>Contenus ou pages en volume non cadré (unknown / à déterminer)</span></li>
+          <li className="flex gap-2"><span className="text-concrete-400">•</span><span>Contenus ou pages en volume non cadré (sur devis)</span></li>
         </ul>
       </section>
 
       <section className="rounded-xl border border-concrete-200 bg-white p-6">
         <h2 className="text-xl font-semibold text-navy">Comment on traite un besoin hors cadre</h2>
         <p className="mt-4 text-concrete-600">
-          On clarifie le périmètre, les délais et le coût avant d’agir. Si ce n’est pas défini, on l’indique comme unknown / à déterminer.
+          On clarifie le périmètre, les délais et le coût avant d’agir. Tout besoin hors cadre est traité sur devis.
         </p>
       </section>
     </main>

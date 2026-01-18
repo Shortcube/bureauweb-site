@@ -15,7 +15,7 @@ const NotIncluded = () => {
     {
       icon: Clock,
       title: 'Pas de support 24/7',
-      description: 'Support pendant les heures ouvrables (horaires exacts: unknown / à déterminer).',
+      description: 'Support par courriel pendant les heures ouvrables (lun-ven, 9 h à 17 h, heure de l’Est).',
     },
     {
       icon: Edit3,
@@ -72,7 +72,7 @@ const NotIncluded = () => {
               Besoin d'un de ces services ?
             </p>
             <p className="text-concrete-300">
-              On peut en discuter. Certains sont disponibles en extra selon vos besoins (détails: unknown / à déterminer).
+              On peut en discuter. Certains sont disponibles en extra selon vos besoins (sur devis).
             </p>
             <p className="mt-3 text-concrete-300 text-sm">
               <a href="/limites" className="text-safety hover:underline">Voir les limites mensuelles</a>
