@@ -20,7 +20,7 @@ export default function ComptePage() {
           </Button>
         </div>
         <p className="text-sm text-concrete-500">
-          Stripe confirme chaque action par courriel. Besoin d’aide ? Contactez-nous à <a className="text-safety hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          Besoin d’aide ? Contactez-nous à <a className="text-safety hover:underline" href="mailto:support@bureauweb.ca">support@bureauweb.ca</a>.
         </p>
       </div>
     </main>
