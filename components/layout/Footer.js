@@ -135,6 +135,14 @@ const Footer = () => {
                   Gestion des renseignements
                 </a>
               </li>
+              <li>
+                <Link
+                  href="/compte"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Compte client
+                </Link>
+              </li>
             </ul>
           </div>
 
