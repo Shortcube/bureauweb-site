@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Send, CheckCircle2, Phone, Mail, Globe, MapPin, Loader2 } from 'lucide-react'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
-import { SECTOR_PAGES } from '@/lib/content'
+import { SECTOR_PAGES } from '@/lib/sectors'
 
 const LeadForm = () => {
   const [formData, setFormData] = useState({

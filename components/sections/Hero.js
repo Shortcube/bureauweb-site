@@ -1,8 +1,10 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { SECTOR_PAGES } from '@/lib/sectors'
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -11,6 +13,14 @@ const Hero = () => {
 
   const scrollToForfaits = () => {
     document.getElementById('forfaits')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const router = useRouter()
+  const handleSectorChange = (event) => {
+    const slug = event.currentTarget.value
+    if (slug) {
+      router.push(`/secteurs/${slug}`)
+    }
   }
 
   return (
@@ -49,6 +59,28 @@ const Hero = () => {
               >
                 Voir les forfaits
               </button>
+            </div>
+
+            <div className="mt-6 max-w-sm">
+              <label htmlFor="hero-sector" className="text-sm font-semibold text-navy">
+                Votre secteur (optionnel)
+              </label>
+              <select
+                id="hero-sector"
+                name="hero-sector"
+                defaultValue=""
+                onChange={handleSectorChange}
+                className="mt-2 block w-full rounded-full border border-concrete-200 bg-white px-3 py-2 text-sm text-navy focus:border-safety focus:outline-none focus:ring-2 focus:ring-safety transition"
+              >
+                <option value="" disabled>
+                  Choisissez votre secteur
+                </option>
+                {SECTOR_PAGES.map((sector) => (
+                  <option key={sector.slug} value={sector.slug}>
+                    {sector.title}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="pt-6 border-t border-concrete-200">

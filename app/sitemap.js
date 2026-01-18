@@ -1,6 +1,7 @@
 // app/sitemap.js
 
-import { BLOG_POSTS, REGION_PAGES, SECTOR_PAGES, TRADE_PAGES } from '@/lib/content'
+import { BLOG_POSTS, REGION_PAGES, TRADE_PAGES } from '@/lib/content'
+import { SECTOR_PAGES } from '@/lib/sectors'
 
 export default function sitemap() {
   const baseUrl = 'https://bureauweb.ca'

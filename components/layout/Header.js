@@ -3,14 +3,13 @@
 import { useState, useEffect } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
-import { SECTOR_PAGES } from '@/lib/content'
-import { useRouter } from 'next/navigation'
 import Logo from '@/components/ui/Logo'
 
 const Header = () => {
-  const router = useRouter()
+  const portalUrl =
+    process.env.NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL ||
+    'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const phoneDigits = siteConfig.phoneDigits
@@ -77,28 +76,14 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-
-            <div className="min-w-[180px]">
-              <Select
-                onValueChange={(value) => {
-                  router.push(`/secteurs/${value}`)
-                }}
-              >
-                <SelectTrigger
-                  className="bg-white w-[200px] lg:w-[220px] whitespace-normal h-auto py-2 text-left items-start text-sm"
-                  aria-label="Choisir un secteur d’activité"
-                >
-                  <SelectValue placeholder="Mon secteur d’activité est..." />
-                </SelectTrigger>
-                <SelectContent>
-                  {SECTOR_PAGES.map((sector) => (
-                    <SelectItem key={sector.slug} value={sector.slug}>
-                      {sector.title}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            <a
+              href={portalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-navy/70 hover:text-navy font-medium transition-colors"
+            >
+              Portail client
+            </a>
           </nav>
 
           {/* Phone + CTA */}
@@ -114,8 +99,8 @@ const Header = () => {
                 <span className="whitespace-nowrap">{phoneDisplay}</span>
               </a>
             )}
-            <Button 
-              className="hidden md:inline-flex btn-cta whitespace-nowrap shrink-0"
+            <Button
+              className="btn-cta whitespace-nowrap shrink-0 text-sm px-4 py-2"
               onClick={(e) => handleNavClick(e, '#diagnostic')}
               aria-label="Diagnostic gratuit"
             >
@@ -151,28 +136,14 @@ const Header = () => {
                 </a>
               ))}
 
-              <div className="px-4 pt-3">
-              <Select
-                onValueChange={(value) => {
-                  setIsMobileMenuOpen(false)
-                  router.push(`/secteurs/${value}`)
-                }}
+              <a
+                href={portalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors"
               >
-                  <SelectTrigger
-                    className="whitespace-normal h-auto py-2 text-left items-start"
-                    aria-label="Choisir un secteur d’activité"
-                  >
-                  <SelectValue placeholder="Mon secteur d’activité est..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SECTOR_PAGES.map((sector) => (
-                      <SelectItem key={sector.slug} value={sector.slug}>
-                        {sector.title}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-              </Select>
-              </div>
+                Portail client
+              </a>
               <div className="px-4 pt-4 border-t border-concrete-100 mt-2">
                 <Button 
                   className="w-full btn-cta"

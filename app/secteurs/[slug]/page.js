@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { SECTOR_PAGES, TRADE_PAGES } from '@/lib/content'
+import { SECTOR_PAGES } from '@/lib/sectors'
+import { TRADE_PAGES } from '@/lib/content'
 
 // Edge Runtime pour Cloudflare Pages
 export const runtime = 'edge'

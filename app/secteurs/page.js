@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SECTOR_PAGES } from '@/lib/content'
+import { SECTOR_PAGES } from '@/lib/sectors'
 
 export const metadata = {
   title: 'Secteurs d’activité | BureauWeb',
