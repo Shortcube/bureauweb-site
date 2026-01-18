@@ -436,7 +436,7 @@ const LeadForm = () => {
                   {/* Objectif */}
                   <div>
                     <Label htmlFor="objectif" className="block text-sm font-medium text-navy mb-2">
-                      Objectif <span className="text-concrete-400 text-xs">(optionnel)</span>
+                      Objectif principal <span className="text-concrete-400 text-xs">(optionnel)</span>
                     </Label>
                     <Input
                       type="text"
@@ -444,22 +444,7 @@ const LeadForm = () => {
                       name="objectif"
                       value={formData.objectif}
                       onChange={handleChange}
-                      placeholder="Ex: plus d’appels, plus de soumissions, meilleur tri des demandes"
-                    />
-                  </div>
-
-                  {/* Définition de succès */}
-                  <div>
-                    <Label htmlFor="definitionSucces" className="block text-sm font-medium text-navy mb-2">
-                      Quelles sont vos attentes par rapport à nos services ? <span className="text-concrete-400 text-xs">(optionnel)</span>
-                    </Label>
-                    <textarea
-                      id="definitionSucces"
-                      name="definitionSucces"
-                      value={formData.definitionSucces}
-                      onChange={handleChange}
-                      placeholder="Ex.: plus d’appels, plus de demandes de soumission, moins de pertes de temps avec des demandes non sérieuses"
-                      className="w-full rounded-md border border-concrete-200 px-3 py-2 text-sm text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety/40 focus:border-safety min-h-[96px]"
+                      placeholder="Ex.: plus d’appels, plus de soumissions, mieux filtrer les demandes, être mieux trouvé sur Google"
                     />
                   </div>
                   
