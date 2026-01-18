@@ -45,18 +45,18 @@ const Hero = () => {
 
             <div className="flex flex-col gap-2">
               <Button
-                className="btn-cta text-lg px-7 py-4 h-auto"
+                className="btn-cta text-lg px-7 py-4 h-auto w-full"
                 onClick={scrollToContact}
                 aria-label="Recevoir mon diagnostic gratuit"
               >
                 Recevoir mon diagnostic gratuit
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
-              <p className="text-concrete-500 text-xs md:text-sm leading-tight">
+              <p className="text-concrete-500 text-xs md:text-sm leading-tight whitespace-nowrap">
                 Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
               <button
-                className="text-concrete-600 text-sm font-semibold hover:text-navy transition"
+                className="w-full text-[#F97316] text-base md:text-lg font-semibold text-center hover:text-[#ea580c] transition"
                 onClick={scrollToForfaits}
                 aria-label="Voir les forfaits et les prix"
               >
@@ -64,16 +64,19 @@ const Hero = () => {
               </button>
             </div>
 
-            <div className="mt-3 md:mt-4 w-full max-w-xs">
-              <label htmlFor="hero-sector" className="text-xs font-semibold text-navy uppercase tracking-wide">
+            <div className="mt-3 md:mt-4 w-full">
+              <label htmlFor="hero-sector" className="text-sm font-semibold text-navy uppercase tracking-wide">
                 Votre secteur (optionnel)
               </label>
+              <p className="text-concrete-500 text-xs mt-1 whitespace-nowrap">
+                Un exemple concret de structure (pages, fiche Google, contact) est affiché selon le métier.
+              </p>
               <select
                 id="hero-sector"
                 name="hero-sector"
                 defaultValue=""
                 onChange={handleSectorChange}
-                className="mt-1 block w-full h-9 rounded-full border border-concrete-200 bg-white px-3 text-xs text-navy focus:border-safety focus:outline-none focus:ring-0 transition"
+                className="mt-2 block w-full h-9 rounded-full border border-concrete-200 bg-white px-3 text-xs text-navy focus:border-safety focus:outline-none focus:ring-0 transition"
               >
                 <option value="" disabled>
                   Choisissez votre secteur
