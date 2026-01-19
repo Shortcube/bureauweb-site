@@ -54,7 +54,7 @@ Ce document compile les décisions, contenus et réglages techniques établis da
 - Impact logique
 - Preuve (page/lien/test/observation)
 
-3) Quick wins (2 à 3 actions prioritaires)
+3) Actions rapides (2 à 3 actions prioritaires)
 
 4) Vue d’ensemble 21 jours (non détaillée)
 - Semaine 1 / 2 / 3
@@ -148,7 +148,7 @@ Colonnes (A à E):
 53. Décision suggérée v2
 54. Type d’offre recommandée
 55. Angle de vente
-56. Quick wins (liste)
+56. Actions rapides (liste)
 57. Secteur urgent (auto)
 58. Angle de vente final
 59. Problèmes (liste)
@@ -305,7 +305,7 @@ Règle: Fondations > (Urgent -> Conversion) sinon Local.
    - seuils Avancer/Attendre,
    - opportunité,
    - type d’offre,
-   - quick wins.
+   - Actions rapides.
 3) Ajouter mise en forme conditionnelle (Dashboard):
    - Avancer = vert
    - Attendre = jaune
