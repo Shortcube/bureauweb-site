@@ -1,225 +1,337 @@
-# BureauWeb — Référence Offre, Funnel et Décisions Structurelles
+<!-- DOCS_PRECEDENCE_V1 -->
+NOTE - Precedence documentation (v1)
 
-Ce document est la source de vérité concernant :
-- le fonctionnement du funnel (Pricing → Diagnostic),
-- la structure et l’intention des forfaits,
-- les règles UI critiques (espacement, cartes),
-- les limites opérationnelles assumées (par forfait),
-- les services complémentaires (hors forfait).
+Ces documents ont ete ajoutes pour eviter le drift et les contradictions.
+En cas de divergence, appliquer l'ordre de precedence suivant:
 
-Il doit être lu avant toute modification du pricing, du formulaire ou des sections liées.
+1) BUREAUWEB_PLAYBOOK.md (source de verite)
+2) docs/RUNBOOK_STRIPE.md (paiements Stripe)
+3) docs/RUNBOOK_BLOG_SEO.md (blog et SEO)
+4) docs/SOP_ONBOARDING.md, docs/SOP_PRODUCTION.md, docs/SOP_QA.md (operations)
+5) docs/SHEETS_SCHEMA.md (mecanique Sheets, formules, anti donnees fantomes)
+6) docs/RBQ_REFERENCE.md (liste RBQ interne)
+7) Les autres fichiers (.md) sont du contexte ou des rappels et peuvent contenir du legacy.
 
----
-
-## 1. Funnel Pricing → Diagnostic
-
-### Principe
-BureauWeb utilise un **formulaire unique** de diagnostic, commun à tous les forfaits.
-Les cartes de forfaits servent uniquement à capter une **intention**, pas à enclencher une transaction.
-
-### Comportement des CTA Pricing
-- Les boutons « Recevoir mon diagnostic gratuit » :
-  - déclenchent un scroll vers le formulaire sur la page d’accueil ;
-  - définissent une intention de forfait (`plan_intent`) parmi :
-    - `depart`
-    - `pro`
-    - `croissance`.
-
-### Transmission de l’intention
-- L’intention est stockée côté client via un contexte local (`PlanIntentProvider`).
-- Le formulaire inclut un champ caché :
-  - `plan_intent`, soumis avec la demande.
-- Le formulaire ne change pas visuellement selon le forfait.
-
-### Objectif
-- Réduire la friction (pas de navigation inutile).
-- Conserver un funnel unique.
-- Donner du contexte à l’analyse interne, sans promesse de personnalisation automatique.
+Toute mention "Payment Links" ou "lien Stripe" doit etre consideree legacy si elle contredit RUNBOOK_STRIPE.
+Toute mention blog sans metadata/JSON-LD/sitemap/breadcrumbs est incomplete si elle contredit RUNBOOK_BLOG_SEO.
 
 ---
 
-## 2. Architecture technique (Plan Intent)
+BureauWeb - Référence Offre, Funnel et Décisions Structurelles
 
-### Bridge dédié
-- Un composant client dédié (`PricingLeadFormBridge`) encapsule :
-  - la section Pricing ;
-  - le lien « Voir les limites mensuelles » ;
-  - le LeadForm.
-- Le reste de la page demeure server-rendered.
+Ce document est la source de vérité concernant:
 
-### Règle stricte
-Le `PlanIntentProvider` :
-- ne doit PAS entourer toute la page ;
-- ne doit exister que dans le périmètre Pricing → Formulaire.
+le fonctionnement du funnel (Pricing et Blogue → Diagnostic),
 
-Objectif : éviter une dérive full client inutile.
+la structure et l’intention des forfaits,
 
----
+les règles UI critiques (cartes, espacement),
 
-## 3. Cartes de forfaits — règles de contenu
+les limites opérationnelles assumées (par forfait),
 
-### Ce qui DOIT apparaître
-- Prix.
-- Liste des inclus mensuels (résumé).
-- CTA principal.
-- Lien vers les limites mensuelles (global, pas par carte).
+les services complémentaires (hors forfait),
 
-### Ce qui NE DOIT PAS apparaître
-- Éléments ponctuels (activation, onboarding, démarrage).
-- Disclaimers généraux.
-- Phrases de posture ou marketing.
+la frontière Diagnostic vs Paiement (Stripe).
 
-Règle :
-> Une carte de forfait ne contient que ce qui est inclus de façon continue pour ce prix.
+Il doit être lu avant toute modification du pricing, du formulaire, du blog, ou du tunnel Stripe.
 
----
+1) Funnel (entrées) → Diagnostic
+Principe
 
-## 4. Intention et périmètre des forfaits
+BureauWeb utilise un formulaire unique de diagnostic.
+Les cartes de forfaits et le blogue servent à capter une intention et à réduire l’incertitude, pas à enclencher une transaction.
 
-### Forfait Départ
-Objectif :
-- Mettre en place une présence web fonctionnelle et maintenable, sans gestion technique.
+Entrées supportées:
 
-Inclus :
-- Infrastructure minimale propre.
-- QA mensuelle (fonctionnement vérifié) + rapport 1 page.
-- 1 micro-amélioration mensuelle, selon les limites définies.
-- Aucun engagement de performance.
+Pricing (page d’accueil) → formulaire diagnostic
 
----
+Blogue (articles) → formulaire diagnostic
 
-### Forfait Pro
-Objectif :
-- Structurer ou consolider la présence locale et l’organisation du site.
+Pages services (si présentes) → formulaire diagnostic
 
-Inclus :
-- QA mensuelle + rapport 1 page.
-- Pages de services et de zones géographiques pour le SEO local (selon diagnostic).
-- Processus d’avis.
-- Support par courriel (réponse sous 2 jours ouvrables).
-- 1 intervention mineure mensuelle, selon les limites définies.
+CTA standard
 
----
+Libellé: « Recevoir mon diagnostic gratuit »
 
-### Forfait Croissance
-Objectif :
-- Faire évoluer la structure et le contenu de façon continue, sans embauche interne.
+Action: scroll vers le formulaire (sur la home) ou navigation vers /#ancre-formulaire (selon implémentation).
 
-Inclus :
-- Tout le forfait Pro.
-- 1 page de contenu courte par mois (si pertinent).
-- Support prioritaire par courriel ou par téléphone
-  (première réponse sous 2 jours ouvrables).
-- 1 intervention mineure mensuelle, selon les limites définies.
+Le CTA du blogue pointe vers le même diagnostic (même wording, même destination).
 
----
+2) Comportement des CTA Pricing (plan_intent)
+Intention de forfait
 
-## 5. Définitions opérationnelles
+Les cartes définissent une intention plan_intent:
 
-### Micro-amélioration
-Un seul ajustement simple, à faible risque, sur une page existante.
-Exemples typiques :
-- correction d’un lien brisé ;
-- correction d’un problème d’affichage mobile ;
-- mise à jour d’une information simple (téléphone, courriel, heures) à un seul endroit ;
-- micro-ajustement de libellé (sans réécriture complète).
+depart
 
-Ce que ce n’est pas :
-- une nouvelle page ;
-- une refonte ;
-- une intégration d’outil tiers ;
-- une suite de demandes au fil de l’eau.
+pro
 
----
+croissance
 
-### Intervention mineure
-Action ponctuelle, à faible risque, ex. :
-- ajustement de contenu existant ;
-- correction technique légère ;
-- amélioration UX mineure ;
-- ajustement SEO local simple.
+Règle:
 
-Ce que ce n’est pas :
-- refonte ;
-- nouvelle stratégie ;
-- tests A/B ;
-- développement spécifique.
+L’intention est stockée côté client (context local).
 
----
+Le formulaire soumet plan_intent en champ caché.
 
-### Page de contenu courte
-Une page unique, structurée, sur un seul sujet (service ou zone), format « site », pas un article long.
-- L’information provient de ce qui est fourni ou vérifiable.
-- Si une information manque, elle est indiquée comme telle plutôt que d’être inventée.
+Le formulaire ne change pas visuellement selon le forfait.
 
----
+Objectif:
 
-### QA mensuelle (contrôle qualité)
-Vérification de base :
-- site accessible (bureau / mobile) ;
-- formulaire fonctionnel ;
-- liens clés actifs ;
-- fiche Google toujours conforme.
+Réduire la friction.
 
----
+Conserver un funnel unique.
 
-## 6. Limites mensuelles (page publique)
+Donner du contexte à l’analyse interne, sans promesse de personnalisation automatique.
 
-- La page publique « limites mensuelles » détaille, par forfait :
-  - inclus mensuels ;
-  - définitions ;
-  - exemples ;
-  - limites.
-- Cette page doit rester strictement cohérente avec les définitions et le périmètre ci-dessus.
+3) Cartes de forfaits (contenu autorisé)
+DOIT apparaître
 
----
+Prix mensuel
 
-## 7. Services complémentaires (hors forfait)
+Inclus mensuels (résumé)
 
-Règles :
-- Tarifs indicatifs (avant taxes), disponibles avec abonnement actif.
-- Confirmés par écrit avant d’agir.
-- Tout service complémentaire est facturé uniquement après acceptation écrite du devis par le client.
+CTA diagnostic
 
-Barème indicatif :
-- Bloc d’intervention hors cadre (petites demandes regroupées) : à partir de 250 $.
-- Page additionnelle courte (en dehors de ce qui est inclus) : à partir de 200 $.
-- Intégration simple d’un outil tiers (ex: prise de rendez-vous, CRM, chat) : à partir de 300 $.
-- Récupération ou assainissement d’accès (domaines, DNS, fiche Google, comptes) : à partir de 150 $.
-- Traitement prioritaire, quand possible : supplément à partir de 75 $.
-- Besoins techniques plus complexes (migration, refonte, redirections multiples) : sur devis.
+Lien vers “limites mensuelles” (global, pas par carte)
 
----
+NE DOIT PAS apparaître
 
-## 8. Espacement et UI — règles verrouillées
+Frais ponctuels (activation)
 
-### Tokens d’espacement autorisés (sections)
-- `py-12`
-- `py-16`
-- `py-20`
-- `md:py-16`
-- `md:py-20`
-- `md:py-24` (sections piliers uniquement)
+Disclaimers généraux
 
-### Règles
-- Deux sections consécutives ne doivent jamais utiliser `md:py-24`.
-- Les sections liées logiquement (Problème → Solution) doivent être plus denses.
-- Aucun nouveau token d’espacement ne doit être introduit sans justification.
+Phrases marketing
 
----
+Règle:
+Une carte de forfait ne contient que ce qui est inclus de façon continue pour ce prix.
 
-## 9. Loi 101 — ligne directrice
+4) Prix et frais ponctuels (activation)
 
-- Éviter les anglicismes évitables (onboarding, go-live, kickoff).
-- Acronymes acceptés si courants et techniques (SEO).
-- Préférer le français clair et opérationnel au jargon.
+Prix mensuels:
 
----
+Départ: 199$/mois
 
-## 10. Règle de modification future
+Pro: 349$/mois
 
-Avant toute modification :
-- vérifier si le changement touche le funnel, les forfaits ou le formulaire ;
-- mettre à jour ce document si le comportement, le périmètre ou le barème change.
+Croissance: 549$/mois
+
+Frais d’activation (ponctuels):
+
+Départ: 0
+
+Pro: 499$
+
+Croissance: 799$
+
+Règle UI:
+
+Ne pas mettre l’activation dans la carte.
+
+L’activation est expliquée au bon endroit (après diagnostic, page paiement, ou encadré “modalités”).
+
+5) Intention et périmètre des forfaits
+Départ
+
+Objectif:
+
+Présence web fonctionnelle et maintenable, sans gestion technique interne.
+
+Inclus:
+
+QA mensuelle + rapport 1 page.
+
+1 micro-amélioration mensuelle (définition ci-dessous).
+
+Aucun engagement de performance.
+
+Pro
+
+Objectif:
+
+Consolider la présence locale et l’organisation du site.
+
+Inclus:
+
+QA mensuelle + rapport 1 page.
+
+Structuration services et zones (si pertinent).
+
+Processus d’avis.
+
+Support courriel (réponse sous 2 jours ouvrables).
+
+1 intervention mineure mensuelle (définition ci-dessous).
+
+Croissance
+
+Objectif:
+
+Évolution continue de structure et contenu, sans embauche interne.
+
+Inclus:
+
+Tout Pro.
+
+1 page de contenu courte par mois (si pertinent).
+
+Support prioritaire (courriel ou téléphone), première réponse sous 2 jours ouvrables.
+
+1 intervention mineure mensuelle.
+
+6) Définitions opérationnelles
+Micro-amélioration
+
+Un seul ajustement simple, faible risque, sur une page existante.
+Exemples:
+
+corriger un lien brisé;
+
+corriger un problème mobile;
+
+mettre à jour téléphone, courriel, heures à un seul endroit;
+
+micro-ajustement de libellé (sans réécriture complète).
+
+Ce que ce n’est pas:
+
+nouvelle page;
+
+refonte;
+
+intégration d’outil tiers;
+
+suite de demandes au fil de l’eau.
+
+Intervention mineure
+
+Action ponctuelle, faible risque:
+
+ajustement contenu existant;
+
+correction technique légère;
+
+amélioration UX mineure;
+
+ajustement SEO local simple.
+
+Ce que ce n’est pas:
+
+refonte;
+
+stratégie marketing;
+
+tests A/B;
+
+développement sur mesure.
+
+Page de contenu courte
+
+Page unique, structurée, sur un seul sujet (service ou zone), format “site”, pas un article long.
+
+L’information provient de ce qui est fourni ou vérifiable.
+
+Si info manquante: unknown, jamais inventer.
+
+QA mensuelle
+
+Vérifications:
+
+site accessible;
+
+mobile utilisable;
+
+CTA et contacts;
+
+formulaire + confirmation;
+
+fiche Google cohérente si applicable.
+
+7) Limites mensuelles (page publique)
+
+La page “limites mensuelles” doit rester strictement cohérente avec les définitions ci-dessus.
+Toute modification de périmètre doit mettre à jour ce fichier et la page publique.
+
+8) Paiement Stripe (frontière diagnostic → exécution)
+
+Règle:
+
+Aucun travail tant que Payé = Non.
+
+Définition Payé:
+
+abonnement Stripe actif
+
+dernière facture paid
+
+MVP recommandé:
+
+Stripe Checkout Session (tunnel propre) + webhook.
+
+Success URL: /merci
+
+Cancel URL: retour forfaits ou /payer (selon implémentation).
+
+9) Services complémentaires (hors forfait)
+
+Règles:
+
+Sur devis, confirmé par écrit avant d’agir.
+
+Facturé uniquement après acceptation écrite.
+
+Barème indicatif (avant taxes, ajustable):
+
+Bloc d’intervention hors cadre: à partir de 250$.
+
+Page additionnelle courte: à partir de 200$.
+
+Intégration simple (prise de rendez-vous, CRM, chat): à partir de 300$.
+
+Récupération ou assainissement d’accès (DNS, fiche Google, comptes): à partir de 150$.
+
+Traitement prioritaire, quand possible: supplément à partir de 75$.
+
+Besoins complexes (migration, refonte, redirections multiples): sur devis.
+
+10) Espacement et UI (règles verrouillées)
+
+Tokens d’espacement autorisés:
+
+py-12
+
+py-16
+
+py-20
+
+md:py-16
+
+md:py-20
+
+md:py-24 (sections piliers uniquement)
+
+Règles:
+
+Deux sections consécutives ne doivent jamais utiliser md:py-24.
+
+Les sections liées logiquement (Problème → Solution) doivent être plus denses.
+
+Aucun nouveau token sans justification.
+
+11) Loi 101 (ligne directrice)
+
+Éviter les anglicismes évitables (onboarding, go-live, kickoff).
+
+Acronymes techniques courants acceptés (SEO).
+
+Français clair et opérationnel.
+
+12) Règle de modification future
+
+Avant toute modification:
+
+vérifier si le changement touche le funnel, les forfaits, le blog, le formulaire, ou Stripe;
+
+mettre à jour ce document si comportement ou périmètre change.
 
 Ce fichier prévaut sur toute interprétation implicite du code.

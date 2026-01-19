@@ -7,7 +7,7 @@ import { SECTOR_PAGES } from '@/lib/sectors'
 export default function sitemap() {
   const baseUrl = 'https://bureauweb.ca'
   const now = new Date()
-  const blogEnabled = process.env.BLOG_ENABLED === 'true'
+  const blogEnabled = process.env.BLOG_ENABLED !== 'false'
 
   const staticUrls = [
     {

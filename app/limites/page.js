@@ -1,4 +1,4 @@
-import GoBackButton from '@/components/GoBackButton'
+import PageNavBack from '@/components/layout/PageNavBack'
 
 export const metadata = {
   title: 'Limites mensuelles | BureauWeb',
@@ -20,7 +20,7 @@ export default function LimitesPage() {
         <p className="text-concrete-600">
           Ces limites encadrent ce qui est inclus dans l’abonnement mensuel. Tout besoin hors cadre est confirmé par écrit (périmètre, coût) avant d’agir. Aucun travail n’est fait sans abonnement actif confirmé.
         </p>
-        <GoBackButton />
+        <PageNavBack />
       </header>
 
       <section className="rounded-xl border border-concrete-200 bg-white p-6 space-y-4">

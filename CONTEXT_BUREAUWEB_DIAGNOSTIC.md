@@ -1,313 +1,450 @@
-# BureauWeb — Contexte de travail (Diagnostic, scoring, dashboard Google Sheets)
+<!-- DOCS_PRECEDENCE_V1 -->
+NOTE - Precedence documentation (v1)
 
-Date: 2026-01-17
+Ces documents ont ete ajoutes pour eviter le drift et les contradictions.
+En cas de divergence, appliquer l'ordre de precedence suivant:
 
-Ce document compile les décisions, contenus et réglages techniques établis dans la conversation, afin de redémarrer un nouveau fil sans perdre le contexte.
+1) BUREAUWEB_PLAYBOOK.md (source de verite)
+2) docs/RUNBOOK_STRIPE.md (paiements Stripe)
+3) docs/RUNBOOK_BLOG_SEO.md (blog et SEO)
+4) docs/SOP_ONBOARDING.md, docs/SOP_PRODUCTION.md, docs/SOP_QA.md (operations)
+5) docs/SHEETS_SCHEMA.md (mecanique Sheets, formules, anti donnees fantomes)
+6) docs/RBQ_REFERENCE.md (liste RBQ interne)
+7) Les autres fichiers (.md) sont du contexte ou des rappels et peuvent contenir du legacy.
 
----
-
-## 1) Positionnement BureauWeb (rappel)
-- BureauWeb = partenaire d’**infrastructure web** (pas une agence créative).
-- Cible: entreprises locales au Québec (construction, métiers manuels, services terrain).
-- Promesse: fiabilité, vitesse, visibilité locale (fiche Google), et conversion (contact facile, demandes qui entrent).
-
----
-
-## 2) Terminologie du plan gratuit (CTA)
-### Décision
-- L’expression **« Plan gratuit 24 h »** était jugée trop ambiguë.
-- Remplacement validé: **« Diagnostic gratuit »**.
-
-### Placement recommandé
-- Bouton (header + hero): **Diagnostic gratuit** ou **Recevoir mon diagnostic gratuit**.
-- Mention de délai en microcopy, séparée du CTA:
-  - « Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires. »
+Toute mention "Payment Links" ou "lien Stripe" doit etre consideree legacy si elle contredit RUNBOOK_STRIPE.
+Toute mention blog sans metadata/JSON-LD/sitemap/breadcrumbs est incomplete si elle contredit RUNBOOK_BLOG_SEO.
 
 ---
 
-## 3) Catchphrase (bandeau / pill)
-### Catchphrase retenue
-- Version recommandée et intégrée: **« On gère votre web pendant que vous gérez vos chantiers. »**
+BureauWeb - Contexte de travail (Diagnostic, scoring, dashboard Google Sheets)
 
-### Intégration UI
-- Bandeau/pill au-dessus du hero OK.
-- Couleur d’accent: limiter aux mots clés (ex: « web », « chantiers ») et éviter de sur-surligner.
+Date: 2026-01-19
 
----
+Ce document compile les décisions, contenus et réglages techniques établis, afin de redémarrer un nouveau fil sans perdre le contexte.
 
-## 4) Diagnostic (livrable client) — structure
-### Objectif
-- Livrer un diagnostic écrit **lisible, rationnel, non spéculatif**, pour décider si on avance ensemble.
+1) Positionnement BureauWeb (rappel)
 
-### Contrainte
-- **1 page max** côté client.
+BureauWeb = partenaire d’infrastructure web (pas une agence créative).
 
-### Contenu “client” (1 page)
-1) Résumé (lecture 30 secondes)
-- Score (/100)
-- Classe: solide / améliorable / critique
-- Opportunité principale
-- Recommandation: avancer / attendre / pas un bon fit
+Cible: entreprises locales au Québec (construction, métiers manuels, services terrain).
 
-2) Problèmes observables (max 3)
-- Description factuelle
-- Impact logique
-- Preuve (page/lien/test/observation)
+Objectif: fiabilité, vitesse perçue, visibilité locale (fiche Google), conversion (contact facile, demandes qui entrent).
 
-3) Actions rapides (2 à 3 actions prioritaires)
+Règle: aucune promesse chiffrée, uniquement du vérifiable.
 
-4) Vue d’ensemble 21 jours (non détaillée)
-- Semaine 1 / 2 / 3
+2) Terminologie du CTA
 
-5) Périmètre typique si on avance (bullet list courte)
+Décision:
 
-6) Prochaines étapes possibles (bullet list courte)
+Remplacer toute mention visible « Plan gratuit 24 h » par « Diagnostic gratuit ».
 
-### « Règles et cadre » (section interne)
-- Décision: cette section peut être **interne** (non livrée au client) si tu préfères.
-- But interne: standardiser le diagnostic, éviter les promesses, documenter les hypothèses.
+Placement:
 
----
+Bouton (header + hero): Diagnostic gratuit ou Recevoir mon diagnostic gratuit.
 
-## 5) Système de scoring (Google Sheets)
-### Valeurs de scoring
-- Plusieurs colonnes passent en **Oui / Non / Incomplet**.
-- Conversion vers score numérique: **Oui = 3**, **Incomplet = 1**, **Non = 0**.
+Microcopy séparée: « Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires. »
 
-### Colonnes visibles vs scores
-- Option acceptée: garder la colonne “statut” visible (Oui/Non/Incomplet) et **cacher** la colonne “Score …”.
+3) Catchphrase (bandeau)
 
----
+Catchphrase retenue:
 
-## 6) Onglet `Liste` (référentiel)
-Nom d’onglet: **Liste** (important).
+« On gère votre web pendant que vous gérez vos chantiers. »
+
+Règles:
+
+Bandeau au-dessus du hero: OK.
+
+Accent minimal, pas de surlignage agressif.
+
+4) Diagnostic (livrable client) - structure
+
+Objectif:
+
+Livrer un diagnostic écrit lisible, rationnel, non spéculatif, pour décider si on avance.
+
+Contrainte:
+
+1 page max côté client.
+
+Contenu “client” (1 page):
+
+Résumé (30 secondes)
+
+Score (/100)
+
+Classe: solide / améliorable / critique
+
+Opportunité principale
+
+Recommandation: avancer / attendre / pas un bon fit
+
+Problèmes observables (max 3)
+
+Constat factuel
+
+Impact logique
+
+Preuve (page/lien/test/observation)
+
+Actions rapides (2 à 3 actions prioritaires)
+
+Vue d’ensemble 21 jours (non détaillée)
+
+Semaine 1 / 2 / 3
+
+Périmètre typique si on avance (liste courte)
+
+Prochaines étapes possibles (liste courte)
+
+Section interne (optionnelle):
+
+Règles et cadre internes pour standardiser et éviter les claims.
+
+5) Rôle du blogue dans le diagnostic
+
+Le blogue sert de point d’entrée informatif pour des entrepreneurs déjà conscients d’un problème (site, mobile, fiche Google, conversion).
+
+Chaque article:
+
+traite d’un sujet concret et observable,
+
+clarifie ce qui est sous contrôle vs ce qui ne l’est pas,
+
+mène vers le diagnostic gratuit comme prochaine étape logique.
+
+Le blogue ne vise pas:
+
+le trafic générique,
+
+l’éducation théorique,
+
+la notoriété abstraite.
+
+Il vise:
+
+la qualification minimale du lecteur,
+
+la réduction d’incertitude avant contact,
+
+l’alignement entre le problème perçu et le diagnostic proposé.
+
+Le diagnostic gratuit peut être déclenché depuis:
+
+la page d’accueil,
+
+les pages de services,
+
+chaque article de blogue (CTA standardisé).
+
+6) Système de scoring (Google Sheets)
+
+Valeurs:
+
+Statuts: Oui / Non / Incomplet
+
+Points: Oui = 3, Incomplet = 1, Non = 0
+
+Règle:
+
+Statut visible, scores peuvent être masqués.
+
+7) Onglet Liste (référentiel)
+
+Nom d’onglet: Liste
 
 Colonnes (A à E):
-- A: Secteurs d’activités
-- B: Secteurs d’activités RBQ
-- C: Secteurs urgents
-- D: Régions
-- E: Analyste
 
----
+A: Secteurs d’activités
 
-## 7) Liste des colonnes (Diagnostics complets) — ordre confirmé
-59 colonnes en ordre:
-1. Entreprise
-2. Secteur
-3. Région
-4. Date diagnostic
-5. Analyste
-6. RBQ visible
-7. RBQ requis ?
-8. Score RBQ
-9. Site accessible
-10. Mobile utilisable
-11. Vitesse perçue
-12. Message clair en 5 sec
-13. Services + région clairs
-14. Page contact claire
-15. CTA visible
-16. Téléphone cliquable
-17. Score téléphone clicable
-18. Courriel cliquable
-19. Score courriel cliquable
-20. Formulaire présent
-21. Score formulaire présent
-22. Formulaire fonctionnel
-23. Confirmation après envoi
-24. Fiche Google existe ?
-25. Score fiche google existe
-26. Fiche revendiquée
-27. Catégorie correcte
-28. Infos cohérentes (NAP)
-29. Lien fiche → site
-30. Score lien fiche
-31. HTTPS valide
-32. Score HTTPS
-33. Pages légales
-34. Score page légales
-35. Avis clients
-36. Score avis clients
-37. Photos réelles
-38. Cohérence globale
-39. Score Site
-40. Score Conversion
-41. Score Local
-42. Score Fondations
-43. Score total
-44. Classe
-45. Décision suggérée
-46. Problème #1
-47. Problème #2
-48. Problème #3
-49. Notes internes
-50. Bloquants (nb)
-51. Bloquants (détails)
-52. Opportunité
-53. Décision suggérée v2
-54. Type d’offre recommandée
-55. Angle de vente
-56. Actions rapides (liste)
-57. Secteur urgent (auto)
-58. Angle de vente final
-59. Problèmes (liste)
+B: Secteurs d’activités RBQ
 
-Notes:
-- Les scores agrégés utilisés: Conversion = **AL**, Local = **AM**, Fondations = **AN** (référence interne de l’utilisateur).
-- Score HTTPS = **AC** et Score lien fiche = **AB** (confirmé).
+C: Secteurs urgents
 
----
+D: Régions
 
-## 8) NAP (définition courte)
-- NAP = **Name, Address, Phone**.
-- « Infos cohérentes (NAP) » signifie: nom/adresse/téléphone cohérents entre:
-  - site web,
-  - fiche Google,
-  - autres annuaires majeurs.
+E: Analyste
 
----
+8) Colonnes Diagnostics complets (ordre confirmé, 59)
 
-## 9) Secteurs: ciblage et exceptions
-### “Fournisseur d’équipement de chauffage”
-- Par défaut: **mauvais fit** (vendeur/distributeur).
-- Fit conditionnel si **installation/entretien/service terrain** clairement offert.
+Entreprise
 
----
+Secteur
 
-## 10) RBQ: logique (requis vs non requis)
-### Liste “RBQ requis” (référentiel)
-Une liste RBQ a été constituée (à maintenir dans `Liste` colonne B). Version courte validée:
-- Asphaltage
-- Balcons / terrasses
-- Béton
-- Carrelage
-- Charpente
-- Climatisation
-- Clôtures
-- Clôtures et portails
-- Construction générale
-- CVAC / Chauffage
-- Démolition
-- Ébénisterie
-- Électricité
-- Électricité industrielle
-- Excavation
-- Ferronnerie
-- Fondations
-- Gaz naturel
-- Gicleurs / incendie
-- Gypse / tirage de joints
-- Isolation
-- Maçonnerie
-- Menuiserie
-- Pavage
-- Peinture
-- Piscines
-- Planchers
-- Plomberie
-- Portes et fenêtres
-- Réfrigération commerciale
-- Rénovation commerciale
-- Rénovation résidentielle
-- Revêtement extérieur
-- Soudure
-- Spas
-- Toiture
-- Ventilation
+Région
 
-### Colonnes RBQ
-- Ajout décidé: colonne **RBQ requis ?** (G) + colonne **Score RBQ** (H).
-- Comportement souhaité:
-  - Si RBQ non requis: score par défaut = 3.
-  - Si RBQ requis: attendre l’input “RBQ visible” et scorer selon Oui/Non/Incomplet.
+Date diagnostic
 
----
+Analyste
 
-## 11) Génération des “Problèmes” (liste + top 3)
-### Objectif
-- Générer une liste de problèmes textuels lisibles, puis extraire les 3 premiers en colonnes.
+RBQ visible
 
-### Formule BG (liste)
-- `BG` = `TEXTJOIN` avec séparateur **" ||| "**.
-- Exemple (structure):
-  - Bloquants généraux (site down, aucun contact, formulaire non fonctionnel, fiche Google absente, HTTPS invalide, RBQ non visible si requis)
-  - Puis problèmes contextuels selon l’angle de vente (Conversion/Local)
+RBQ requis ?
 
-### Extraction Problème #1/#2/#3
-- Problème rencontré: split incohérent (mots isolés) lorsqu’on splittait sur **" ||| "**.
-- Correctif retenu: splitter sur **"|||"** (sans dépendre des espaces) + TRIM.
+Score RBQ
 
-Formules (Google Sheets):
-- AT (Problème #1)
-  - `=IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");1));"")`
-- AU (Problème #2)
-  - `=IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");2));"")`
-- AV (Problème #3)
-  - `=IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");3));"")`
+Site accessible
 
----
+Mobile utilisable
 
-## 12) Dashboard (Google Sheets, pas Smartsheet)
-### Correction de confusion
-- “Smartsheet” a été mentionné par erreur au milieu; la mise en place finale est **Google Sheets uniquement**.
+Vitesse perçue
 
-### Problème des “données fantômes”
-- Cause: drag-down de lignes vides qui recopiait des formules/valeurs par défaut, faussant KPI et filtres.
-- Décision pratique (simple): **supprimer les lignes vides** et **ajouter au fur et à mesure**.
-- Important: écrire une nouvelle entreprise sous la dernière ligne recopie automatiquement les formules, sans créer de faux enregistrements.
+Message clair en 5 sec
 
-### Locale de formules
-- Dans le fichier de l’utilisateur:
-  - noms de fonctions en **anglais** (FILTER, QUERY, COUNTIF, COUNTIFS)
-  - séparateur d’arguments = **point-virgule `;`** (pas virgule)
+Services + région clairs
 
-### KPIs (exemples)
-Toujours conditionner avec `Entreprise <> ""` si nécessaire.
-- Total diagnostics
-  - `=COUNTA('Diagnostics complets'!A2:A)`
-- À avancer
-  - `=COUNTIFS('Diagnostics complets'!BA2:BA;"Avancer";'Diagnostics complets'!A2:A;"<>")`
-- Opportunités fortes
-  - `=COUNTIFS('Diagnostics complets'!AZ2:AZ;"Forte";'Diagnostics complets'!A2:A;"<>")`
-- Offres mensuelles
-  - `=COUNTIFS('Diagnostics complets'!BB2:BB;"Mensuel";'Diagnostics complets'!A2:A;"<>")`
-- Secteurs urgents
-  - `=COUNTIFS('Diagnostics complets'!BE2:BE;"OUI";'Diagnostics complets'!A2:A;"<>")`
+Page contact claire
 
-### Table "À traiter maintenant" (QUERY)
-- Recommandé: tableau filtré dans `Dashboard` via QUERY.
-- Ajout clé: filtrer aussi `A is not null` pour éviter les lignes vides.
+CTA visible
 
-Exemple:
-- `=QUERY('Diagnostics complets'!A1:BF;"select A,B,C,BA,AZ,BF,BB,AX,AT,E where BA='Avancer' and A is not null label A 'Entreprise', B 'Secteur', C 'Région', BA 'Décision', AZ 'Opportunité', BF 'Angle', BB 'Offre', AX 'Bloquants', AT 'Problème #1', E 'Analyste'";1)`
+Téléphone cliquable
 
----
+Score téléphone clicable
 
-## 13) Angle de vente final (aide-mémoire)
-Texte à coller en commentaire de cellule (résumé):
-- **Fondations**: à choisir si crédibilité/conformité cassée (site inaccessible, HTTPS invalide, RBQ requis non visible, pages légales absentes, incohérences majeures).
-- **Conversion**: à choisir si trafic existe mais contacts faibles (CTA/phone/formulaire/message).
-- **Local**: à choisir si contact OK mais entreprise peu trouvable (fiche Google, NAP, lien fiche→site, avis).
+Courriel cliquable
+
+Score courriel cliquable
+
+Formulaire présent
+
+Score formulaire présent
+
+Formulaire fonctionnel
+
+Confirmation après envoi
+
+Fiche Google existe ?
+
+Score fiche google existe
+
+Fiche revendiquée
+
+Catégorie correcte
+
+Infos cohérentes (NAP)
+
+Lien fiche → site
+
+Score lien fiche
+
+HTTPS valide
+
+Score HTTPS
+
+Pages légales
+
+Score page légales
+
+Avis clients
+
+Score avis clients
+
+Photos réelles
+
+Cohérence globale
+
+Score Site
+
+Score Conversion
+
+Score Local
+
+Score Fondations
+
+Score total
+
+Classe
+
+Décision suggérée
+
+Problème #1
+
+Problème #2
+
+Problème #3
+
+Notes internes
+
+Bloquants (nb)
+
+Bloquants (détails)
+
+Opportunité
+
+Décision suggérée v2
+
+Type d’offre recommandée
+
+Angle de vente
+
+Actions rapides (liste)
+
+Secteur urgent (auto)
+
+Angle de vente final
+
+Problèmes (liste)
+
+Notes internes (références):
+
+Scores agrégés: Conversion = AL, Local = AM, Fondations = AN
+
+Score HTTPS = AC, Score lien fiche = AB
+
+9) NAP (définition)
+
+NAP = Name, Address, Phone
+NAP cohérent = cohérence nom/adresse/téléphone entre site, fiche Google, annuaires majeurs.
+
+10) Secteurs: exception “Fournisseur d’équipement de chauffage”
+
+Par défaut: mauvais fit (vendeur/distributeur).
+
+Fit conditionnel si installation/entretien/service terrain clairement offert.
+
+11) RBQ: logique requis vs non requis
+
+Colonnes:
+
+RBQ requis ? (G)
+
+Score RBQ (H)
+
+Comportement:
+
+Si RBQ non requis: score par défaut = 3.
+
+Si RBQ requis: scorer selon RBQ visible (Oui/Non/Incomplet).
+
+Liste RBQ requis (à maintenir dans Liste colonne B):
+
+Asphaltage
+
+Balcons / terrasses
+
+Béton
+
+Carrelage
+
+Charpente
+
+Climatisation
+
+Clôtures
+
+Clôtures et portails
+
+Construction générale
+
+CVAC / Chauffage
+
+Démolition
+
+Ébénisterie
+
+Électricité
+
+Électricité industrielle
+
+Excavation
+
+Ferronnerie
+
+Fondations
+
+Gaz naturel
+
+Gicleurs / incendie
+
+Gypse / tirage de joints
+
+Isolation
+
+Maçonnerie
+
+Menuiserie
+
+Pavage
+
+Peinture
+
+Piscines
+
+Planchers
+
+Plomberie
+
+Portes et fenêtres
+
+Réfrigération commerciale
+
+Rénovation commerciale
+
+Rénovation résidentielle
+
+Revêtement extérieur
+
+Soudure
+
+Spas
+
+Toiture
+
+Ventilation
+
+12) Problèmes (liste) + extraction top 3
+
+Objectif:
+
+Générer une liste textuelle lisible, puis extraire 3 items.
+
+Règle:
+
+Séparateur de liste: " ||| "
+
+Correctif extraction:
+
+Splitter sur "|||", puis TRIM.
+
+Formules:
+
+AT: =IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");1));"")
+
+AU: =IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");2));"")
+
+AV: =IFERROR(TRIM(INDEX(SPLIT(BG2;"|||");3));"")
+
+13) Dashboard (Google Sheets)
+
+Décision:
+
+Dashboard = Google Sheets uniquement.
+
+Données fantômes:
+
+Cause: drag-down sur lignes vides recopie des valeurs/formules.
+
+Fix: supprimer les lignes vides, ajouter au fur et à mesure.
+
+Locale:
+
+Fonctions en anglais (FILTER, QUERY, COUNTIF, COUNTIFS)
+
+Séparateur = point-virgule ;
+
+KPIs exemples:
+
+Total diagnostics: =COUNTA('Diagnostics complets'!A2:A)
+
+À avancer: =COUNTIFS('Diagnostics complets'!BA2:BA;"Avancer";'Diagnostics complets'!A2:A;"<>")
+
+Table “À traiter maintenant”:
+
+Filtrer A is not null.
+
+14) Angle de vente final (aide-mémoire)
+
+Fondations: crédibilité ou conformité cassée (site inaccessible, HTTPS invalide, RBQ requis non visible, pages légales absentes).
+Conversion: contacts faibles (CTA, téléphone, formulaire, message).
+Local: entreprise peu trouvable (fiche Google, NAP, lien fiche→site, avis).
 Règle: Fondations > (Urgent -> Conversion) sinon Local.
-
----
-
-## 14) État actuel (au moment de couper la conversation)
-- Dashboard corrigé: KPIs cohérents sans données fantômes.
-- Tableau Dashboard: liste "Avancer" fonctionne, pas de répétitions après correction + suppression lignes vides.
-
----
-
-## 15) Prochaines étapes (si reprise)
-1) Stabiliser définitivement les colonnes "par défaut" (si besoin, ajouter garde-fou `IF($A2="";"";...)` sur quelques colonnes clés).
-2) Ajouter 10–20 diagnostics réels pour valider:
-   - seuils Avancer/Attendre,
-   - opportunité,
-   - type d’offre,
-   - Actions rapides.
-3) Ajouter mise en forme conditionnelle (Dashboard):
-   - Avancer = vert
-   - Attendre = jaune
-   - Ne pas prioriser = gris/rouge.
-

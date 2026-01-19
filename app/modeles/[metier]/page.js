@@ -15,6 +15,7 @@ import {
   Wrench,
 } from 'lucide-react'
 import { MODELES_BY_SLUG } from '@/lib/modeles.data'
+import PageNavBack from '@/components/layout/PageNavBack'
 import DemoSoumissionForm from '@/components/modeles/DemoSoumissionForm'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -51,6 +52,9 @@ export default function ModeleDetailPage({ params }) {
 
   return (
     <main className="space-y-0">
+      <div className="section-container pt-8">
+        <PageNavBack backHref="/modeles" backLabel="Retour aux modèles" />
+      </div>
       <div className="border-b border-concrete-200 bg-concrete-50">
         <div className="section-container py-3 text-xs text-concrete-700">
           Modèle de démonstration. Informations et entreprise fictives.

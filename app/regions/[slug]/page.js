@@ -43,7 +43,7 @@ export default function RegionSlugPage({ params }) {
       <section className="mt-10 rounded-xl border border-concrete-200 bg-concrete-50 p-6">
         <h2 className="text-xl font-semibold text-navy">À personnaliser</h2>
         <p className="mt-2 text-concrete-600">
-          Ajouter vos vraies zones, vos contraintes de déplacement, vos horaires, et vos preuves. Si une info n’est pas confirmée, on la marque unknown.
+          Ajouter vos vraies zones, vos contraintes de déplacement, vos horaires, et vos preuves. Si une info n’est pas confirmée, on la marque à confirmer.
         </p>
       </section>
 

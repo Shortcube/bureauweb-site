@@ -81,7 +81,7 @@ const PlanGratuit24h = () => {
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">6</div>
                 <div className="space-y-1">
                   <p className="font-semibold text-navy">Prochaines étapes</p>
-                  <p className="text-concrete-600 break-words mt-1">Décision (GO/NO-GO): on avance ou non. Si on avance: lien Stripe, puis production.</p>
+                  <p className="text-concrete-600 break-words mt-1">Décision (GO/NO-GO): on avance ou non. Si on avance: Paiement Stripe (Checkout), puis production.</p>
                 </div>
               </li>
             </ol>

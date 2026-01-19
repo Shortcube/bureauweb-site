@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageNavBack from '@/components/layout/PageNavBack'
 import { MODELES } from '@/lib/modeles.data'
 import { SECTOR_PAGES } from '@/lib/sectors'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -51,6 +52,7 @@ export default function ModelesPage() {
 
   return (
     <main className="section-container py-12 md:py-16 space-y-10">
+      <PageNavBack className="mb-4" />
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-wide text-concrete-500">Modèles</p>
         <h1 className="text-3xl font-semibold tracking-tight text-navy">Modèles de démonstration</h1>

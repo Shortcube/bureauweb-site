@@ -1,10 +1,9 @@
 import { redirect } from 'next/navigation'
 
+import PageNavBack from '@/components/layout/PageNavBack'
 import { normalizePlan } from '@/lib/stripe-edge'
 
 export const runtime = 'edge'
-
-const EXPECTED_PLANS = ['depart', 'pro', 'croissance']
 
 export default function PayerPage({ searchParams }) {
   const planParam = String(searchParams?.plan || '')
@@ -21,23 +20,13 @@ export default function PayerPage({ searchParams }) {
 
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-16">
-      <h1 className="text-3xl font-semibold text-navy">Tunnel de paiement Stripe</h1>
+      <PageNavBack className="mb-6" />
+      <h1 className="text-3xl font-semibold text-navy">Redirection vers Stripe</h1>
       <p className="mt-4 text-concrete-600">
-        Passez par <code>/api/stripe/checkout?plan=&lt;nom-forfait&gt;</code> pour créer une session sécurisée.
-        Les plans valides sont listés ci-dessous.
+        Ce point d’entrée redirige immédiatement vers Stripe.
       </p>
-      <div className="mt-6 rounded-xl border border-concrete-200 bg-concrete-50 p-4 text-sm text-concrete-600">
-        <p className="font-semibold text-navy">Paramètre attendu</p>
-        <ul className="mt-2 space-y-1">
-          {EXPECTED_PLANS.map((item) => (
-            <li key={item}>
-              • <code>?plan={item}</code>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <p className="mt-4 text-xs text-concrete-500">
-        Ce point d’entrée redirige immédiatement vers Stripe Checkout ; il n’y a pas de formulaire sur ce site.
+      <p className="mt-2 text-sm text-concrete-500">
+        Si rien ne se passe, le lien de paiement est incomplet.
       </p>
     </main>
   )

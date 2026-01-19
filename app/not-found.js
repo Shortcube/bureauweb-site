@@ -36,7 +36,7 @@ export default function NotFound() {
             <Link className="text-slate-900 underline underline-offset-4 hover:text-slate-700" href="/">
               Accueil
             </Link>
-            <Link className="text-slate-900 underline underline-offset-4 hover:text-slate-700" href="/#comment-ca-fonctionne">
+            <Link className="text-slate-900 underline underline-offset-4 hover:text-slate-700" href="/#processus">
               Comment ça fonctionne
             </Link>
             <Link className="text-slate-900 underline underline-offset-4 hover:text-slate-700" href="/#forfaits">

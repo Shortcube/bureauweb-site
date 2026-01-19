@@ -23,6 +23,19 @@ export default function SecteursPage() {
           </Link>
         </div>
       </header>
+      <section className="mb-10 rounded-2xl border border-safety/30 bg-safety/10 p-6">
+        <h2 className="text-2xl font-semibold text-safety">Vous ne trouvez pas votre secteur ?</h2>
+        <p className="mt-2 text-concrete-700 leading-relaxed">
+          Même si on ne l’a pas listé, on pourrait peut-être tout de même vous aider. Décrivez rapidement
+          votre activité et vos objectifs, on vous propose un plan concret. Retour sous 24–48 h ouvrables.
+        </p>
+        <Link
+          href="/#diagnostic"
+          className="mt-4 inline-flex items-center text-sm font-semibold text-safety hover:underline"
+        >
+          Contacter l’équipe
+        </Link>
+      </section>
 
       <div className="grid md:grid-cols-2 gap-4">
         {SECTOR_PAGES.map((sector) => (

@@ -27,12 +27,15 @@ const Header = () => {
   const navLinks = [
     { href: '#processus', label: 'Comment ça marche' },
     { href: '#forfaits', label: 'Forfaits' },
-    { href: '#diagnostic', label: 'Diagnostic gratuit' },
+    { href: '/blog', label: 'Blogue' },
     { href: '#faq', label: 'FAQ' },
-    { href: '#conformite', label: 'Conformité' },
   ]
 
   const handleNavClick = (e, href) => {
+    if (!href.startsWith('#')) {
+      setIsMobileMenuOpen(false)
+      return
+    }
     e.preventDefault()
     const element = document.querySelector(href)
     if (element) {

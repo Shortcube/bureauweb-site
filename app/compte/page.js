@@ -1,3 +1,4 @@
+import PageNavBack from '@/components/layout/PageNavBack'
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
 
@@ -8,6 +9,7 @@ const PORTAL_URL =
 export default function ComptePage() {
   return (
     <main className="section-container min-h-screen py-20">
+      <PageNavBack className="mb-8" />
       <div className="max-w-3xl mx-auto space-y-6 text-center">
         <h1 className="text-4xl font-semibold text-navy">Votre compte Stripe</h1>
         <p className="text-lg text-concrete-600 leading-relaxed">

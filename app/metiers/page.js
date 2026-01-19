@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PageNavBack from '@/components/layout/PageNavBack'
 import { TRADE_PAGES } from '@/lib/content'
 
 export const metadata = {
@@ -9,6 +10,7 @@ export const metadata = {
 export default function MetiersPage() {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
+      <PageNavBack className="mb-6" />
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight text-navy">Corps de métier</h1>
         <p className="mt-3 text-concrete-600">

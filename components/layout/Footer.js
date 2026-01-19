@@ -81,22 +81,6 @@ const Footer = () => {
               </li>
               <li>
               <Link
-                href="/metiers"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Corps de métier
-              </Link>
-              </li>
-              <li>
-              <Link
-                href="/regions"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Régions
-              </Link>
-              </li>
-              <li>
-              <Link
                 href="/blog"
                 className="text-concrete-300 hover:text-safety transition-colors"
               >

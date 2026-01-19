@@ -59,21 +59,6 @@ const Pricing = () => {
                     )}
                   </div>
 
-                  {typeof plan.activationFee === 'number' ? (
-                    plan.activationFee > 0 ? (
-                      <p className="text-concrete-500 mt-2">
-                        + frais d’activation: <span className="font-semibold text-navy">{plan.activationFee}$</span>
-                      </p>
-                    ) : (
-                      <p className="text-concrete-500 mt-2">
-                        <span className="font-semibold text-navy">Sans frais d’activation</span>
-                      </p>
-                    )
-                  ) : (
-                    <p className="text-concrete-500 mt-2">
-                      Frais d’activation: <span className="font-semibold text-navy">{plan.activationFee}</span>
-                    </p>
-                  )}
                 </div>
 
                 <div className="space-y-3 mb-6 flex-1">
@@ -100,6 +85,9 @@ const Pricing = () => {
             </div>
           ))}
         </div>
+        <p className="text-sm text-concrete-500 text-center">
+          Frais d’activation possibles selon le forfait, payables une seule fois après le diagnostic.
+        </p>
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl border border-concrete-200 p-6 md:p-8">
             <h4 className="text-xl font-semibold text-navy mb-6 flex items-center gap-2">

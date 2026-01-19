@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { TRADE_PAGES } from '@/lib/content'
+import PageNavBack from '@/components/layout/PageNavBack'
 import { Check, AlertCircle } from 'lucide-react'
 
 // Edge Runtime pour Cloudflare Pages
@@ -351,14 +352,7 @@ export default function MetierSlugPage({ params }) {
 
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12 md:py-20">
-      <nav className="text-sm text-concrete-600 mb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-safety hover:underline"
-        >
-          ← Retour à l’accueil
-        </Link>
-      </nav>
+      <PageNavBack className="mb-8" backHref="/metiers" backLabel="Retour aux métiers" />
 
       <header className="mb-12">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-navy mb-4">{trade.title}</h1>
