@@ -25,7 +25,7 @@ const Compliance = () => {
   ]
 
   return (
-    <section id="conformite" className="py-16 md:py-20 bg-concrete-50 scroll-mt-header">
+    <section id="conformite" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         {/* En-tête */}
         <div className="text-center mb-6 md:mb-10">
@@ -107,8 +107,10 @@ const Compliance = () => {
           {/* Note NAP */}
           <div className="bg-white rounded-xl border border-concrete-200 p-6">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-green-600" />
+              {/* was: bg-green-50 */}
+              <div className="w-10 h-10 bg-safety/10 rounded-full flex items-center justify-center flex-shrink-0">
+                {/* was: text-green-600 */}
+                <Check className="w-5 h-5 text-safety" />
               </div>
               <div>
                 <h4 className="font-semibold text-navy mb-2">

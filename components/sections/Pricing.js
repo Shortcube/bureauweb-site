@@ -20,9 +20,9 @@ const Pricing = () => {
   }
 
   return (
-    <section id="forfaits" className="py-14 md:py-20 bg-concrete-50 scroll-mt-header">
+    <section id="forfaits" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
             <FileText className="w-4 h-4" aria-hidden="true" />
             <span className="text-sm font-medium">Tarification simple</span>
@@ -58,6 +58,11 @@ const Pricing = () => {
                       <span className="text-xl text-concrete-500">$/mois</span>
                     )}
                   </div>
+                  {plan.activationFee > 0 && (
+                    <p className="mt-3 text-xs text-concrete-500">
+                      Activation {plan.activationFee}$ (une seule fois, après diagnostic)
+                    </p>
+                  )}
 
                 </div>
 
@@ -65,8 +70,10 @@ const Pricing = () => {
                   <p className="text-sm font-semibold text-concrete-500 uppercase tracking-wide">Ce qui est inclus</p>
                   {plan.included.map((text, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-green-100">
-                        <Check className="w-3 h-3 text-green-600" aria-hidden="true" />
+                      {/* was: bg-green-100 */}
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-safety/10">
+                        {/* was: text-green-600 */}
+                        <Check className="w-3 h-3 text-safety" aria-hidden="true" />
                       </div>
                       <span className="text-concrete-600 leading-relaxed">{text}</span>
                     </div>
@@ -88,7 +95,7 @@ const Pricing = () => {
         <p className="text-sm text-concrete-500 text-center">
           Frais d’activation possibles selon le forfait, payables une seule fois après le diagnostic.
         </p>
-        <div className="max-w-4xl mx-auto mt-4">
+        <div className="max-w-4xl mx-auto mt-6">
           <div className="bg-white rounded-xl border border-concrete-200 p-6 md:p-8">
             <h4 className="text-xl font-semibold text-navy mb-6 flex items-center gap-2">
               <Clock className="w-5 h-5 text-safety" aria-hidden="true" />
@@ -112,7 +119,7 @@ const Pricing = () => {
                 <p className="text-2xl font-bold text-navy">Préavis</p>
                 <p className="text-concrete-600 text-sm mt-1">Condition</p>
                 <p className="text-concrete-500 text-xs mt-2">
-                  Annulation possible via le portail client Stripe. Elle prend effet à la fin de la période mensuelle déjà payée; aucun remboursement partiel.
+                  Annulation possible via le Portail client. Elle prend effet à la fin de la période mensuelle déjà payée; aucun remboursement partiel.
                 </p>
               </div>
             </div>

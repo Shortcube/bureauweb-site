@@ -7,8 +7,12 @@ const PORTAL_URL =
   'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
 
 export const metadata = {
-  title: 'Portail client Stripe | BureauWeb',
-  description: 'Accès au portail Stripe pour gérer abonnement, factures et moyens de paiement.',
+  title: 'Portail client | BureauWeb',
+  description: 'Accès au portail client pour gérer abonnement, factures et moyens de paiement.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function ComptePage() {
@@ -16,9 +20,9 @@ export default function ComptePage() {
     <main className="section-container min-h-screen py-20">
       <PageNavBack className="mb-8" />
       <div className="max-w-3xl mx-auto space-y-6 text-center">
-        <h1 className="text-4xl font-semibold text-navy">Votre compte Stripe</h1>
+        <h1 className="text-4xl font-semibold text-navy">Votre portail client</h1>
         <p className="text-lg text-concrete-600 leading-relaxed">
-          Stripe reste la source de vérité pour vos abonnements, l’historique de factures et vos moyens de paiement.
+          Le portail client reste la source de vérité pour vos abonnements, l’historique de factures et vos moyens de paiement.
           Ce portail officiel vous permet d’annuler en autonomie, de mettre à jour votre carte et d’éditer vos informations de facturation.
         </p>
         <div className="flex justify-center">

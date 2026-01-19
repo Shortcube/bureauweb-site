@@ -12,6 +12,7 @@ const initialState = {
   adresse: '',
   besoin: '',
   description: '',
+  website: '',
 }
 
 const besoinsOptions = [
@@ -74,6 +75,17 @@ export default function DemoSoumissionForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="hidden" aria-hidden="true">
+        <Label htmlFor="website">Site web</Label>
+        <Input
+          id="website"
+          name="website"
+          value={values.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="nom">Nom</Label>

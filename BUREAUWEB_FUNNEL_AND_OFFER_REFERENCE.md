@@ -159,7 +159,7 @@ Structuration services et zones (si pertinent).
 
 Processus d’avis.
 
-Support courriel (réponse sous 2 jours ouvrables).
+Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 
 1 intervention mineure mensuelle (définition ci-dessous).
 
@@ -175,7 +175,7 @@ Tout Pro.
 
 1 page de contenu courte par mois (si pertinent).
 
-Support prioritaire (courriel ou téléphone), première réponse sous 2 jours ouvrables.
+Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 
 1 intervention mineure mensuelle.
 

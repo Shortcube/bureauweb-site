@@ -167,7 +167,7 @@ Publicité payante (Google Ads, Meta)
 
 Branding complet (logo, identité)
 
-Support 24/7
+Pas de disponibilité 24/7
 
 Modifications illimitées
 

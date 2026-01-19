@@ -60,8 +60,8 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
    - Rapport concis (1 page)
    - Capacité mensuelle selon le forfait:
      - Départ: 1 micro-amélioration (ajustement simple sur l’existant)
-     - Pro: 1 intervention mineure + support courriel (première réponse sous 2 jours ouvrables)
-     - Croissance: Pro + 1 page de contenu courte (si pertinent) + support prioritaire (courriel ou téléphone)
+     - Pro: 1 intervention mineure + support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
+     - Croissance: Pro + 1 page de contenu courte (si pertinent) + support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 
 ## Blogue (acquisition)
 - Blogue court, factuel, utile. Intention commerciale claire.
@@ -78,7 +78,7 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
 ## Ce qui n’est pas inclus
 - Publicité payante (Google Ads, Meta)
 - Création de logo ou branding
-- Support 24/7
+- Pas de disponibilité 24/7
 - Modifications illimitées
 - Gestion de crise ou réputation avancée (en extra)
 - Refonte complète ou changement de modèle sans cadrage préalable

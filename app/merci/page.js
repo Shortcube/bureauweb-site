@@ -6,7 +6,7 @@ export const runtime = 'edge'
 
 export const metadata = {
   title: 'Paiement confirmé | BureauWeb',
-  description: 'Confirmation de paiement et accès au portail client Stripe.',
+  description: 'Confirmation de paiement et accès au portail client.',
   robots: {
     index: false,
     follow: false,
@@ -22,7 +22,7 @@ export default function MerciPage() {
           Stripe a traité votre session. Vous recevrez un reçu officiel par courriel et votre abonnement est visible dans le portail client.
         </p>
         <p className="text-base text-concrete-600">
-          Besoin de gérer la carte, annuler ou télécharger une facture ? Passez par <Link href="/compte" className="font-semibold text-safety hover:underline">le portail Stripe</Link>.
+          Besoin de gérer la carte, annuler ou télécharger une facture ? Passez par <Link href="/compte" className="font-semibold text-safety hover:underline">le Portail client</Link>.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link

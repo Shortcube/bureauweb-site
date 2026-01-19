@@ -27,7 +27,7 @@ const Reviews = () => {
     },
     {
       icon: Reply,
-      text: 'Réponses aux avis Google sur demande: 75$ par réponse (rédaction), non illimité.',
+      text: 'Rédaction de réponses aux avis Google (sur demande): 75$ par avis. Non illimité.',
     },
     {
       icon: AlertTriangle,
@@ -36,7 +36,7 @@ const Reviews = () => {
   ]
 
   return (
-    <section id="avis" className="py-14 md:py-20 bg-concrete-50 scroll-mt-header">
+    <section id="avis" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         {/* En-tête */}
         <div className="text-center mb-6 md:mb-8">
@@ -55,12 +55,16 @@ const Reviews = () => {
         {/* Deux colonnes */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Colonne inclus */}
-          <div className="bg-green-50 rounded-2xl p-6 md:p-8 border border-green-100">
+          {/* was: bg-green-50 border-green-100 */}
+          <div className="bg-safety/10 rounded-2xl p-6 md:p-8 border border-safety/20">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <Check className="w-5 h-5 text-green-600" />
+              {/* was: bg-green-100 */}
+              <div className="w-10 h-10 bg-safety/10 rounded-full flex items-center justify-center">
+                {/* was: text-green-600 */}
+                <Check className="w-5 h-5 text-safety" />
               </div>
-              <h3 className="text-xl font-semibold text-green-800">
+              {/* was: text-green-800 */}
+              <h3 className="text-xl font-semibold text-safety">
                 Ce qui est inclus
               </h3>
             </div>
@@ -68,8 +72,10 @@ const Reviews = () => {
             <div className="space-y-4">
               {included.map((item, index) => (
                 <div key={index} className="flex items-start gap-3 bg-white rounded-lg p-4">
-                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-4 h-4 text-green-600" />
+                  {/* was: bg-green-100 */}
+                  <div className="w-8 h-8 bg-safety/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    {/* was: text-green-600 */}
+                    <item.icon className="w-4 h-4 text-safety" />
                   </div>
                   <p className="text-concrete-700 leading-relaxed">
                     {item.text}

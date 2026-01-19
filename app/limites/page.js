@@ -70,7 +70,7 @@ export default function LimitesPage() {
           <ul className="space-y-2 text-concrete-600">
             {bullet('Contrôle qualité mensuel (vérifications de base): site accessible (mobile et desktop), formulaire fonctionnel, liens clés actifs, vérification de base de la fiche Google.')}
             {bullet('Rapport 1 page: faits observables et points d’attention.')}
-            {bullet('Support principalement par courriel (première réponse sous 2 jours ouvrables).')}
+            {bullet('Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).')}
             {bullet('1 intervention mineure mensuelle (selon la définition ci-dessous).')}
           </ul>
         </div>
@@ -111,7 +111,7 @@ export default function LimitesPage() {
           <ul className="space-y-2 text-concrete-600">
             {bullet('Tout le forfait Pro.')}
             {bullet('1 page de contenu courte par mois (si pertinent).')}
-            {bullet('Support prioritaire par courriel ou par téléphone (première réponse sous 2 jours ouvrables).')}
+            {bullet('Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).')}
           </ul>
         </div>
         <div className="space-y-2">
@@ -150,7 +150,7 @@ export default function LimitesPage() {
           {bullet('Création de marque ou de logo.')}
           {bullet('Contenus ou pages en volume non cadré (sur devis).')}
           {bullet('Modifications illimitées.')}
-          {bullet('Support 24/7.')}
+          {bullet('Pas de disponibilité 24/7.')}
         </ul>
       </section>
 

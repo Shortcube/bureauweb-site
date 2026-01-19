@@ -12,9 +12,9 @@ const FAQ = () => {
         'Non. BureauWeb est un partenaire d’infrastructure web. On installe un site, on structure la fiche Google et on opère cette infrastructure en continu. On ne vend pas de campagnes publicitaires ni de promesses de résultats.',
     },
     {
-      question: 'Pourquoi ne pas rester sur Wix ou Squarespace ?',
+      question: 'Plateformes en libre-service : pourquoi payer plus ?',
       answer:
-        'Si votre plateforme actuelle fait le travail, on n’impose pas un changement. Le diagnostic gratuit permet de vérifier ce qui bloque la visibilité locale ou la conversion, puis de décider si une itération est nécessaire.',
+        'Une solution en libre-service peut commencer autour de ~20$/mois (prix indicatif selon options). BureauWeb, c’est 199$/mois. Voici ce qui justifie la différence: on opère et maintient l’infrastructure pour vous (hébergement, mises à jour, correctifs, structure Google, suivi). Si votre solution actuelle fait le travail, le diagnostic gratuit permet de vérifier ce qui bloque la visibilité locale ou la conversion.',
     },
     {
       question: 'Qu’est-ce qui est inclus chaque mois ?',
@@ -24,12 +24,12 @@ const FAQ = () => {
     {
       question: 'Que se passe-t-il après le diagnostic gratuit ?',
       answer:
-        'On rend une décision GO/NO-GO. Si le dossier avance, on envoie un lien de paiement Stripe pour activer l’abonnement mensuel. Aucun travail n’est lancé tant qu’un paiement actif n’est pas confirmé.',
+        'On rend une décision GO/NO-GO. Si le dossier avance, on envoie un lien de paiement en ligne sécurisé via Stripe pour activer l’abonnement mensuel. Aucun travail n’est lancé tant qu’un paiement actif n’est pas confirmé.',
     },
     {
       question: 'Est-ce qu’il y a des engagements ou des délais garantis ?',
       answer:
-        'C’est un abonnement mensuel sans engagement de durée. Chaque mois est facturé d’avance et l’annulation passe par le portail client Stripe; elle prend effet à la fin de la période déjà payée. Aucun remboursement partiel n’est offert.',
+        'C’est un abonnement mensuel sans engagement de durée. Chaque mois est facturé d’avance et l’annulation passe par le Portail client; elle prend effet à la fin de la période déjà payée. Aucun remboursement partiel n’est offert.',
     },
     {
       question: 'Comment puis-je annuler le service ?',
@@ -49,9 +49,9 @@ const FAQ = () => {
   ]
 
   return (
-    <section id="faq" className="py-16 md:py-20 bg-white scroll-mt-header">
+    <section id="faq" className="py-12 md:py-16 bg-white scroll-mt-header">
       <div className="section-container">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
             <HelpCircle className="w-4 h-4" aria-hidden="true" />
             <span className="text-sm font-medium">FAQ</span>

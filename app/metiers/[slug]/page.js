@@ -360,15 +360,18 @@ export default function MetierSlugPage({ params }) {
       </header>
 
       {content.problems && (
-        <section className="mb-12 bg-red-50 rounded-xl p-6 md:p-8 border border-red-100">
+        <section className="mb-12 bg-concrete-50 rounded-xl p-6 md:p-8 border border-concrete-200">
+          {/* was: bg-red-50 border-red-100 */}
           <div className="flex items-center gap-3 mb-5">
-            <AlertCircle className="w-6 h-6 text-red-600" />
+            {/* was: text-red-600 */}
+            <AlertCircle className="w-6 h-6 text-safety" />
             <h2 className="text-2xl font-semibold text-navy">Problèmes typiques qu'on voit souvent</h2>
           </div>
           <ul className="space-y-3">
             {content.problems.map((problem, idx) => (
               <li key={idx} className="flex gap-3 text-concrete-700">
-                <span className="text-red-500 font-bold">•</span>
+                {/* was: text-red-500 */}
+                <span className="text-safety font-bold">•</span>
                 <span>{problem}</span>
               </li>
             ))}
@@ -383,7 +386,8 @@ export default function MetierSlugPage({ params }) {
             {content.implementation.map((item, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 border border-concrete-200 hover:border-concrete-300 transition-colors">
                 <div className="flex items-start gap-3 mb-3">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  {/* was: text-green-600 */}
+                  <Check className="w-5 h-5 text-safety flex-shrink-0 mt-1" />
                   <h3 className="font-semibold text-navy">{item.title}</h3>
                 </div>
                 <p className="text-concrete-600 text-sm leading-relaxed pl-8">{item.description}</p>
@@ -399,7 +403,8 @@ export default function MetierSlugPage({ params }) {
           <ul className="space-y-3 text-concrete-600">
             {trade.bullets.map((b, idx) => (
               <li key={idx} className="flex gap-3">
-                <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                {/* was: text-green-600 */}
+                <Check className="w-5 h-5 text-safety flex-shrink-0 mt-0.5" />
                 <span>{b}</span>
               </li>
             ))}

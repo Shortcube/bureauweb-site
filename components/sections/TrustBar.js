@@ -16,7 +16,7 @@ const TrustBar = () => {
     },
     {
       icon: HeadphonesIcon,
-      label: 'Support local (lun-ven)',
+      label: 'Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).',
     },
   ]
 

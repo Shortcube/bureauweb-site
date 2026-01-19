@@ -13,7 +13,8 @@ const Solution = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto space-y-3">
           <div className="text-center space-y-2">
-            <div className="inline-flex items-center space-x-2 bg-green-50 text-green-700 px-4 py-2 rounded-full">
+            {/* was: bg-green-50 text-green-700 */}
+            <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety px-4 py-2 rounded-full">
               <CheckCircle2 className="w-4 h-4" />
               <span className="text-sm font-medium">La solution</span>
             </div>

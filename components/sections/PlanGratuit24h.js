@@ -9,7 +9,7 @@ const PlanGratuit24h = () => {
   }
 
   return (
-    <section id="diagnostic-info" className="py-16 md:py-20 bg-white scroll-mt-header">
+    <section id="diagnostic-info" className="py-12 md:py-16 bg-white scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-center space-y-4">

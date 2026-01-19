@@ -25,12 +25,13 @@ const Problem = () => {
   ]
 
   return (
-    <section className="py-16 md:py-20 bg-concrete-50">
+    <section className="py-12 md:py-16 bg-concrete-50">
       <div className="section-container">
         <div className="max-w-5xl mx-auto">
           {/* En-tête */}
           <div className="text-center mb-6 md:mb-10">
-            <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2 rounded-full mb-4">
+            {/* was: bg-red-50 text-red-700 */}
+            <div className="inline-flex items-center space-x-2 bg-concrete-200 text-navy px-4 py-2 rounded-full mb-4">
               <AlertCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Le problème</span>
             </div>
@@ -49,8 +50,10 @@ const Problem = () => {
                 key={index}
                 className="bg-white rounded-xl px-5 py-4 md:px-6 md:py-5 border border-concrete-200 hover:border-concrete-300 transition-colors"
               >
-                <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center mb-5">
-                  <problem.icon className="w-6 h-6 text-red-600" />
+                {/* was: bg-red-50 */}
+                <div className="w-12 h-12 bg-concrete-100 rounded-lg flex items-center justify-center mb-5">
+                  {/* was: text-red-600 */}
+                  <problem.icon className="w-6 h-6 text-navy" />
                 </div>
                 <h3 className="text-lg font-semibold text-navy mb-2">
                   {problem.title}

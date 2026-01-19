@@ -16,8 +16,8 @@ const NotIncluded = () => {
     },
     {
       icon: Clock,
-      title: 'Pas de support 24/7',
-      description: 'Support principalement par courriel, du lundi au vendredi, de 9h à 17h (heure de l’Est).',
+      title: 'Pas de disponibilité 24/7',
+      description: 'Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).',
     },
     {
       icon: Edit3,
@@ -28,7 +28,7 @@ const NotIncluded = () => {
   ]
 
   return (
-    <section id="limites-mensuelles" className="py-16 md:py-20 bg-concrete-50 scroll-mt-header">
+    <section id="limites-mensuelles" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           {/* En-tête */}

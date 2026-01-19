@@ -126,7 +126,7 @@ const Hero = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold">Support humain 100% local</p>
+                  <p className="font-semibold">Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).</p>
                   <p className="text-concrete-300 text-xs">Pas de chatbot</p>
                 </div>
               </div>

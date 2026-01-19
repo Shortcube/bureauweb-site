@@ -161,7 +161,7 @@ const Footer = () => {
             <div className="text-concrete-500 text-sm text-center lg:text-left">
               <p className="flex items-center justify-center lg:justify-start gap-2">
                 <Briefcase className="w-4 h-4" aria-hidden="true" />
-                <span>Entreprise enregistrée au Québec. Support principalement par courriel.</span>
+                <span>Entreprise enregistrée au Québec. Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).</span>
               </p>
             </div>
             <p className="text-concrete-500 text-sm">

@@ -9,6 +9,10 @@ export const runtime = 'edge'
 export const metadata = {
   title: 'Paiement annulé | BureauWeb',
   description: 'Le paiement a été annulé. Vous pouvez réessayer ou revenir à l’accueil.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function PaiementAnnulePage({ searchParams }) {

@@ -40,7 +40,7 @@ const Process = () => {
       number: '03',
       icon: CreditCard,
       title: 'Paiement',
-      color: 'bg-green-500',
+      color: 'bg-safety', // was: bg-green-500
       content: [
         {
           type: 'text',

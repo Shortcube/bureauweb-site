@@ -8,6 +8,10 @@ export const runtime = 'edge'
 export const metadata = {
   title: 'Redirection vers Stripe | BureauWeb',
   description: 'Redirection vers Stripe pour finaliser le paiement.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function PayerPage({ searchParams }) {
