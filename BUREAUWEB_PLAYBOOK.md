@@ -751,6 +751,10 @@ Pages métiers (slugs exemples):
 
 /metiers/cvac
 
+Modèles de démonstration (internes) :
+
+/modeles (contenu fictif, sans promesses ni résultats inventés)
+
 Pages régions (slugs exemples):
 
 /regions/montreal
