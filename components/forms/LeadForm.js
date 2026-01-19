@@ -8,8 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Send, CheckCircle2, Phone, Mail, Globe, MapPin, Loader2 } from 'lucide-react'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 import { SECTOR_PAGES } from '@/lib/sectors'
+import { usePlanIntent } from '@/components/context/plan-intent-context'
 
 const LeadForm = () => {
+  const { planIntent } = usePlanIntent()
   const [formData, setFormData] = useState({
     entreprise: '',
     secteur: '',
@@ -192,6 +194,7 @@ const LeadForm = () => {
   return (
     <section id="diagnostic" className="py-16 md:py-20 bg-navy scroll-mt-header">
       <div className="section-container">
+        <div id="lead-form" aria-hidden="true" className="scroll-mt-24" />
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
             {/* Contenu gauche */}
@@ -248,6 +251,7 @@ const LeadForm = () => {
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
                 {/* Honeypot */}
+                <input type="hidden" name="plan_intent" value={planIntent ?? ''} />
                 <input
                   type="text"
                   name="hp"

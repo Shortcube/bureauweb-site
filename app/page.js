@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic'
 import { Header, Footer } from '@/components/layout'
 import { Hero, TrustBar } from '@/components/sections'
-import { LeadForm } from '@/components/forms'
+import PricingLeadFormBridge from '@/components/home/PricingLeadFormBridge'
 
 // Lazy load des sections sous le fold pour améliorer le First Contentful Paint
 const Problem = dynamic(() => import('@/components/sections/Problem'))
@@ -11,7 +11,6 @@ const WhyNotWix = dynamic(() => import('@/components/sections/WhyNotWix'))
 const PlanGratuit24h = dynamic(() => import('@/components/sections/PlanGratuit24h'))
 const NotIncluded = dynamic(() => import('@/components/sections/NotIncluded'))
 const Process = dynamic(() => import('@/components/sections/Process'))
-const Pricing = dynamic(() => import('@/components/sections/Pricing'))
 const Reviews = dynamic(() => import('@/components/sections/Reviews'))
 const FAQ = dynamic(() => import('@/components/sections/FAQ'))
 const Compliance = dynamic(() => import('@/components/sections/Compliance'))
@@ -39,14 +38,11 @@ export default function Home() {
       <PlanGratuit24h />
       <NotIncluded />
       <Process />
-      <Pricing />
+      <PricingLeadFormBridge />
       <FAQ />
       <Reviews />
       <Compliance />
-      
-      {/* Lead Capture Form */}
-      <LeadForm />
-      
+
       {/* Footer */}
       <Footer />
     </main>

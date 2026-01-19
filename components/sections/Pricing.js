@@ -3,10 +3,19 @@
 import { Check, Clock, AlertCircle, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PRICING_PLANS, ENGAGEMENT_INITIAL_MOIS } from '@/lib/content'
+import { usePlanIntent } from '@/components/context/plan-intent-context'
 
 const Pricing = () => {
-  const scrollToContact = () => {
-    document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })
+  const { setPlanIntent } = usePlanIntent()
+  const scrollToLeadForm = () => {
+    const el = document.getElementById('lead-form')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+  const handlePlanSelect = (planSlug) => {
+    setPlanIntent(planSlug)
+    scrollToLeadForm()
   }
 
   return (
@@ -23,7 +32,7 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-4">
           {PRICING_PLANS.map((plan) => (
             <div
               key={plan.slug}
@@ -78,35 +87,18 @@ const Pricing = () => {
                   ))}
                 </div>
 
-                {Array.isArray(plan.notes) && plan.notes.length > 0 && (
-                  <div className="bg-concrete-50 rounded-lg p-4 mb-8 text-sm text-concrete-600">
-                    <ul className="space-y-2">
-                      {plan.notes.map((n, i) => (
-                        <li key={i} className="flex gap-2">
-                          <span className="text-concrete-400">•</span>
-                          <span>{n}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 <div className="mt-auto space-y-3 text-center">
                   <Button
                     className={`w-full py-6 text-lg font-semibold ${plan.popular ? 'btn-cta' : 'bg-navy hover:bg-navy-800 text-white'}`}
-                    onClick={scrollToContact}
+                    onClick={() => handlePlanSelect(plan.slug)}
                   >
                     Recevoir mon diagnostic gratuit
                   </Button>
-                  <p className="text-sm text-concrete-500">
-                    <a href="/limites" className="text-safety hover:underline">Voir les limites mensuelles</a>
-                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl border border-concrete-200 p-6 md:p-8">
             <h4 className="text-xl font-semibold text-navy mb-6 flex items-center gap-2">

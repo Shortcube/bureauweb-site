@@ -28,11 +28,11 @@ const Process = () => {
       content: [
         {
           type: 'text',
-          value: 'GO/NO-GO clair, avec au maximum deux options simples si on avance.',
+          value: 'On détermine si on peut vous aider et, si oui, on vous revient avec au maximum deux options simples.',
         },
         {
           type: 'highlight',
-          value: 'Si on avance, on précise le périmètre et les limites mensuelles.',
+          value: 'Si on avance, c\'est à ce moment qu\'on précise le périmètre et les limites mensuelles.',
         },
       ],
     },
@@ -64,7 +64,7 @@ const Process = () => {
         },
         {
           type: 'highlight',
-          value: 'Échanges écrits par défaut. Appel optionnel si utile.',
+          value: 'Échanges via courriel par défaut. Appel optionnel au besoin, si nécessaire.',
         },
       ],
     },
@@ -76,7 +76,7 @@ const Process = () => {
       content: [
         {
           type: 'text',
-          value: 'Go-live + handoff court (accès, checklist, points d’attention).',
+          value: 'Mise en ligne et transfert des accès (on fournit une checklist et les points de vigie).',
         },
       ],
     },
@@ -88,7 +88,7 @@ const Process = () => {
       content: [
         {
           type: 'text',
-          value: 'Rapport mensuel concis (1 page) avec synthèse, 1 micro-amélioration, QA mensuelle.',
+          value: 'Rapport mensuel concis (1 page) avec synthèse, 1 ajustement mineur au besoin et vérification mensuelle.',
         },
       ],
     },
@@ -103,9 +103,9 @@ const Process = () => {
             <Clock className="w-4 h-4" />
             <span className="text-sm font-medium">Processus clair</span>
           </div>
-          <h2 className="text-navy leading-tight text-2xl md:text-[2.25rem]">Comment ça se passe</h2>
+          <h2 className="text-navy leading-tight text-2xl md:text-[2.25rem]">Comment ça marche</h2>
           <p className="text-sm md:text-base text-concrete-600 max-w-2xl mx-auto leading-relaxed">
-            Un processus clair, sans téléphone obligatoire et sans promesse inventée.
+            Voici à quoi ressemble le processus complet :
           </p>
         </div>
 

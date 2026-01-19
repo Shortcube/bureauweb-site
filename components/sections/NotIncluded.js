@@ -28,7 +28,7 @@ const NotIncluded = () => {
   ]
 
   return (
-    <section id="non-inclus" className="py-16 md:py-20 bg-concrete-50 scroll-mt-header">
+    <section id="limites-mensuelles" className="py-16 md:py-20 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           {/* En-tête */}
