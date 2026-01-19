@@ -24,7 +24,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-b from-white via-concrete-50/80 to-concrete-50 pt-4 md:pt-6 mt-6 pb-8">
+    <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-b from-white via-concrete-50/80 to-concrete-50 pt-4 md:pt-6 mt-6 pb-8">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-72 h-72 bg-safety/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-navy/5 rounded-full blur-3xl" />
@@ -52,7 +52,7 @@ const Hero = () => {
                 Recevoir mon diagnostic gratuit
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
-              <p className="text-concrete-500 text-xs md:text-sm leading-tight whitespace-nowrap">
+              <p className="text-concrete-500 text-xs md:text-sm leading-tight">
                 Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
               <button
@@ -68,7 +68,7 @@ const Hero = () => {
               <label htmlFor="hero-sector" className="text-sm font-semibold text-navy uppercase tracking-wide">
                 Votre secteur (optionnel)
               </label>
-              <p className="text-concrete-500 text-xs mt-1 whitespace-nowrap">
+              <p className="text-concrete-500 text-xs mt-1">
                 Un exemple concret de structure (pages, fiche Google, contact) est affiché selon le métier.
               </p>
               <select
@@ -103,7 +103,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
             </div>
 
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-3 border border-concrete-100">
+            <div className="absolute bottom-3 left-3 sm:-bottom-6 sm:-left-6 bg-white rounded-lg shadow-lg p-3 border border-concrete-100">
               <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-safety/10 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -111,7 +111,7 @@ const Hero = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-navy font-bold text-lg whitespace-nowrap">Diagnostic gratuit</p>
+                <p className="text-navy font-bold text-lg">Diagnostic gratuit</p>
                 <p className="text-concrete-500 text-sm">1 page, zéro engagement</p>
               </div>
               </div>
