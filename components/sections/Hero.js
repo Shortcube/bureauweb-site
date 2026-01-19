@@ -66,7 +66,7 @@ const Hero = () => {
 
             <div className="mt-3 md:mt-4 w-full">
               <label htmlFor="hero-sector" className="text-sm font-semibold text-navy uppercase tracking-wide">
-                Votre secteur (optionnel)
+                Votre secteur
               </label>
               <p className="text-concrete-500 text-xs mt-1">
                 Un exemple concret de structure (pages, fiche Google, contact) est affiché selon le métier.

@@ -17,7 +17,7 @@ const NotIncluded = () => {
     {
       icon: Clock,
       title: 'Pas de support 24/7',
-      description: 'Support par courriel, lun-ven 9h-17h (heure de l’Est).',
+      description: 'Support principalement par courriel, du lundi au vendredi, de 9h à 17h (heure de l’Est).',
     },
     {
       icon: Edit3,
@@ -66,9 +66,9 @@ const NotIncluded = () => {
 
           {/* Message CTA */}
           <div className="bg-navy rounded-xl p-5 md:p-6 text-center space-y-2">
-            <p className="text-white text-lg font-semibold">Vous avez besoin d’une vertue complémentaire ?</p>
+            <p className="text-white text-lg font-semibold">Prêt à avancer ?</p>
             <p className="text-concrete-300 text-sm leading-snug">
-              On propose un diagnostic gratuit ou on vous confirme d’emblée les limites mensuelles.
+              Demandez votre diagnostic gratuit ou consultez les limites mensuelles.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 pt-1">
               <a

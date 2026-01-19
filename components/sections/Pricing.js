@@ -1,6 +1,7 @@
 'use client'
 
 import { Check, Clock, AlertCircle, FileText } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { PRICING_PLANS, ENGAGEMENT_INITIAL_MOIS } from '@/lib/content'
 import { usePlanIntent } from '@/components/context/plan-intent-context'
@@ -132,6 +133,14 @@ const Pricing = () => {
               <p className="font-medium text-navy mb-1">Paiement</p>
               <p>
                 Paiement requis pour démarrer toute production. Tant qu’un abonnement actif n’est pas en vigueur, aucun travail n’est effectué.
+              </p>
+            </div>
+            <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
+              <p className="font-medium text-navy mb-1">Limites mensuelles</p>
+              <p>
+                <Link href="/limites" className="text-safety font-semibold hover:text-safety/80 hover:underline">
+                  Cliquez ici afin de consulter les limites mensuelles pour chaque forfait
+                </Link>
               </p>
             </div>
           </div>

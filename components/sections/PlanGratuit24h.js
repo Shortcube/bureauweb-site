@@ -11,97 +11,82 @@ const PlanGratuit24h = () => {
   return (
     <section id="diagnostic-info" className="py-16 md:py-20 bg-white scroll-mt-header">
       <div className="section-container">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center space-y-4">
             <div className="inline-flex items-center space-x-2 bg-navy/5 text-navy px-4 py-2 rounded-full mb-6">
               <FileText className="w-4 h-4" aria-hidden="true" />
-              <span className="text-sm font-medium whitespace-nowrap">Diagnostic gratuit</span>
+              <span className="text-sm font-medium break-words">Diagnostic gratuit</span>
             </div>
             <h2 className="text-navy mb-4">Un diagnostic écrit, 1 page max</h2>
-            <p className="text-xl text-concrete-600">
-              Objectif: montrer quoi faire, sans rien inventer, pour décider rationnellement si on avance ensemble.
+            <p className="text-xl text-concrete-600 break-words">
+              Objectif: montrer quoi faire, sans rien inventer, pour décider si on avance ensemble.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            <div className="bg-concrete-50 rounded-xl p-6 border border-concrete-200">
-              <p className="text-navy font-semibold mb-2">Basé sur du vérifiable</p>
-              <p className="text-concrete-600">Site web, mobile, fiche Google, et infos que vous fournissez.</p>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-concrete-50 rounded-xl p-5 border border-concrete-200">
+              <p className="text-navy font-semibold mb-1">Basé sur du vérifiable</p>
+              <p className="text-concrete-600 break-words">Site web, mobile, fiche Google, et infos que vous fournissez.</p>
             </div>
-            <div className="bg-concrete-50 rounded-xl p-6 border border-concrete-200">
-              <p className="text-navy font-semibold mb-2">Pas une soumission</p>
-              <p className="text-concrete-600">Pas de maquette, pas d’audit SEO complet, pas de promesse de résultats.</p>
+            <div className="bg-concrete-50 rounded-xl p-5 border border-concrete-200">
+              <p className="text-navy font-semibold mb-1">Pas une soumission</p>
+              <p className="text-concrete-600 break-words">Pas de maquette, pas d’audit SEO complet, pas de promesse de résultats.</p>
             </div>
-            <div className="bg-concrete-50 rounded-xl p-6 border border-concrete-200">
-              <p className="text-navy font-semibold mb-2">Même structure, toujours</p>
-              <p className="text-concrete-600">Rapide à lire. Comparables d’un client à l’autre.</p>
+            <div className="bg-concrete-50 rounded-xl p-5 border border-concrete-200">
+              <p className="text-navy font-semibold mb-1">Décision claire</p>
+              <p className="text-concrete-600 break-words">Un constat structuré pour comprendre la situation et prendre une décision éclairée.</p>
             </div>
           </div>
 
-            <div className="bg-white rounded-2xl border border-concrete-200 shadow-sm p-6 md:p-8">
-            <h3 className="text-xl font-semibold text-navy mb-6">Structure du diagnostic</h3>
+          <div className="bg-white rounded-2xl border border-concrete-200 shadow-sm p-5 md:p-6">
+            <h3 className="text-xl font-semibold text-navy mb-4">Structure du diagnostic</h3>
 
-            <ol className="space-y-5">
+            <ol className="space-y-4 break-words">
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">1</div>
-                <div>
-                  <p className="font-semibold text-navy">Résumé (30 sec)</p>
-                  <p className="text-concrete-600">Score BureauWeb, classe, opportunité principale, recommandation: avancer, attendre, ou pas un fit.</p>
+                <div className="space-y-1">
+                  <p className="font-semibold text-navy">Résumé</p>
+                  <p className="text-concrete-600 break-words mt-1">Score BureauWeb, classe, opportunité principale, recommandation: avancer, attendre, ou pas un bon fit.</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">2</div>
-                <div>
-                  <p className="font-semibold text-navy">Problèmes observables (max 3)</p>
-                  <p className="text-concrete-600">Description courte, preuve (site, mobile, fiche Google), lien ou référence. Pas de suppositions.</p>
+                <div className="space-y-1">
+                  <p className="font-semibold text-navy">Problèmes observables</p>
+                  <p className="text-concrete-600 break-words mt-1">Description courte, preuve (site, mobile, fiche Google), lien ou référence.</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">3</div>
-                <div>
-                  <p className="font-semibold text-navy">Quick wins (2 à 3)</p>
-                  <p className="text-concrete-600">Actions concrètes qu’on ferait en premier, avec impact logique (non spéculatif).</p>
+                <div className="space-y-1">
+                  <p className="font-semibold text-navy">Actions rapides</p>
+                  <p className="text-concrete-600 break-words mt-1">Actions concrètes qu’on ferait en premier, avec impact logique (non spéculatif).</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">4</div>
-                  <div>
-                    <p className="font-semibold text-navy">Plan 21 jours (vue d’ensemble)</p>
-                  <p className="text-concrete-600">Vue d’ensemble non détaillée, sans promesse de délais.</p>
+                <div className="space-y-1">
+                  <p className="font-semibold text-navy">Plan 21 jours (vue d’ensemble)</p>
+                  <p className="text-concrete-600 break-words mt-1">Vue d’ensemble (non détaillée).</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">5</div>
-                <div>
+                <div className="space-y-1">
                   <p className="font-semibold text-navy">Ce qui serait inclus si on avance</p>
-                  <p className="text-concrete-600">Infrastructure web, fiche Google, maintenance mensuelle (selon limites).</p>
+                  <p className="text-concrete-600 break-words mt-1">Infrastructure web, fiche Google, maintenance mensuelle (selon limites).</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">6</div>
-                <div>
+                <div className="space-y-1">
                   <p className="font-semibold text-navy">Prochaines étapes</p>
-                  <p className="text-concrete-600">Décision GO/NO-GO, envoi d’un lien Stripe si on avance, puis production.</p>
+                  <p className="text-concrete-600 break-words mt-1">Décision (GO/NO-GO): on avance ou non. Si on avance: lien Stripe, puis production.</p>
                 </div>
               </li>
             </ol>
 
-            <div className="mt-8 grid md:grid-cols-2 gap-4">
-              <div className="flex gap-3 bg-concrete-50 rounded-xl p-4 border border-concrete-200">
-                <ShieldCheck className="w-5 h-5 text-safety mt-0.5" aria-hidden="true" />
-                <p className="text-sm text-concrete-700">
-                  Règles strictes: si une info n’est pas vérifiable, on l’écrit comme unknown ou null. Aucun chiffre, badge, avis, délai ou claim inventé.
-                </p>
-              </div>
-              <div className="flex gap-3 bg-concrete-50 rounded-xl p-4 border border-concrete-200">
-                <CheckCircle2 className="w-5 h-5 text-safety mt-0.5" aria-hidden="true" />
-                <p className="text-sm text-concrete-700">
-                  Même template à chaque fois. Ton neutre, clair, professionnel.
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-6 text-center text-sm text-concrete-500">
+            <p className="mt-6 text-center text-sm text-concrete-500 break-words">
               Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
             </p>
 
