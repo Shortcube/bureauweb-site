@@ -84,6 +84,22 @@ export default function ConditionsPage() {
             partager un lien vers une page, mais vous ne pouvez pas reproduire
             ou exploiter le contenu à des fins commerciales sans permission.
           </p>
+          <p className="text-slate-800">
+            Sauf stipulation contraire par écrit, BureauWeb demeure titulaire
+            des droits de propriété intellectuelle sur les gabarits, modèles,
+            code, structure, composants et éléments techniques que nous
+            concevons ou mettons à disposition, y compris lorsqu’ils sont utilisés
+            pour réaliser un site pour un client. Le client conserve ses droits
+            sur les contenus qu’il fournit (textes, logos, images) et obtient un
+            droit d’utilisation non exclusif, non transférable et révocable des
+            éléments fournis par BureauWeb, limité à la durée de l’abonnement
+            actif et aux besoins opérationnels du site. Il est interdit de copier,
+            extraire (scraper), reproduire, republier, revendre, ou réutiliser
+            tout ou partie de ces éléments pour recréer un site (ou un site
+            substantiellement similaire) en dehors de la relation d’affaires.
+            Toute utilisation non autorisée peut entraîner la suspension de
+            l’accès et des recours civils, dans la mesure permise par la loi.
+          </p>
         </div>
 
         <div>

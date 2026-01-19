@@ -105,7 +105,10 @@ export default function GestionRenseignementsPage() {
               <li><strong>Cloudflare</strong> (sécurité et performance)</li>
               <li><strong>Resend</strong> (envoi de courriels)</li>
               <li><strong>GitHub</strong> (hébergement du code)</li>
-              <li><strong>Google</strong> (courriels si vous nous écrivez via Gmail)</li>
+              <li><strong>Google</strong> (réception et envoi de courriels)</li>
+              <li><strong>Stripe</strong> (paiements et abonnements)</li>
+              <li>VoIP.ms : services de telephonie (appels et messages), gestion des communications clients</li>
+              <li>Zoiper : application cliente de telephonie utilisee pour acceder au service VoIP</li>
             </ul>
             <p>
               Nous limitons l'information transmise au strict nécessaire et nous

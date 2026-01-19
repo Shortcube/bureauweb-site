@@ -89,6 +89,13 @@ export default function ConfidentialitePage() {
                 générer des journaux nécessaires à la sécurité et au bon
                 fonctionnement (adresse IP, date/heure, requêtes).
               </li>
+              <li>
+                <strong>Paiements :</strong> si vous procédez au paiement d’un
+                abonnement, Stripe traite le paiement et nous transmet les
+                informations nécessaires à la gestion du compte (par exemple :
+                statut de l’abonnement, plan, montant, identifiants de
+                transaction).
+              </li>
             </ul>
           </div>
         </div>
@@ -112,6 +119,12 @@ export default function ConfidentialitePage() {
                 <strong>Renseignements techniques :</strong> adresse IP, pages
                 consultées, date et heure.
               </li>
+              <li>
+                <strong>Paiement :</strong> informations nécessaires à la
+                facturation et à la gestion de l’abonnement. Les informations de
+                carte (numéro complet) sont traitées par Stripe; BureauWeb.ca ne
+                les reçoit pas et ne les conserve pas.
+              </li>
             </ul>
           </div>
         </div>
@@ -127,6 +140,7 @@ export default function ConfidentialitePage() {
               <li>Offrir et opérer nos services</li>
               <li>Assurer la sécurité et prévenir la fraude</li>
               <li>Améliorer notre service</li>
+              <li>Traiter les paiements et gérer l’abonnement</li>
             </ul>
 
             <p className="text-sm text-slate-600">
@@ -186,6 +200,9 @@ export default function ConfidentialitePage() {
               <li><strong>Resend :</strong> envoi de courriels</li>
               <li><strong>GitHub :</strong> hébergement du code</li>
               <li><strong>Google :</strong> si vous nous écrivez via Gmail</li>
+              <li><strong>Stripe :</strong> traitement des paiements et gestion des abonnements</li>
+              <li>VoIP.ms : services de telephonie (appels et messages), gestion des communications clients</li>
+              <li>Zoiper : application cliente de telephonie utilisee pour acceder au service VoIP</li>
             </ul>
 
             <p className="text-sm text-slate-600">
