@@ -1,6 +1,7 @@
 // app/sitemap.js
 
 import { BLOG_POSTS, REGION_PAGES, TRADE_PAGES } from '@/lib/content'
+import { MODELES } from '@/lib/modeles.data'
 import { SECTOR_PAGES } from '@/lib/sectors'
 
 export default function sitemap() {
@@ -17,6 +18,12 @@ export default function sitemap() {
     },
     {
       url: `${baseUrl}/metiers`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/modeles`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -75,6 +82,12 @@ export default function sitemap() {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.5,
+    })),
+    ...MODELES.map((modele) => ({
+      url: `${baseUrl}/modeles/${modele.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.4,
     })),
     ...SECTOR_PAGES.map((s) => ({
       url: `${baseUrl}/secteurs/${s.slug}`,
