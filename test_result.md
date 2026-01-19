@@ -132,7 +132,7 @@ frontend:
     status_history:
       - working: "NA"
         agent: "main"
-        comment: "Navigation avec liens anchor vers #forfaits, #processus, #conformite, #contact"
+        comment: "Navigation avec liens anchor vers #tarifs, #processus, #conformite, #contact"
       - working: true
         agent: "testing"
         comment: "✅ TESTED: Navigation smooth scroll fonctionne parfaitement. Tous les liens (Forfaits, Comment ça fonctionne, Conformité, Contact) scrollent correctement vers leurs sections respectives. Comportement fluide sur desktop et mobile."
@@ -287,7 +287,7 @@ agent_communication:
       - /app/components/forms/LeadForm.js - Formulaire de capture
       
       PRIORITÉS DE TEST:
-      1. Navigation smooth scroll vers toutes les sections (#forfaits, #processus, #conformite, #contact)
+      1. Navigation smooth scroll vers toutes les sections (#tarifs, #processus, #conformite, #contact)
       2. Formulaire de capture avec validation (téléphone requis, format validation)
       3. Responsive mobile (60%+ trafic attendu) - CRITIQUE
       4. Sticky header avec téléphone cliquable

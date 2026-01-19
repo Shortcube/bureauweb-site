@@ -48,7 +48,7 @@ export default function RegionSlugPage({ params }) {
 
       <div className="mt-12 flex flex-col sm:flex-row gap-3">
         <Link href="/#diagnostic" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">Recevoir mon diagnostic gratuit</Link>
-        <Link href="/#forfaits" className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-concrete-200 text-navy hover:bg-concrete-50">Voir les forfaits</Link>
+        <Link href="/#tarifs" className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-concrete-200 text-navy hover:bg-concrete-50">Voir les forfaits</Link>
       </div>
     </main>
   )

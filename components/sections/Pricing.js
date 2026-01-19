@@ -20,7 +20,7 @@ const Pricing = () => {
   }
 
   return (
-    <section id="forfaits" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
+    <section id="tarifs" className="py-12 md:py-16 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         <div className="text-center mb-10 md:mb-12">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">

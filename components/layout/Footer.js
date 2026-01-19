@@ -89,7 +89,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/#forfaits"
+                  href="/#tarifs"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
                   Forfaits

@@ -36,7 +36,7 @@ const getMissingStripeConfig = (plan) => {
 
 export default function PayerPage({ searchParams }) {
   const planParam = String(searchParams?.plan || '')
-  const pricingHref = '/#forfaits'
+  const pricingHref = '/#tarifs'
   let plan = null
   let planError = ''
   try {

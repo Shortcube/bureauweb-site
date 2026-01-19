@@ -1,21 +1,4 @@
-<!-- DOCS_PRECEDENCE_V1 -->
-NOTE - Precedence documentation (v1)
-
-Ces documents ont ete ajoutes pour eviter le drift et les contradictions.
-En cas de divergence, appliquer l'ordre de precedence suivant:
-
-1) BUREAUWEB_PLAYBOOK.md (source de verite)
-2) docs/RUNBOOK_STRIPE.md (paiements Stripe)
-3) docs/RUNBOOK_BLOG_SEO.md (blog et SEO)
-4) docs/SOP_ONBOARDING.md, docs/SOP_PRODUCTION.md, docs/SOP_QA.md (operations)
-5) docs/SHEETS_SCHEMA.md (mecanique Sheets, formules, anti donnees fantomes)
-6) docs/RBQ_REFERENCE.md (liste RBQ interne)
-7) Les autres fichiers (.md) sont du contexte ou des rappels et peuvent contenir du legacy.
-
-Toute mention "Payment Links" ou "lien Stripe" doit etre consideree legacy si elle contredit RUNBOOK_STRIPE.
-Toute mention blog sans metadata/JSON-LD/sitemap/breadcrumbs est incomplete si elle contredit RUNBOOK_BLOG_SEO.
-
----
+Précedence: voir docs/DOCS_PRECEDENCE.md
 
 BureauWeb - Référence Offre, Funnel et Décisions Structurelles
 
@@ -97,11 +80,15 @@ Lien vers “limites mensuelles” (global, pas par carte)
 
 NE DOIT PAS apparaître
 
-Frais ponctuels (activation)
-
 Disclaimers généraux
 
 Phrases marketing
+
+Autorisé (uniquement Pro/Croissance):
+Une ligne discrète sous la carte:
+“Frais d’activation: 499$ (Pro) / 799$ (Croissance)”
+
+Justification: transparence, réduction friction support.
 
 Règle:
 Une carte de forfait ne contient que ce qui est inclus de façon continue pour ce prix.
@@ -125,9 +112,7 @@ Pro: 499$
 Croissance: 799$
 
 Règle UI:
-
-Ne pas mettre l’activation dans la carte.
-
+L’activation peut être affichée sous Pro/Croissance via la ligne standard ci-dessus.
 L’activation est expliquée au bon endroit (après diagnostic, page paiement, ou encadré “modalités”).
 
 5) Intention et périmètre des forfaits
@@ -159,7 +144,7 @@ Structuration services et zones (si pertinent).
 
 Processus d’avis.
 
-Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
+Support: voir section Support et communication (canonique).
 
 1 intervention mineure mensuelle (définition ci-dessous).
 
@@ -175,7 +160,7 @@ Tout Pro.
 
 1 page de contenu courte par mois (si pertinent).
 
-Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
+Support: voir section Support et communication (canonique).
 
 1 intervention mineure mensuelle.
 
@@ -270,7 +255,7 @@ Stripe Checkout Session (tunnel propre) + webhook.
 
 Success URL: /merci
 
-Cancel URL: retour forfaits ou /payer (selon implémentation).
+Cancel URL: /#tarifs.
 
 9) Services complémentaires (hors forfait)
 
@@ -337,8 +322,7 @@ mettre à jour ce document si comportement ou périmètre change.
 Ce fichier prévaut sur toute interprétation implicite du code.
 
 ### Support et communication
-- Support en français, humain, principalement par écrit (courriel ou texto)
-- Téléphone au besoin, selon le forfait actif
+- Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 - Aucune promesse de disponibilité immédiate ou 24/7
 - Les échanges servent à cadrer, prioriser et exécuter dans les limites mensuelles
 

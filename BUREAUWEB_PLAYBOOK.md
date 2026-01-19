@@ -1,3 +1,5 @@
+Précedence: voir docs/DOCS_PRECEDENCE.md
+
 # BureauWeb — Playbook opérationnel (v1.1)
 
 Source de vérité canonique.
@@ -198,7 +200,7 @@ Diagnostic → Décision → création Checkout Session → paiement → webhook
 Composants requis:
 - Route “créer session” (API).
 - Success URL: /merci
-- Cancel URL: /payer (ou retour forfaits)
+- Cancel URL: /#tarifs
 - Webhook Stripe:
   - vérifier signature
   - traiter checkout.session.completed
@@ -218,6 +220,7 @@ Forfaits:
 - Départ: 199$/mois, activation 0
 - Pro: 349$/mois, activation 499$
 - Croissance: 549$/mois, activation 799$
+UI: les montants d’activation sont affichés dans le pricing pour transparence (Pro/Croissance).
 
 Si tu veux garder les montants hors playbook:
 - remplacer par unknown et stocker les montants dans un fichier pricing dédié versionné.
@@ -249,7 +252,7 @@ Front: Next.js (App Router)
 Paiements: Stripe (Checkout Session + Webhook)
 Ops: Google Sheets (MVP) ou DB (scale)
 Domaine/DNS: unknown (si WHC utilisé, le documenter ici)
-Hébergement: unknown (choisir 1 et standardiser)
+Hébergement: Cloudflare Pages (OpenNext)
 
 ### 9.2 Mapping projet (adapter au repo actuel en .js)
 Arborescence minimale attendue:

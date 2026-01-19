@@ -10,9 +10,9 @@ Ce document résume la nouvelle architecture Stripe sur BureauWeb.ca (App Router
 - Les notifications superflues sont évitées : Stripe envoie ses emails transactionnels, Resend ne déclenche qu’un simple signal interne si configuré.
 
 ## 2. Pages et points d’entrée
-- `/payer` : page Edge light qui valide `plan` (`depart`, `pro`, `croissance`). Si le plan est valide, redirection 303 vers `/api/stripe/checkout?plan=<plan>`. Sinon, affiche la liste des plans attendus (pas de formulaire, pas de logiques de paiement côté client).  
+- `/payer` : page Edge light qui valide `plan` (`depart`, `pro`, `croissance`). Si le plan est valide et la config Stripe complète, redirection 303 vers `/api/stripe/checkout?plan=<plan>`. Sinon, affiche une erreur claire + un CTA retour aux forfaits (pas de formulaire, pas de logiques de paiement côté client).  
 - `/merci` : page remerciment. Elle est décorée `robots: noindex,nofollow`, confirme que Stripe a traité la session, explique que le reçu arrive par courriel et renvoie vers `/compte` pour gérer l’abonnement.  
-- `/paiement-annule` : page qui affiche que le paiement a été annulé, propose de réessayer (avec `plan` si valide) ou de revenir à l’accueil.  
+- `/paiement-annule` : page informative optionnelle (pas utilisée comme cancel_url), propose de réessayer (avec `plan` si valide) ou de revenir à l’accueil.  
 - `/compte` : redirige vers `NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL` (ou le lien par défaut). Bouton “Gérer mon abonnement”, rappel que le portail permet annulation/carte/facture.
 
 ## 3. Checkout Sessions Edge-safe (`lib/stripe-edge.js`)
@@ -22,7 +22,7 @@ Ce document résume la nouvelle architecture Stripe sur BureauWeb.ca (App Router
   - `mode=subscription`, `locale=fr-CA`, `customer_creation=always`, metadata plan+activation.  
   - `subscription_data[items][0]` contient le prix du plan (depuis `STRIPE_PRICE_ID_*`).  
   - Si `plan === 'pro' || plan === 'croissance'`, on ajoute `subscription_data[add_invoice_items][0]` avec l’ID d’activation correspondant (`STRIPE_PRICE_ID_ACTIVATION_*`).  
-  - `success_url` = `${origin}/merci?session_id={CHECKOUT_SESSION_ID}`, `cancel_url` = `${origin}/paiement-annule?plan=<plan>`.  
+  - `success_url` = `${origin}/merci`, `cancel_url` = `${origin}/#tarifs`.  
   - La clé secrète Stripe (`STRIPE_SECRET_KEY`) est exigée et transmise dans l’en-tête `Authorization`.
 
 ## 4. API routes Stripe

@@ -12,7 +12,7 @@ const Hero = () => {
   }
 
   const scrollToForfaits = () => {
-    document.getElementById('forfaits')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const router = useRouter()

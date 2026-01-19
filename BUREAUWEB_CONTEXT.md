@@ -1,21 +1,4 @@
-<!-- DOCS_PRECEDENCE_V1 -->
-NOTE - Precedence documentation (v1)
-
-Ces documents ont ete ajoutes pour eviter le drift et les contradictions.
-En cas de divergence, appliquer l'ordre de precedence suivant:
-
-1) BUREAUWEB_PLAYBOOK.md (source de verite)
-2) docs/RUNBOOK_STRIPE.md (paiements Stripe)
-3) docs/RUNBOOK_BLOG_SEO.md (blog et SEO)
-4) docs/SOP_ONBOARDING.md, docs/SOP_PRODUCTION.md, docs/SOP_QA.md (operations)
-5) docs/SHEETS_SCHEMA.md (mecanique Sheets, formules, anti donnees fantomes)
-6) docs/RBQ_REFERENCE.md (liste RBQ interne)
-7) Les autres fichiers (.md) sont du contexte ou des rappels et peuvent contenir du legacy.
-
-Toute mention "Payment Links" ou "lien Stripe" doit etre consideree legacy si elle contredit RUNBOOK_STRIPE.
-Toute mention blog sans metadata/JSON-LD/sitemap/breadcrumbs est incomplete si elle contredit RUNBOOK_BLOG_SEO.
-
----
+Précedence: voir docs/DOCS_PRECEDENCE.md
 
 # CONTEXTE CANONIQUE — PROJET BUREAUWEB
 
@@ -35,7 +18,7 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
 - Paiement Stripe uniquement après diagnostic
 - Aucun travail sans abonnement actif confirmé
 - Abonnement mensuel avec limites publiques (par forfait)
-- Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
+- Support: voir section Support et communication (canonique).
 - Services complémentaires hors forfait: sur devis, facturés uniquement après acceptation écrite
 
 
@@ -49,7 +32,7 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
 3. Paiement
    - Stripe Checkout Session (tunnel propre) + webhook
    - Success: /merci
-   - Cancel: retour forfaits
+   - Cancel: /#tarifs
    - Aucun travail sans statut “Payé” confirmé
 4. Production
    - Modèle BureauWeb + éléments fournis (unknown tracé si manquant)
@@ -61,8 +44,11 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
    - Rapport concis (1 page)
    - Capacité mensuelle selon le forfait:
      - Départ: 1 micro-amélioration (ajustement simple sur l’existant)
-     - Pro: 1 intervention mineure + support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
-     - Croissance: Pro + 1 page de contenu courte (si pertinent) + support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
+     - Pro: 1 intervention mineure + Support: voir section Support et communication (canonique).
+     - Croissance: Pro + 1 page de contenu courte (si pertinent) + Support: voir section Support et communication (canonique).
+
+## Support et communication
+Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 
 ## Blogue (acquisition)
 - Blogue court, factuel, utile. Intention commerciale claire.
@@ -121,7 +107,7 @@ Règle:
 - Lucide Icons
 - Stripe (Checkout Session + Subscriptions + Webhook)
 - DNS/Registrar: WHC (confirmé)
-- Hébergement applicatif: unknown (Vercel, Cloudflare Pages, autre). Standardiser un seul.
+- Hébergement applicatif: Cloudflare Pages (OpenNext).
 - Codex utilisé pour refactor UI, copy et layout, sans halluciner
 
 ## Règles pour l’IA

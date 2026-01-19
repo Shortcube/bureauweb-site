@@ -427,7 +427,7 @@ export default function MetierSlugPage({ params }) {
         <Link href="/#diagnostic" className="btn-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-white font-semibold">
           Recevoir mon diagnostic gratuit
         </Link>
-        <Link href="/#forfaits" className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-concrete-300 text-navy hover:bg-concrete-50 font-semibold">
+        <Link href="/#tarifs" className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-concrete-300 text-navy hover:bg-concrete-50 font-semibold">
           Voir les forfaits et prix
         </Link>
       </div>

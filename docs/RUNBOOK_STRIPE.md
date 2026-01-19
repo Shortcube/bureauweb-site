@@ -13,7 +13,7 @@ Objectif: documenter le tunnel de paiement Stripe "propre" (Checkout Session + w
 3. Decision GO/Attendre/NO-GO.
 4. Si GO: on envoie un lien "payer" (ou on redirige vers /payer?plan=...).
 5. /payer cree une Checkout Session Stripe (server-side).
-6. Stripe redirige vers /merci apres succes, vers cancel_url sinon.
+6. Stripe redirige vers /merci apres succes, vers /#tarifs sinon.
 7. Webhook Stripe confirme l'evenement et met a jour l'etat interne (Paye).
 
 ## 3) Composants techniques requis
@@ -32,8 +32,9 @@ Forfaits:
 - Croissance: 549$/mois, activation 799$
 
 Regle UI:
-- Les frais d'activation ne sont pas affiches dans les cartes pricing.
-- Ils sont presentes au bon endroit: apres diagnostic, page paiement, ou modalites.
+- Une ligne discrete d'activation est autorisee sous Pro/Croissance:
+  "Frais d'activation: 499$ (Pro) / 799$ (Croissance)".
+- L'activation est aussi expliquee au bon endroit: apres diagnostic, page paiement, ou modalites.
 
 ## 5) Definition des etats internes (minimum)
 ClientBillingStatus:
@@ -65,8 +66,8 @@ Si information inconnue (pas de DB):
   - Delai.
   - Contact.
   - Mention: "Vous recevrez un courriel Stripe".
-- /annule (optionnel)
-  - Retour vers forfaits ou diagnostic, message simple.
+- /paiement-annule (optionnel)
+  - Page informative, non utilisee comme cancel_url (retour par defaut vers /#tarifs).
 
 ## 8) Webhook: evenements et actions
 checkout.session.completed
@@ -102,6 +103,7 @@ customer.subscription.deleted
 ## 11) Checklist de validation
 - Creation de session fonctionne pour chaque plan.
 - Success URL redirige vers /merci.
+- Cancel URL redirige vers /#tarifs.
 - Webhook recoit et traite checkout.session.completed.
 - Regle "Paye" appliquee: pas de production sans paid_active.
 - Test d'un paiement echoue: invoice.payment_failed.
