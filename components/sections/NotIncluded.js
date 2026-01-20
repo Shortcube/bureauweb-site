@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { XCircle, Megaphone, Palette, Clock, Edit3 } from 'lucide-react'
 
 const NotIncluded = () => {
@@ -71,18 +72,18 @@ const NotIncluded = () => {
               Demandez votre diagnostic gratuit ou consultez les limites mensuelles.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 pt-1">
-              <a
+              <Link
                 href="/#diagnostic"
                 className="inline-flex items-center justify-center bg-safety text-white rounded-full px-5 py-2 text-sm font-semibold shadow"
               >
                 Diagnostic gratuit
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/limites?from=limites-mensuelles"
                 className="inline-flex items-center justify-center text-concrete-300 hover:text-white text-sm font-semibold"
               >
                 Voir les limites mensuelles
-              </a>
+              </Link>
             </div>
           </div>
         </div>
