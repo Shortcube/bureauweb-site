@@ -39,8 +39,11 @@ export default function ModelesPage({ searchParams }) {
     const modelsForSector = sector.relatedTrades
       .map((slug) => modeleMap.get(slug))
       .filter(Boolean)
-
-    modelsForSector.forEach((modele) => usedSlugs.add(modele.slug))
+      .filter((modele) => {
+        if (usedSlugs.has(modele.slug)) return false
+        usedSlugs.add(modele.slug)
+        return true
+      })
 
     return {
       slug: sector.slug,
