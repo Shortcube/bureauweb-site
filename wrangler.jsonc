@@ -6,6 +6,7 @@
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
   "build": { "command": "npx opennextjs-cloudflare build" },
+  "routes": ["bureauweb.ca/*", "www.bureauweb.ca/*"],
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "bureauweb" }],
   "vars": {
     "NEXT_PUBLIC_CONTACT_PHONE": "5145340837",
