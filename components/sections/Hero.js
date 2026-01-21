@@ -96,8 +96,10 @@ const Hero = () => {
               <Image
                 src="/images/hero-illustration.svg"
                 alt="Illustration de BureauWeb: présence en ligne gérée pendant que vous gérez vos chantiers"
-                fill
-                className="object-cover"
+                width={640}
+                height={480}
+                unoptimized
+                className="w-full h-full object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />
